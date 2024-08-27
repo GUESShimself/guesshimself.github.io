@@ -1,0 +1,27 @@
+<layout src="main.html" title="Portfolio">
+
+    <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+        <include 
+            src="page-heading.html" 
+            title="Portfolio" 
+            description="pages/portfolio.html Here are some of the current projects I've been working on. I really enjoy creating new projects and coming up with new ideas. I'm always working on something new, so check back often!"
+        ></include>
+
+
+        <div class="z-50 grid items-stretch w-full grid-cols-1 my-8 gap-7 sm:gap-5 sm:grid-cols-2">
+            <include src="portfolio-loop.html" count="10"></include>
+            <!--<ForEach content="portfolio">
+                <include 
+                    src="portfolio-loop.html" 
+                    name="{portfolio.name}"
+                    description="{portfolio.description}"
+                    image="{portfolio.image}"
+                    link="{portfolio.link}"
+                ></include>
+            </ForEach>-->
+        </div>
+
+
+    </section>
+
+</layout>

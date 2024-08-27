@@ -1,0 +1,23 @@
+[
+    {
+        "dates" : "2020 · 2024",
+        "role" : "Sr Product Designer",
+        "company" : "Conduent",
+        "description" : "I've been having a blast designing and developing new tools for developers. I love working with the team and I'm excited to see what we can do next.",
+        "logo" : "/assets/images/experiences/conduent.png"
+    },
+    {
+        "dates" : "2018 · 2020",
+        "role" : "Sr UX Designer",
+        "company" : "FM:Systems",
+        "description" : "As team lead designer for Google, I was responsible for the design and development of the Google Chrome Web Experience.",
+        "logo" : "/assets/images/experiences/fmsystems.png"
+    },
+    {
+        "dates" : "2017 · 2018",
+        "role" : "Sr UX Designer",
+        "company" : "Ultralinq",
+        "description" : "In this role I was responsible for helping out with the development of the Adobe Creative Cloud. I helped design many aspects of the product.",
+        "logo" : "/assets/images/experiences/ultralinq.png"
+    }
+]

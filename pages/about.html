@@ -1,0 +1,54 @@
+<layout src="main.html" title="About Me">
+
+    <section class="relative z-20 max-w-2xl mx-auto my-12 7 lg:px-0">
+        <include 
+            src="page-heading.html" 
+            title="About Me" 
+            description="Hello 👋 I'm a product designer based out of North Carolina with a passion for all things design, disc golf, and hanging out with my wife and two kids."
+        ></include>
+        
+        <img src="/assets/images/guessfam.jpg" class="relative z-30 w-full my-10 rounded-xl" />
+
+        <!-- <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">About Me</h2> -->
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg mb-2">Throughout my career, I’ve had the opportunity to work on many diverse, data-driven projects. These include overhauling the information architecture of an award-winning customer support portal, optimizing medical imaging workflows for physicians and technicians, and crafting design systems that enable teams to bring accessible products to market more efficiently.</p>
+
+        <!-- <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Career</h2> -->
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg mb-2">My skill set spans a broad range, from a deep knowledge of design tools like Figma and expertise in design thinking and design systems, to writing front-end code (HTML/CSS) and utilizing front-end technologies. As tools, trends, and industries evolve, I am continually exploring new methods and engaging in activities that keep my processes productive and efficient.</p>
+
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg mb-2">Design is a passion of mine where I’m able to use my creativity to distill complex and often nebulous ideas into solutions that ultimately help people. The satisfaction of knowing that I’ve helped bring a solution to fruition, bringing a positive impact business and users is what motivates me the most.</p>
+
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg mb-2">Outside of work, I’m an avid disc golfer and love exploring new courses wherever I go. If I was good enough, I’d make that my profession. Luckily for you and my family, I’m not. I’m blessed to spend so much of my time with my wife watching our two kids play soccer and supporting our local NWSL team (Go Courage!).</p>
+
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">Looking ahead, I’m excited to take on new challenges where I can find opportunities to learn and continue my growth as a design leader. Continuing to be an individual contributor is the path that feels right to me, as I get energized by keeping my hands in the day to day operations while keeping an eye on the horizon.</p>
+
+        <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Experience</h2>
+        <div class="px-5 py-10">
+            <ForEach collection="experiences" as="experience">
+                
+                <If condition="loop == 1 || loop == 2">
+                    <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+                </If>
+
+                <include 
+                    src="about-experience.html" 
+                    dates="{experience.dates}"
+                    role="{experience.role}"
+                    company="{experience.company}"
+                    description="{experience.description}"
+                    logo="{experience.logo}"
+                ></include>
+
+                <If condition="loop == 1 || loop == 2">
+                    </div>
+                </If>
+            
+            </ForEach>
+        </div>
+
+
+        <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6">Let's Connect</h2>
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">If you want to stay up to date with my work be sure to <a href="https://twitter.com/tnylea" target="_blank" class="text-indigo-600 underline">follow me on twitter</a>, or you can send me an <a href="#_" class="text-indigo-600 underline">email</a> and I'll be sure to get back to you.</p>
+
+    </section>
+
+</layout>
