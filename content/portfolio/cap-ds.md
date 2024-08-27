@@ -1,6 +1,6 @@
 ---
 title: Enterprise Design System
-description: TEST This is a post about how creating and developing a blog for yourself can be beneficial and how building your audience is important.
+description: This is a post about how creating and developing a blog for yourself can be beneficial and how building your audience is important.
 image: assets/images/portfolio/CAP-DS/CAPDS-cover.png
 ---
 
