@@ -1,6 +1,7 @@
 ---
 title: Enterprise Design System
-description: This is a post about how creating and developing a blog for yourself can be beneficial and how building your audience is important.
+description: Case Study
+dates: 2020 - 2024
 image: assets/images/portfolio/CAP-DS/CAPDS-cover.png
 ---
 
