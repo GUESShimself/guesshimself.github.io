@@ -1,1 +1,125 @@
-(()=>{window.darkMode=!1;var d=["fixed","h-14"],s=["absolute","h-20"],o=["border-neutral-300/50","bg-white/80","dark:border-neutral-600/40","dark:bg-neutral-900/60","backdrop-blur-2xl"],i=["border-transparent"],n=null;document.addEventListener("DOMContentLoaded",function(){n=document.getElementById("header"),localStorage.getItem("dark_mode")&&localStorage.getItem("dark_mode")=="true"?(window.darkMode=!0,c()):l(),stickyHeaderFuncionality(),applyMenuItemClasses(),evaluateHeaderPosition(),m()});window.stickyHeaderFuncionality=function(){window.addEventListener("scroll",function(){evaluateHeaderPosition()})};window.evaluateHeaderPosition=function(){window.scrollY>16?(n.firstElementChild.classList.add(...o),n.firstElementChild.classList.remove(...i),n.classList.add(...d),n.classList.remove(...s),document.getElementById("menu").classList.add("top-[56px]"),document.getElementById("menu").classList.remove("top-[75px]")):(n.firstElementChild.classList.remove(...o),n.firstElementChild.classList.add(...i),n.classList.add(...s),n.classList.remove(...d),document.getElementById("menu").classList.remove("top-[56px]"),document.getElementById("menu").classList.add("top-[75px]"))};document.getElementById("darkToggle").addEventListener("click",function(){document.documentElement.classList.add("duration-300"),document.documentElement.classList.contains("dark")?(localStorage.removeItem("dark_mode"),l(!0)):(localStorage.setItem("dark_mode",!0),c(!0))});function l(e){document.getElementById("sun").classList.remove("setting"),document.getElementById("moon").classList.remove("rising");let t=0;e&&(t=500,document.getElementById("moon").classList.add("setting")),setTimeout(function(){document.getElementById("dayText").classList.remove("hidden"),document.getElementById("nightText").classList.add("hidden"),document.getElementById("moon").classList.add("hidden"),document.getElementById("sun").classList.remove("hidden"),e&&(document.documentElement.classList.remove("dark"),document.getElementById("sun").classList.add("rising"))},t)}function c(e){document.getElementById("moon").classList.remove("setting"),document.getElementById("sun").classList.remove("rising");let t=0;e&&(t=500,document.getElementById("sun").classList.add("setting")),setTimeout(function(){document.getElementById("nightText").classList.remove("hidden"),document.getElementById("dayText").classList.add("hidden"),document.getElementById("sun").classList.add("hidden"),document.getElementById("moon").classList.remove("hidden"),e&&(document.documentElement.classList.add("dark"),document.getElementById("moon").classList.add("rising"))},t)}window.applyMenuItemClasses=function(){let e=document.querySelectorAll("#menu a");console.log(e);for(let t=0;t<e.length;t++)e[t].pathname==window.location.pathname&&e[t].classList.add("text-neutral-900","dark:text-white")};function m(){document.getElementById("openMenu").addEventListener("click",function(){openMobileMenu()}),document.getElementById("closeMenu").addEventListener("click",function(){closeMobileMenu()})}window.openMobileMenu=function(){document.getElementById("openMenu").classList.add("hidden"),document.getElementById("closeMenu").classList.remove("hidden"),document.getElementById("menu").classList.remove("hidden"),document.getElementById("mobileMenuBackground").classList.add("opacity-0"),document.getElementById("mobileMenuBackground").classList.remove("hidden"),setTimeout(function(){document.getElementById("mobileMenuBackground").classList.remove("opacity-0")},1)};window.closeMobileMenu=function(){document.getElementById("closeMenu").classList.add("hidden"),document.getElementById("openMenu").classList.remove("hidden"),document.getElementById("menu").classList.add("hidden"),document.getElementById("mobileMenuBackground").classList.add("hidden")};})();
+(() => {
+  // assets/js/main.js
+  window.darkMode = false;
+  var stickyClasses = ["fixed", "h-14"];
+  var unstickyClasses = ["absolute", "h-20"];
+  var stickyClassesContainer = ["border-neutral-300/50", "bg-white/80", "dark:border-neutral-600/40", "dark:bg-neutral-900/60", "backdrop-blur-2xl"];
+  var unstickyClassesContainer = ["border-transparent"];
+  var headerElement = null;
+  document.addEventListener("DOMContentLoaded", function() {
+    headerElement = document.getElementById("header");
+    if (localStorage.getItem("dark_mode") && localStorage.getItem("dark_mode") == "true") {
+      window.darkMode = true;
+      showNight();
+    } else {
+      showDay();
+    }
+    stickyHeaderFuncionality();
+    applyMenuItemClasses();
+    evaluateHeaderPosition();
+    mobileMenuFunctionality();
+  });
+  window.stickyHeaderFuncionality = function() {
+    window.addEventListener("scroll", function() {
+      evaluateHeaderPosition();
+    });
+  };
+  window.evaluateHeaderPosition = function() {
+    if (window.scrollY > 16) {
+      headerElement.firstElementChild.classList.add(...stickyClassesContainer);
+      headerElement.firstElementChild.classList.remove(...unstickyClassesContainer);
+      headerElement.classList.add(...stickyClasses);
+      headerElement.classList.remove(...unstickyClasses);
+      document.getElementById("menu").classList.add("top-[56px]");
+      document.getElementById("menu").classList.remove("top-[75px]");
+    } else {
+      headerElement.firstElementChild.classList.remove(...stickyClassesContainer);
+      headerElement.firstElementChild.classList.add(...unstickyClassesContainer);
+      headerElement.classList.add(...unstickyClasses);
+      headerElement.classList.remove(...stickyClasses);
+      document.getElementById("menu").classList.remove("top-[56px]");
+      document.getElementById("menu").classList.add("top-[75px]");
+    }
+  };
+  document.getElementById("darkToggle").addEventListener("click", function() {
+    document.documentElement.classList.add("duration-300");
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.removeItem("dark_mode");
+      showDay(true);
+    } else {
+      localStorage.setItem("dark_mode", true);
+      showNight(true);
+    }
+  });
+  function showDay(animate) {
+    document.getElementById("sun").classList.remove("setting");
+    document.getElementById("moon").classList.remove("rising");
+    let timeout = 0;
+    if (animate) {
+      timeout = 500;
+      document.getElementById("moon").classList.add("setting");
+    }
+    setTimeout(function() {
+      document.getElementById("dayText").classList.remove("hidden");
+      document.getElementById("nightText").classList.add("hidden");
+      document.getElementById("moon").classList.add("hidden");
+      document.getElementById("sun").classList.remove("hidden");
+      if (animate) {
+        document.documentElement.classList.remove("dark");
+        document.getElementById("sun").classList.add("rising");
+      }
+    }, timeout);
+  }
+  function showNight(animate) {
+    document.getElementById("moon").classList.remove("setting");
+    document.getElementById("sun").classList.remove("rising");
+    let timeout = 0;
+    if (animate) {
+      timeout = 500;
+      document.getElementById("sun").classList.add("setting");
+    }
+    setTimeout(function() {
+      document.getElementById("nightText").classList.remove("hidden");
+      document.getElementById("dayText").classList.add("hidden");
+      document.getElementById("sun").classList.add("hidden");
+      document.getElementById("moon").classList.remove("hidden");
+      if (animate) {
+        document.documentElement.classList.add("dark");
+        document.getElementById("moon").classList.add("rising");
+      }
+    }, timeout);
+  }
+  window.applyMenuItemClasses = function() {
+    const menuItems = document.querySelectorAll("#menu a");
+    console.log(menuItems);
+    for (let i = 0; i < menuItems.length; i++) {
+      if (menuItems[i].pathname == window.location.pathname) {
+        menuItems[i].classList.add("text-neutral-900", "dark:text-white");
+      }
+    }
+  };
+  function mobileMenuFunctionality() {
+    document.getElementById("openMenu").addEventListener("click", function() {
+      openMobileMenu();
+    });
+    document.getElementById("closeMenu").addEventListener("click", function() {
+      closeMobileMenu();
+    });
+  }
+  window.openMobileMenu = function() {
+    document.getElementById("openMenu").classList.add("hidden");
+    document.getElementById("closeMenu").classList.remove("hidden");
+    document.getElementById("menu").classList.remove("hidden");
+    document.getElementById("mobileMenuBackground").classList.add("opacity-0");
+    document.getElementById("mobileMenuBackground").classList.remove("hidden");
+    setTimeout(function() {
+      document.getElementById("mobileMenuBackground").classList.remove("opacity-0");
+    }, 1);
+  };
+  window.closeMobileMenu = function() {
+    document.getElementById("closeMenu").classList.add("hidden");
+    document.getElementById("openMenu").classList.remove("hidden");
+    document.getElementById("menu").classList.add("hidden");
+    document.getElementById("mobileMenuBackground").classList.add("hidden");
+  };
+})();
