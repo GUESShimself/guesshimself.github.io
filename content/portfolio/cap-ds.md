@@ -14,13 +14,13 @@ image: /assets/images/portfolio/CAP-DS/CAPDS-cover.png
         <div class="flex rounded shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
             <button @click="tab = 'overview'"
                 :class="{ 'bg-black hover:bg-black dark:bg-white dark:hover:bg-white border-neutral-900 hover:border-neutral-900 dark:border-white text-white hover:text-neutral-100 ': tab === 'overview' }"
-                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md dark:bg-neutral-900 hover:bg-white text-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white bg-neutral-100 dark:hover:text-white hover:text-neutral-900"
+                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md bg-neutral-100 dark:bg-neutral-900 hover:bg-white text-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white dark:hover:text-white hover:text-neutral-900"
                 type="button">
                 ✈️ 30,000 foot view
             </button>
             <button @click="tab = 'contributions'"
                 :class="{ 'bg-black hover:bg-black dark:bg-white dark:hover:bg-white border-neutral-900 hover:border-neutral-900 dark:border-white text-white hover:text-neutral-100': tab === 'contributions' }"
-                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md dark:bg-neutral-900 hover:bg-white text-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white bg-neutral-100 dark:hover:text-white hover:text-neutral-900"
+                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md bg-neutral-100 dark:bg-neutral-900 hover:bg-white text-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white dark:hover:text-white hover:text-neutral-900"
                 type="button">
                 🚁 10,000 foot view
             </button>
