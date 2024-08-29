@@ -2,21 +2,91 @@
 title: Facilities Management Products
 description: Case Study
 dates: 2019 - 2020
-image: assets/images/portfolio/CAP-UI/CAPUI-cover.png
+image: /assets/images/portfolio/FMS-move-dashboard.png
 ---
 
-![Coffee and Code](/assets/images/portfolio/CAP-UI/CAPUI-cover.png)
+<div class="flex items-center justify-center w-fit mt-16">
+    <div x-data="{ tab: 'overview' }">
+        <div class="relative w-full pl-5 md:pl-0">
+            <div class="absolute w-full h-px bg-gradient-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
+            <div class="w-full h-px border-t border-dashed border-neutral-300 dark:border-neutral-600"></div>
+        </div>
+        <div class="flex rounded shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
+            <button @click="tab = 'overview'"
+                :class="{ 'bg-black hover:bg-black dark:bg-white dark:hover:bg-white border-neutral-900 hover:border-neutral-900 dark:border-white text-white hover:text-neutral-100 ': tab === 'overview' }"
+                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md dark:bg-neutral-900 hover:bg-white dark:text-neutral-900 text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white bg-neutral-100 dark:hover:text-white hover:text-neutral-900"
+                type="button">
+                ✈️ 30,000 foot view
+            </button>
+            <button @click="tab = 'contributions'"
+                :class="{ 'bg-black hover:bg-black dark:bg-white dark:hover:bg-white border-neutral-900 hover:border-neutral-900 dark:border-white text-white hover:text-neutral-100': tab === 'contributions' }"
+                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md dark:bg-neutral-900 hover:bg-white dark:text-neutral-900 text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white bg-neutral-100 dark:hover:text-white hover:text-neutral-900"
+                type="button">
+                🚁 10,000 foot view
+            </button>
+        </div>
+        <div x-show="tab === 'overview'">
+            <div id="overview">
+                <h2>Project Overview</h2>
+                <p>
+                    A new automation platform and customer portal projects were being kicked off with
+                    development teams located across the globe. To streamline development processes and ensure
+                    consistency, I joined a small but mighty design team to build and develop the framework with the
+                    goal of empowering our teams to develop these new products in an accessible and user-friendly
+                    way.
+                </p>
+                <p>
+                    Our company, serving numerous industries including commercial, government, and
+                    transportation, faced significant challenges with inconsistent design practices across different
+                    teams. This led to inefficient processes and fragmented user experiences. Our division was
+                    tasked with creating a new platform built on new technology to enable engineers to deliver
+                    low-code solutions for various customer needs. To address these issues, our design team set out
+                    to build a design system to support the quick growth of our new enterprise-level product.
+                </p>
+            </div>
+            <div id="objectives">
+                <h2>Objectives</h2>
+                <ul class="list-disc list-inside">
+                    <li>Establish a consistent design language across these products.</li>
+                    <li>Improve collaboration between designers and developers working across global time zones.
+                    </li>
+                    <li>Enhance efficiency by reducing redundant work.</li>
+                    <li>Ensure accessibility standards are met across all components.</li>
+                </ul>
+                <h2>My Contributions</h2>
+                <p>
+                    My work spanned nearly all aspects of the design system. I began with UI audits of
+                    initial designs and code, then built components in XD before migrating and rebuilding them in
+                    Figma. I also wrote our foundational CSS, established design standards & front-end guidelines,
+                    and ensured the continued maintenance, evangelism, and success of the design system.
+                </p>
+            </div>
+        </div>
+        <div x-show="tab === 'contributions'">
+            <div class="not-prose">
+                <figure class="mt-16">
+                    <figcaption class="mb-4 text-base">Sketching more than just UI flows, I often start my design thoughts on paper. The below image is my rough sketch of how we would organize and distribute our design system.</figcaption>
+                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-api.jpeg" class="shadow">
+                </figure>
+                <figure class="mt-16">
+                    <figcaption class="mb-4 text-base">Creating annotations within Figma not only help designers and developers understand intended usage and functionality of components, but it also serves as a good double-check on consistency of design decisions.</figcaption>
+                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" class="shadow">
+                </figure>
+                <figure class="mt-16">
+                    <figcaption class="mb-4 text-base">In order to help ensure accessibility was built into our components, I documented guidance on various aspects of usability, like keyboard-navigation as seen in the image below.</figcaption>
+                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-a11y-pick-list.png" class="shadow">
+                </figure>
+                <figure class="mt-16">
+                    <figcaption class="mb-4 text-base">While I'm very efficient in both Figma and front-end code, I still find it faster to sketch my ideas out on paper prior to delving into a digital interface.</figcaption>
+                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" class="shadow">
+                </figure>
+                <figure class="mt-16">
+                    <figcaption class="mb-4 text-base">The humble button component does so much heavy lifting on many UIs. This is typically the first component I create when working on a new design system in order to help solidify initial design decisions like color, typography, spacing, rounded corners, etc, etc.</figcaption>
+                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-button.jpg" class="shadow">
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
 
-## Project Overview
-As a Sr Product Designer for Conduent, I helped create a new enterprise-level platform that allows engineers to efficiently build low-code solutions for a wide variety of our customers’ automated tasks. Designed in tandem with the CAP Design System, I worked with globally distributed teams to quickly create and validate solutions for our developers and engineers to implement.
-
-## Objectives
-
-- Create design principles for design and dev
-- Incorporate and help refine design system usage
-- Discover and document design patterns
-- Provide flexible and comprehensive design solutions for various business needs
-
-## My Contributions
-
-As the senior designer on the team, my experience working across various types of projects and teams came in handy as I helped maneuver our team through a transition from XD to Figma, backlogs in Axure DevOps, and cross-team communication with a global team of designers, developers, and PMs. As [Brad Frost puts it](https://bradfrost.com/blog/post/job-title-its-complicated/), some people are bricks and some are mortar. I’m the mortar.
+</div>
