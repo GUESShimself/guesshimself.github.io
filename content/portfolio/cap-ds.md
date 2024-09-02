@@ -7,15 +7,12 @@ image: /assets/images/portfolio/CAP-DS/CAPDS-cover.png
 
 <div class="flex items-center justify-center w-fit mt-16">
     <div x-data="{ tab: 'overview' }">
-        <div class="relative w-full pl-5 md:pl-0">
-            <div class="absolute w-full h-px bg-gradient-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
-            <div class="w-full h-px border-t border-dashed border-neutral-300 dark:border-neutral-600"></div>
-        </div>
         <div class="flex rounded shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
-            <button @click="tab = 'overview'" :class="{ 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white': tab === 'overview' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md bg-white text-black border-white dark:bg-black dark:text-neutral-100 dark:border-black" type="button" >
+            <button @click="tab = 'overview'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'overview' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md bg-transparent text-neutral-900 border-white" type="button" >
                 ✈️ 30,000 foot view
             </button>
-            <button @click="tab = 'contributions'" :class="{ 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white': tab === 'contributions' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md bg-white text-black border-white dark:bg-black dark:text-neutral-100 dark:border-black" type="button" >
+            <button @click="tab = 'contributions'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'contributions' }" 
+            class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md bg-transparent text-black border-white" type="button" >
                 🚁 10,000 foot view
             </button>
         </div>
