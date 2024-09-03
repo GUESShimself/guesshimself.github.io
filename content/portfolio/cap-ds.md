@@ -8,13 +8,12 @@ image: /assets/images/portfolio/CAP-DS/CAPDS-cover.png
 <div class="flex items-center justify-center w-fit mt-16">
     <div x-data="{ tab: 'overview' }">
         <div class="flex rounded shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
-            <button @click="tab = 'overview'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'overview' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md bg-transparent text-neutral-900 border-white" type="button" >
+            <button @click="tab = 'overview'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'overview' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md bg-transparent text-neutral-900 border-white" type="button">
                 ✈️ 30,000 foot view
-            </button>
-            <button @click="tab = 'contributions'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'contributions' }" 
-            class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md bg-transparent text-black border-white" type="button" >
+              </button>
+              <button @click="tab = 'contributions'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'contributions' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md bg-transparent text-black border-white" type="button">
                 🚁 10,000 foot view
-            </button>
+              </button>
         </div>
         <div x-show="tab === 'overview'">
             <div id="overview">
