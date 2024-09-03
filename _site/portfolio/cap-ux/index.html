@@ -16,7 +16,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     <script src="//unpkg.com/alpinejs" defer></script>
     <link href="/assets/css/main.css" rel="stylesheet">
-<script>window.toc = JSON.parse('[]'); window.frontmatter=JSON.parse('{"title":"Enterprise Product Design","description":"Case Study","dates":"2020 - 2024","image":"/assets/images/portfolio/CAP-UI/CAPUI-cover.png"}');</script>
+<script>window.toc = JSON.parse('[]'); window.frontmatter=JSON.parse('{"title":"Enterprise Product Design","company":"Conduent","description":"Case Study","dates":"2020 - 2024","image":"/assets/images/portfolio/CAP-UI/CAPUI-cover.png"}');</script>
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
     <div class="absolute w-full h-auto" style="z-index:-1">
@@ -170,9 +170,10 @@
     <div class="flex items-center justify-between h-full max-w-5xl pl-6 pr-4 mx-auto border-b border-l-0 border-r-0 border-transparent select-none lg:border-r lg:border-l lg:rounded-b-xl">
         
         <a href="/" class="h-5 text-base group relative z-30 flex items-center space-x-1.5 text-neutral-600 hover:text-black dark:text-neutral-400 hover:dark:text-white font-semibold">
+    <!-- <img class="w-44"" src="/assets/images/guesshimself-logo.png" alt="GUESShimself logo" /> -->
     <!-- Logo Text -->
-    <span class="-translate-y-0.5">GUESShimself</span>
-    <span class="text-xl -translate-y-0.5 -translate-x-1 group-hover:-translate-x-1 group-hover:rotate-12 group-hover:scale-[1.5] group-hover:text-amber-500 ease-in-out duration-300">‽</span>
+    <span class="-translate-y-0.5 hover:italic ease-in-out duration-300">GUESShimself</span>
+    <span class="text-2xl -translate-y-0.5 -translate-x-1 group-hover:-translate-x-1 group-hover:rotate-12 group-hover:scale-[1.5] text-transparent group-hover:text-amber-500 ease-in-out duration-300">‽</span>
 </a>
         <div id="mobileMenuBackground" onclick="closeMobileMenu()" class="fixed inset-0 z-20 hidden w-screen h-screen duration-300 ease-out bg-white/90 dark:bg-neutral-950/90"></div>
         <nav class="relative z-30 flex flex-row-reverse justify-start w-full text-sm sm:justify-end text-neutral-500 dark:text-neutral-400 sm:flex-row">
@@ -214,94 +215,57 @@
         <div class="relative flex flex-col px-5 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800">
             <div class="absolute top-0 left-0 hidden w-px h-full mt-1 -translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
             <div class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
-            <h1 class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none">Enterprise Product Design</h1>
+            <h1 class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-center md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none">Enterprise Product Design</h1>
         </div>
         
         <article class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert">
             <div class="flex items-center justify-center w-fit mt-16">
-    <div x-data="{ tab: 'overview' }">
-        <div class="relative w-full pl-5 md:pl-0">
-            <div class="absolute w-full h-px bg-gradient-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
-            <div class="w-full h-px border-t border-dashed border-neutral-300 dark:border-neutral-600"></div>
+    <div x-data="{ activeTab: 1 }">
+        <div class="absolute w-fit h-px bg-gradient-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
+        <div class="w-full h-px border-t border-dashed border-neutral-300 dark:border-neutral-600"></div>
+        <div role="tablist" class="flex rounded-full shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
+            <button id="tab-1"
+            class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-full cursor-default"
+            :class="activeTab === 1 ? 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white' : 'bg-black dark:bg-white hover:bg-white dark:hover:bg-black text-white dark:text-black hover:text-black dark:hover:text-white border-black dark:border-white hover:border-black dark:hover:border-white cursor-pointer'"
+            :tabindex="activeTab === 1 ? 0 : -1"
+            :aria-selected="activeTab === 1"
+            aria-controls="tabpanel-1"
+            @click="activeTab = 1"
+            @focus="activeTab = 1">
+                🖼️ The Big Picture
+              </button>
+              <button id="tab-2"
+              class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-full"
+              :class="activeTab === 2 ? 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white' : 'bg-black dark:bg-white hover:bg-white dark:hover:bg-black text-white dark:text-black hover:text-black dark:hover:text-white border-black dark:border-white hover:border-black dark:hover:border-white cursor-pointer'"
+              :tabindex="activeTab === 2 ? 0 : -1"
+              :aria-selected="activeTab === 2"
+              aria-controls="tabpanel-2"
+              @click="activeTab = 2"
+              @focus="activeTab = 2">
+                🖌️ The Important Details
+              </button>
         </div>
-        <div class="flex rounded shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
-            <button @click="tab = 'overview'"
-                :class="{ 'bg-black hover:bg-black dark:bg-white dark:hover:bg-white border-neutral-900 hover:border-neutral-900 dark:border-white text-white hover:text-neutral-100 ': tab === 'overview' }"
-                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md dark:bg-neutral-900 hover:bg-white dark:text-neutral-900 text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white bg-neutral-100 dark:hover:text-white hover:text-neutral-900"
-                type="button">
-                ✈️ 30,000 foot view
-            </button>
-            <button @click="tab = 'contributions'"
-                :class="{ 'bg-black hover:bg-black dark:bg-white dark:hover:bg-white border-neutral-900 hover:border-neutral-900 dark:border-white text-white hover:text-neutral-100': tab === 'contributions' }"
-                class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md dark:bg-neutral-900 hover:bg-white dark:text-neutral-900 text-neutral-900 dark:hover:border-neutral-700 border-neutral-900 hover:border-neutral-300 dark:hover:bg-white bg-neutral-100 dark:hover:text-white hover:text-neutral-900"
-                type="button">
-                🚁 10,000 foot view
-            </button>
-        </div>
-        <div x-show="tab === 'overview'">
-            <div id="overview">
-                <h2>Project Overview</h2>
-                <p>
-                    A new automation platform and customer portal projects were being kicked off with
-                    development teams located across the globe. To streamline development processes and ensure
-                    consistency, I joined a small but mighty design team to build and develop the framework with the
-                    goal of empowering our teams to develop these new products in an accessible and user-friendly
-                    way.
-                </p>
-                <p>
-                    Our company, serving numerous industries including commercial, government, and
-                    transportation, faced significant challenges with inconsistent design practices across different
-                    teams. This led to inefficient processes and fragmented user experiences. Our division was
-                    tasked with creating a new platform built on new technology to enable engineers to deliver
-                    low-code solutions for various customer needs. To address these issues, our design team set out
-                    to build a design system to support the quick growth of our new enterprise-level product.
-                </p>
-            </div>
-            <div id="objectives">
-                <h2>Objectives</h2>
-                <ul class="list-disc list-inside">
-                    <li>Establish a consistent design language across these products.</li>
-                    <li>Improve collaboration between designers and developers working across global time zones.
-                    </li>
-                    <li>Enhance efficiency by reducing redundant work.</li>
-                    <li>Ensure accessibility standards are met across all components.</li>
-                </ul>
-                <h2>My Contributions</h2>
-                <p>
-                    My work spanned nearly all aspects of the design system. I began with UI audits of
-                    initial designs and code, then built components in XD before migrating and rebuilding them in
-                    Figma. I also wrote our foundational CSS, established design standards & front-end guidelines,
-                    and ensured the continued maintenance, evangelism, and success of the design system.
-                </p>
-            </div>
-        </div>
-        <div x-show="tab === 'contributions'">
-            <div class="not-prose">
-                <figure class="mt-16">
-                    <figcaption class="mb-4 text-base">Sketching more than just UI flows, I often start my design thoughts on paper. The below image is my rough sketch of how we would organize and distribute our design system.</figcaption>
-                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-api.jpeg" class="shadow">
-                </figure>
-                <figure class="mt-16">
-                    <figcaption class="mb-4 text-base">Creating annotations within Figma not only help designers and developers understand intended usage and functionality of components, but it also serves as a good double-check on consistency of design decisions.</figcaption>
-                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" class="shadow">
-                </figure>
-                <figure class="mt-16">
-                    <figcaption class="mb-4 text-base">In order to help ensure accessibility was built into our components, I documented guidance on various aspects of usability, like keyboard-navigation as seen in the image below.</figcaption>
-                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-a11y-pick-list.png" class="shadow">
-                </figure>
-                <figure class="mt-16">
-                    <figcaption class="mb-4 text-base">While I'm very efficient in both Figma and front-end code, I still find it faster to sketch my ideas out on paper prior to delving into a digital interface.</figcaption>
-                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" class="shadow">
-                </figure>
-                <figure class="mt-16">
-                    <figcaption class="mb-4 text-base">The humble button component does so much heavy lifting on many UIs. This is typically the first component I create when working on a new design system in order to help solidify initial design decisions like color, typography, spacing, rounded corners, etc, etc.</figcaption>
-                    <img src="/assets/images/portfolio/CAP-DS/cap-ds-button.jpg" class="shadow">
-                </figure>
-            </div>
-        </div>
+        <article x-show="activeTab === 1" role="tabpanel" tabindex="0" id="tabpanel-1" aria-labelledby="tab-1">
+            <h2>Project Overview</h2>
+            <p>
+                As a Sr Product Designer for Conduent, I helped create a new enterprise-level platform that allows engineers to efficiently build low-code solutions for a wide variety of our customers’ automated tasks. Designed in tandem with the CAP Design System, I worked with globally distributed teams to quickly create and validate solutions for our developers and engineers to implement.
+            </p>
+            <h2>Objectives</h2>
+            <ul class="list-disc list-inside">
+                <li>Create design principles for design and dev</li>
+                <li>Incorporate and help refine design system usage</li>
+                <li>Discover and document design patterns</li>
+                <li>Provide flexible and comprehensive design solutions for various business needs</li>
+            </ul>
+            <h2>My Contributions</h2>
+            <p>As the senior designer on the team, my experience working across various types of projects and teams came in handy as I helped maneuver our team through a transition from XD to Figma, backlogs in Axure DevOps, and cross-team communication with a global team of designers, developers, and PMs. As Brad Frost puts it, <a href="https://bradfrost.com/blog/post/job-title-its-complicated/">some people are bricks and some are mortar</a>. I’m the mortar.</p>
+        </article>
+        <article x-show="activeTab === 2" role="tabpanel" tabindex="0" id="tabpanel-2" aria-labelledby="tab-2">
+            <h2>Coming soon&hellip;</h2>
+        </article>
     </div>
+
 </div>
-<p></div></p>
         </article>
     </main>
 
@@ -309,9 +273,10 @@
     <section class="text-gray-700 bg-white border-t sm:mt-20 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800">
     <div class="container flex flex-col items-center py-8 mx-auto px-7 max-w-7xl sm:flex-row">
         <a href="/" class="h-5 text-base group relative z-30 flex items-center space-x-1.5 text-neutral-600 hover:text-black dark:text-neutral-400 hover:dark:text-white font-semibold">
+    <!-- <img class="w-44"" src="/assets/images/guesshimself-logo.png" alt="GUESShimself logo" /> -->
     <!-- Logo Text -->
-    <span class="-translate-y-0.5">GUESShimself</span>
-    <span class="text-xl -translate-y-0.5 -translate-x-1 group-hover:-translate-x-1 group-hover:rotate-12 group-hover:scale-[1.5] group-hover:text-amber-500 ease-in-out duration-300">‽</span>
+    <span class="-translate-y-0.5 hover:italic ease-in-out duration-300">GUESShimself</span>
+    <span class="text-2xl -translate-y-0.5 -translate-x-1 group-hover:-translate-x-1 group-hover:rotate-12 group-hover:scale-[1.5] text-transparent group-hover:text-amber-500 ease-in-out duration-300">‽</span>
 </a>
         <p class="mt-4 text-sm text-neutral-700 dark:text-neutral-100 sm:ml-4 sm:pl-4 sm:border-l sm:border-neutral-300 dark:sm:border-neutral-700 sm:mt-0">© 2024 Eric Guess
         </p>
