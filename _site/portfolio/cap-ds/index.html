@@ -219,16 +219,30 @@
         
         <article class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert">
             <div class="flex items-center justify-center w-fit mt-16">
-    <div x-data="{ tab: 'overview' }">
-        <div class="flex rounded shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
-            <button @click="tab = 'overview'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'overview' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-md bg-transparent text-neutral-900 border-white" type="button">
+    <div x-data="{ activeTab: 1 }">
+        <div role="tablist" class="flex rounded-full shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
+            <button id="tab-1"
+            class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-full"
+            :class="activeTab === 1 ? 'bg-white  text-black border-black cursor-default' : 'bg-black hover:bg-white text-white hover:text-black border-black hover:border-black cursor-pointer'"
+            :tabindex="activeTab === 1 ? 0 : -1"
+            :aria-selected="activeTab === 1"
+            aria-controls="tabpanel-1"
+            @click="activeTab = 1"
+            @focus="activeTab = 1">
                 ✈️ 30,000 foot view
               </button>
-              <button @click="tab = 'contributions'" :class="{ 'bg-neutral-900 text-white border-black': tab === 'contributions' }" class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-md bg-transparent text-black border-white" type="button">
+              <button id="tab-2"
+              class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-full"
+              :class="activeTab === 2 ? 'bg-white  text-black border-black cursor-default' : 'bg-black hover:bg-white text-white hover:text-black border-black hover:border-black cursor-pointer'"
+              :tabindex="activeTab === 2 ? 0 : -1"
+              :aria-selected="activeTab === 2"
+              aria-controls="tabpanel-2"
+              @click="activeTab = 2"
+              @focus="activeTab = 2">
                 🚁 10,000 foot view
               </button>
         </div>
-        <div x-show="tab === 'overview'">
+        <div x-show="activeTab === 1" role="tabpanel" tabindex="0" id="tabpanel-1" aria-labelledby="tab-1">
             <div id="overview">
                 <h2>Project Overview</h2>
                 <p>
@@ -265,7 +279,7 @@
                 </p>
             </div>
         </div>
-        <div x-show="tab === 'contributions'">
+        <div  x-show="activeTab === 2" role="tabpanel" tabindex="0" id="tabpanel-2" aria-labelledby="tab-2">
             <div class="not-prose">
                 <figure class="mt-16">
                     <figcaption class="mb-4 text-base">Sketching more than just UI flows, I often start my design thoughts on paper. The below image is my rough sketch of how we would organize and distribute our design system.</figcaption>
