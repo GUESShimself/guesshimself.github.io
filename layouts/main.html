@@ -19,10 +19,12 @@
     {tailwindcss}
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
-    <include src="square-lines.html"></include>
-    <include src="header.html"></include>
-    {slot}
-    <include src="footer.html"></include>
-    <script src="/assets/js/main.js"></script>
+    <div class="container">
+        <!-- <include src="square-lines.html"></include> -->
+        <include src="header.html"></include>
+        {slot}
+        <include src="footer.html"></include>
+        <script src="/assets/js/main.js"></script>
+    </div>
 </body>
 </html>

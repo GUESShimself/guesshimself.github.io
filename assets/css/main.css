@@ -4,6 +4,48 @@
 
 /* Add Your Custom CSS Here */
 
+.container {
+    background-image: url(/assets/images/topo-a.png), url(/assets/images/topo-b.png);
+    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, 0 0;
+}
+section .container {
+    background-image: url(/assets/images/topo-b.png);
+    background-position: right 50%;
+}
+@media (min-width: 640px) {
+    .container {
+        max-width: 100% !important;
+        background-image: url(/assets/images/topo-a.png), url(/assets/images/topo-b.png);
+        background-size: auto, auto;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 100% !important;
+        background-image: url(/assets/images/topo-a.png), url(/assets/images/topo-b.png);
+        background-position: left top, 30px 60px;
+        background-size: auto, auto;
+    }
+}
+@media (min-width: 1024px) {
+    .container {
+        max-width: 100% !important;
+        background-image: url(/assets/images/topo-a.png), url(/assets/images/topo-b.png);
+        background-size: auto, auto;
+        background-position: left top, right top;
+    }
+}
+@media (min-width: 1280px) {
+    .container {
+        max-width: 100% !important;
+        background-image: url(/assets/images/topo-a.png), url(/assets/images/topo-b.png);
+        background-size: auto, auto;
+        background-position: left% top, right top;
+    }
+}
+
 .wave:hover {
     animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
     animation-duration: 2.5s;        /* Change to speed up or slow down */
