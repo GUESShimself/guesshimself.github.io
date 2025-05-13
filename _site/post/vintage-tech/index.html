@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Revival of Vintage Tech</title>
     <script>
+        if (localStorage.getItem('dark_mode') === 'true') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>    
+    <script>
         window.tailwind = {
           darkMode: ['attribute', '[data-theme="dark"]'],
         };
