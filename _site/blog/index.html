@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-
-    <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script>
-        if (typeof(Storage) !== "undefined") {
-            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
-                document.documentElement.classList.add('dark');
-            }
-        }
+        window.tailwind = {
+          darkMode: ['attribute', '[data-theme="dark"]'],
+        };
     </script>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
@@ -20,151 +16,6 @@
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
     <div class="container">
-        <!-- <div class="absolute w-full h-auto" style="z-index:-1">
-    <div class="absolute top-0 left-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800">
-        <div class="absolute inset-0 z-30 w-full h-full pointer-events-none bg-gradient-to-tl from-white dark:from-neutral-950 from-50% via-90% to-100% via-transparent to-transparent"></div>
-        <div class="flex flex-col w-full h-full border-t border-l divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-900">
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-        </div>
-    </div>
-
-    <div class="absolute top-0 right-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800">
-        <div class="absolute inset-0 z-30 w-full h-full pointer-events-none bg-gradient-to-tr from-white dark:from-neutral-950 from-50% via-90% to-100% via-transparent to-transparent"></div>
-        <div class="flex flex-col w-full h-full border-t border-l divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-900">
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
-</div>
-        </div>
-    </div>
-</div> -->
         <!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
 <div class="relative w-full h-20 opacity-0 pointer-events-none"></div>
 <header id="header" class="absolute top-0 z-50 w-full h-20">
