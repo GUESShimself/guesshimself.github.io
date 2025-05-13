@@ -173,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
-
     allTriggers.forEach(trigger => {
         if (!trigger.hasAttribute('tabindex')) {
             trigger.setAttribute('tabindex', '0');
@@ -188,7 +187,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (targetId && !trigger.hasAttribute('aria-controls')) {
             trigger.setAttribute('aria-controls', targetId);
         }
-
         if (!trigger.hasAttribute('aria-expanded')) {
             const contentElement = document.getElementById(targetId);
             if (contentElement) {
@@ -196,7 +194,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 trigger.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
             }
         }
-
         if (!trigger.classList.contains('expandable-bottom-trigger') && !trigger.hasAttribute('title')) {
             trigger.setAttribute('title', 'Click to expand additional information');
             if (!trigger.hasAttribute('aria-label')) {
@@ -208,20 +205,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetId = this.getAttribute('data-target');
             const contentElement = document.getElementById(targetId);
             const isBottomTrigger = this.classList.contains('expandable-bottom-trigger');
-
             const topTrigger = document.querySelector(`.expandable-trigger[data-target="${targetId}"]`);
             const topTriggerPosition = topTrigger ? topTrigger.getBoundingClientRect().top + window.pageYOffset : null;
 
             const allTriggersForTarget = document.querySelectorAll(`[data-target="${targetId}"]`);
-
             allTriggersForTarget.forEach(t => {
                 t.classList.toggle('expanded');
                 const newState = contentElement.classList.contains('expanded') ? 'false' : 'true';
                 t.setAttribute('aria-expanded', newState);
             });
-
             contentElement.classList.toggle('expanded');
-
             if (contentElement.classList.contains('expanded')) {
                 contentElement.style.maxHeight = '2000px';
                 contentElement.style.opacity = '1';
@@ -256,14 +249,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             const icon = t.querySelector('.trigger-icon');
                             if (icon) icon.textContent = t.classList.contains('expandable-bottom-trigger') ? '▲' : '▼';
                         });
-
                         const otherContent = document.getElementById(otherId);
                         otherContent.classList.remove('expanded');
                         otherContent.style.maxHeight = '0';
                         otherContent.style.opacity = '0';
                         otherContent.style.marginBottom = '0';
                         otherContent.style.marginTop = '0';
-
                         const collapsedInteractiveElements = otherContent.querySelectorAll('a, button, [tabindex]');
                         collapsedInteractiveElements.forEach(element => {
                             if (!element.hasAttribute('data-original-tabindex') && element.hasAttribute('tabindex')) {
@@ -273,7 +264,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         });
                     }
                 });
-
             } else {
                 contentElement.style.maxHeight = '0';
                 contentElement.style.opacity = '0';
@@ -294,7 +284,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         });
                     }, 10);
                 }
-
                 const interactiveElements = contentElement.querySelectorAll('a, button, [tabindex]');
                 interactiveElements.forEach(element => {
                     if (!element.hasAttribute('data-original-tabindex') && element.hasAttribute('tabindex')) {
@@ -304,7 +293,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }
-
         trigger.removeEventListener('click', handleActivation);
         trigger.addEventListener('click', handleActivation);
 
@@ -316,7 +304,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
-
         if (!trigger.querySelector('.trigger-icon')) {
             const icon = document.createElement('span');
             icon.className = 'trigger-icon ml-1 text-xs align-middle';
@@ -324,7 +311,6 @@ document.addEventListener('DOMContentLoaded', function () {
             trigger.appendChild(icon);
         }
     });
-
     allTriggers.forEach(trigger => {
         const targetId = trigger.getAttribute('data-target');
         if (targetId) {

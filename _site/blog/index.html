@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Writing</title>
+    <title>Blog</title>
+
+    <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script>
-        window.tailwind = {
-          darkMode: ['attribute', '[data-theme="dark"]'],
-        };
+        if (typeof(Storage) !== "undefined") {
+            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+                document.documentElement.classList.add('dark');
+            }
+        }
     </script>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
@@ -16,6 +20,151 @@
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
     <div class="container">
+        <!-- <div class="absolute w-full h-auto" style="z-index:-1">
+    <div class="absolute top-0 left-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800">
+        <div class="absolute inset-0 z-30 w-full h-full pointer-events-none bg-gradient-to-tl from-white dark:from-neutral-950 from-50% via-90% to-100% via-transparent to-transparent"></div>
+        <div class="flex flex-col w-full h-full border-t border-l divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-900">
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+        </div>
+    </div>
+
+    <div class="absolute top-0 right-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800">
+        <div class="absolute inset-0 z-30 w-full h-full pointer-events-none bg-gradient-to-tr from-white dark:from-neutral-950 from-50% via-90% to-100% via-transparent to-transparent"></div>
+        <div class="flex flex-col w-full h-full border-t border-l divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-900">
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+        </div>
+    </div>
+</div> -->
         <!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
 <div class="relative w-full h-20 opacity-0 pointer-events-none"></div>
 <header id="header" class="absolute top-0 z-50 w-full h-20">
@@ -66,110 +215,42 @@
 
     <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
         <div class="relative z-20 w-full mx-auto lg:mx-0">
-    <h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl">My Writing</h2>
-    <p class="mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400 sm:mt-4 lg:mt-6 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">Dive into my musings on life and tech in my latest posts; a blend of introspection and innovation. Keep an eye out for fresh insights and updates!</p>
+    <h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl">Writing</h2>
+    <p class="mt-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400 sm:mt-4 lg:mt-6 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">&hellip;</p>
 </div>
 
         <div class="z-50 grid items-stretch w-full grid-cols-1 my-8 gap-7 sm:gap-5 sm:grid-cols-2">
             
 
-    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/post/code-to-canvas'">
+    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/blog/standing-on-tables'">
         <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
         <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1"></div>
         <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
             <h2 class="flex items-center mb-3">
-                <a href="/post/code-to-canvas" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">Code to Canvas</a>
-                <svg class="group-hover:translate-x-0 shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="svg" transform="translate(0.666667, 2.333333)" stroke="currentColor" stroke-width="2.4"><g><polyline class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100" points="5.33333333 0 10.8333333 5.5 5.33333333 11"></polyline><line class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0" x1="10.8333333" y1="5.5" x2="0.833333333" y2="5.16666667"></line></g></g></g></svg>
-            </h2>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                <span>This is a post about how creating and developing a blog for yourself can be beneficial and how building your audience is important.</span>
-            </p>
-            <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on July 7th, 2023</div>
-        </div>
-    </div>
-
-
-
-    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/post/standing-on-tables'">
-        <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
-        <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1"></div>
-        <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
-            <h2 class="flex items-center mb-3">
-                <a href="/post/standing-on-tables" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">Standing on Tables</a>
+                <a href="/blog/standing-on-tables" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">Standing on Tables</a>
                 <svg class="group-hover:translate-x-0 flex-shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="svg" transform="translate(0.666667, 2.333333)" stroke="currentColor" stroke-width="2.4"><g><polyline class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100" points="5.33333333 0 10.8333333 5.5 5.33333333 11"></polyline><line class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0" x1="10.8333333" y1="5.5" x2="0.833333333" y2="5.16666667"></line></g></g></g></svg>
             </h2>
             <p class="text-sm text-neutral-600 dark:text-neutral-400">
                 <span>Something about starting my career near the end of table-based layouts and the struggles and learnings that helped shape my career.</span>
             </p>
-            <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on March 28, 2025</div>
+            <!-- <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on March 28, 2025</div> -->
         </div>
     </div>
 
 
 
-    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/post/the-perfect-brew'">
+    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/blog/tools-of-my-trade'">
         <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
         <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1"></div>
         <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
             <h2 class="flex items-center mb-3">
-                <a href="/post/the-perfect-brew" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">The Perfect Brew for Optimal Productivity</a>
-                <svg class="group-hover:translate-x-0 shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="svg" transform="translate(0.666667, 2.333333)" stroke="currentColor" stroke-width="2.4"><g><polyline class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100" points="5.33333333 0 10.8333333 5.5 5.33333333 11"></polyline><line class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0" x1="10.8333333" y1="5.5" x2="0.833333333" y2="5.16666667"></line></g></g></g></svg>
+                <a href="/blog/tools-of-my-trade" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">Tools of my trade</a>
+                <svg class="group-hover:translate-x-0 flex-shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="svg" transform="translate(0.666667, 2.333333)" stroke="currentColor" stroke-width="2.4"><g><polyline class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100" points="5.33333333 0 10.8333333 5.5 5.33333333 11"></polyline><line class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0" x1="10.8333333" y1="5.5" x2="0.833333333" y2="5.16666667"></line></g></g></g></svg>
             </h2>
             <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                <span>This is a post about how creating and developing a blog for yourself can be beneficial</span>
+                <span>Some standard, some more obscure, these are the tools I've come to rely on over the years</span>
             </p>
-            <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on July 7th, 2023</div>
-        </div>
-    </div>
-
-
-
-    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/post/vintage-tech'">
-        <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
-        <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1"></div>
-        <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
-            <h2 class="flex items-center mb-3">
-                <a href="/post/vintage-tech" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">The Revival of Vintage Tech</a>
-                <svg class="group-hover:translate-x-0 shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="svg" transform="translate(0.666667, 2.333333)" stroke="currentColor" stroke-width="2.4"><g><polyline class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100" points="5.33333333 0 10.8333333 5.5 5.33333333 11"></polyline><line class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0" x1="10.8333333" y1="5.5" x2="0.833333333" y2="5.16666667"></line></g></g></g></svg>
-            </h2>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                <span>Embark on a nostalgic journey exploring the charm of vintage tech and its unexpected resurgence among modern developers and designers.</span>
-            </p>
-            <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on July 27th, 2023</div>
-        </div>
-    </div>
-
-
-
-    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/post/writing-less-achieving-more'">
-        <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
-        <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1"></div>
-        <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
-            <h2 class="flex items-center mb-3">
-                <a href="/post/writing-less-achieving-more" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">Writing Less, Achieving More</a>
-                <svg class="group-hover:translate-x-0 shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="svg" transform="translate(0.666667, 2.333333)" stroke="currentColor" stroke-width="2.4"><g><polyline class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100" points="5.33333333 0 10.8333333 5.5 5.33333333 11"></polyline><line class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0" x1="10.8333333" y1="5.5" x2="0.833333333" y2="5.16666667"></line></g></g></g></svg>
-            </h2>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                <span>Delve into the art of minimalist coding, where simplicity reigns supreme, leading to clearer, more efficient, and aesthetically pleasing code.</span>
-            </p>
-            <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on July 27th, 2023</div>
-        </div>
-    </div>
-
-
-
-    <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl" onClick="window.location='/post/zen-mornings'">
-        <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
-        <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1"></div>
-        <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
-            <h2 class="flex items-center mb-3">
-                <a href="/post/zen-mornings" class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100">A Developer's Guide to Zen Mornings</a>
-                <svg class="group-hover:translate-x-0 shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="svg" transform="translate(0.666667, 2.333333)" stroke="currentColor" stroke-width="2.4"><g><polyline class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100" points="5.33333333 0 10.8333333 5.5 5.33333333 11"></polyline><line class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0" x1="10.8333333" y1="5.5" x2="0.833333333" y2="5.16666667"></line></g></g></g></svg>
-            </h2>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                <span>Dive into the zen world of a developer's morning, where vinyl beats meet artisanal brews, setting the tone for a day of inspired coding and design.</span>
-            </p>
-            <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on July 15th, 2023</div>
+            <!-- <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">Posted on March 28, 2025</div> -->
         </div>
     </div>
 

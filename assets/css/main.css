@@ -41,7 +41,7 @@ section .container {
         max-width: 100% !important;
         background-image: url(/assets/images/topo-a.png), url(/assets/images/topo-b.png);
         background-size: auto, auto;
-        background-position: left% top, right top;
+        background-position: left top, right top;
     }
 }
 

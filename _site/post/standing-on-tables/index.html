@@ -3,20 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facilities Management Products</title>
+    <title>Standing on Tables</title>
+
+    <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script>
-        window.tailwind = {
-          darkMode: ['attribute', '[data-theme="dark"]'],
-        };
+        if (typeof(Storage) !== "undefined") {
+            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+                document.documentElement.classList.add('dark');
+            }
+        }
     </script>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <link href="/assets/css/main.css" rel="stylesheet">
-<script>window.toc = JSON.parse('[]'); window.frontmatter=JSON.parse('{"title":"Facilities Management Products","company":"FM:Systems","description":"Case Study","dates":"2019 - 2020","image":"/assets/images/portfolio/FMS/FMS-cover.png"}');</script>
+<script>window.toc = JSON.parse('[{"content":"Standing on Tables","slug":"standing-on-tables","lvl":1,"i":0,"seen":0}]'); window.frontmatter=JSON.parse('{"title":"Standing on Tables","description":"Something about starting my career near the end of table-based layouts and the struggles and learnings that helped shape my career.","dateFormatted":"March 28, 2025"}');</script>
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
     <div class="container">
+        <!-- <div class="absolute w-full h-auto" style="z-index:-1">
+    <div class="absolute top-0 left-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800">
+        <div class="absolute inset-0 z-30 w-full h-full pointer-events-none bg-gradient-to-tl from-white dark:from-neutral-950 from-50% via-90% to-100% via-transparent to-transparent"></div>
+        <div class="flex flex-col w-full h-full border-t border-l divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-900">
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+        </div>
+    </div>
+
+    <div class="absolute top-0 right-0 w-1/2 h-auto bg-neutral-100 dark:bg-neutral-800">
+        <div class="absolute inset-0 z-30 w-full h-full pointer-events-none bg-gradient-to-tr from-white dark:from-neutral-950 from-50% via-90% to-100% via-transparent to-transparent"></div>
+        <div class="flex flex-col w-full h-full border-t border-l divide-y divide-dashed divide-neutral-300 dark:divide-neutral-700 border-neutral-300 dark:border-neutral-900">
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+            <div class="relative flex w-full divide-x h-[30px] sm:h-[45px] md:h-[60px] xl:h-[88px] divide-neutral-300 dark:divide-neutral-700 divide-dashed ">
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+    <div class="w-full h-auto bg-white dark:bg-neutral-950 aspect-square {classes}"></div>
+</div>
+        </div>
+    </div>
+</div> -->
         <!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
 <div class="relative w-full h-20 opacity-0 pointer-events-none"></div>
 <header id="header" class="absolute top-0 z-50 w-full h-20">
@@ -64,68 +213,16 @@
     </div>
 </header>
         
-    <img src="/assets/images/portfolio/FMS/FMS-cover.png" alt="{frontmatter.alt}" />
 
-    <main class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-xl text-neutral-900 -translate-y-64">
-        <div class="relative flex flex-col px-5 pt-6 md:pt-20 lg:px-0 justify-stretch md:rounded-t-xl border-neutral-200 dark:border-neutral-800">
-            <!-- <div class="absolute top-0 left-0 hidden w-px h-full mt-1 -translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
-            <div class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div> -->
-            <h1 class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-center md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none">Facilities Management Products</h1>
+    <main class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900">
+        <div class="relative flex flex-col px-5 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800">
+            <div class="absolute top-0 left-0 hidden w-px h-full mt-1 -translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
+            <div class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
+            <h1 class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none">Standing on Tables</h1>
         </div>
         
         <article class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert">
-            <div class="flex items-center justify-center w-full mt-16">
-    <div x-data="{ activeTab: 1 }" class="w-full">
-        <div class="absolute w-fit h-px bg-linear-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
-        <div class="w-full h-px border-t border-dashed border-neutral-300 dark:border-neutral-600"></div>
-        <div role="tablist" class="flex rounded-full shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
-            <button id="tab-1"
-            class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-full cursor-default"
-            :class="activeTab === 1 ? 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white' : 'bg-black dark:bg-white hover:bg-white dark:hover:bg-black text-white dark:text-black hover:text-black dark:hover:text-white border-black dark:border-white hover:border-black dark:hover:border-white cursor-pointer'"
-            :tabindex="activeTab === 1 ? 0 : -1"
-            :aria-selected="activeTab === 1"
-            aria-controls="tabpanel-1"
-            @click="activeTab = 1"
-            @focus="activeTab = 1">
-                🖼️ The Big Picture
-              </button>
-              <button id="tab-2"
-              class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-r-full"
-              :class="activeTab === 2 ? 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white' : 'bg-black dark:bg-white hover:bg-white dark:hover:bg-black text-white dark:text-black hover:text-black dark:hover:text-white border-black dark:border-white hover:border-black dark:hover:border-white cursor-pointer'"
-              :tabindex="activeTab === 2 ? 0 : -1"
-              :aria-selected="activeTab === 2"
-              aria-controls="tabpanel-2"
-              @click="activeTab = 2"
-              @focus="activeTab = 2">
-                🖌️ The Important Details
-              </button>
-        </div>
-        <article x-show="activeTab === 1" role="tabpanel" tabindex="0" id="tabpanel-1" aria-labelledby="tab-1">
-            <p>When I joined FM:Systems as the sole UX/Product Designer, I was both excited and a bit apprehensive. The opportunity to take full ownership of the design process was a challenge I was eager to tackle. From research and ideation to prototyping and implementation, I was responsible for every stage of product design.</p>
-            <h2>Challenges and Growth:</h2>
-            <p>Working solo meant balancing a wide array of tasks. I had to be not just a designer, but also a researcher, strategist, and sometimes even a project manager. This role pushed me to quickly adapt and learn, ensuring that I could handle the full spectrum of design responsibilities. The autonomy allowed me to refine my decision-making skills and become more resourceful, especially when navigating legacy products and multiple platforms.</p>
-            <h2>Design Process:</h2>
-            <p>My design process was user-centric and iterative. I began with thorough research, conducting user interviews and analyzing feedback to understand pain points and needs. I used these insights to inform my ideation phase, where I created wireframes and user flows using Sketch and Adobe XD. Prototyping was an integral part of my process, allowing me to test and refine designs before final implementation. Collaboration with the development teams was crucial to ensure that the designs were translated effectively into the final products.</p>
-            <h2>Collaboration:</h2>
-            <p>As the only designer, effective communication with other departments was crucial. I regularly collaborated with developers to ensure the feasibility of my designs, and I worked closely with product management to align the product's design with our north star.</p>
-            <h2>Lessons Learned:</h2>
-            <p>This experience taught me the importance of flexibility and adaptability. I learned to manage my time effectively, prioritize tasks, and maintain a clear focus on user needs while balancing business goals. The role also strengthened my problem-solving skills, as I often had to find creative solutions to complex design challenges.</p>
-            <h2>Conclusion:</h2>
-            <p>My time at FM:Systems was incredibly rewarding. As the sole UX/Product Designer, I was able to drive significant design improvements that positively impacted the company's products and user experience. This role not only deepened my design expertise but also prepared me for future challenges in the ever-evolving field of UX and Product Design.</p>
-        </article>
-        <article x-show="activeTab === 2" role="tabpanel" tabindex="0" id="tabpanel-2" aria-labelledby="tab-2">
-            <div>
-                <h2>Key Projects:</h2>
-                <p>One of the most significant projects I worked on was a web-based mobile app called FM:Mobile. The goal was to develop a new modern mobile app to replace a legacy mobile app. Through user research, talking with and visiting maintenance technicians and supervisors, I learned about seeveral pain points within their workflow. Working closely with product management and engineering, I was able to quickly prototype and test potential solutions which led to the design and development of a new mobile solution with offline storage, a new notification system, and improved integration with our desktop-based facilities management product.</p>
-            </div>
-            <div class="flex">
-                <img src="/assets/images/portfolio/FMS/fm-mobile-offline.png" class="w-1/2" />
-                <img src="/assets/images/portfolio/FMS/fm-mobile-filters.png" class="w-1/2" />
-            </div>
-        </article>
-    </div>
-
-</div>
+            <h1 id="standing-on-tables">Standing on Tables</h1>
         </article>
     </main>
 
