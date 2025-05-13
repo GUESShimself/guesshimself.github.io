@@ -34,7 +34,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: GitHub Action for npx
-        uses: mikeal/npx@master
+        uses: mikeal/npx@1.0.0
       - name: Run NPM Install
         run: npm install
       - name: Run the static build step
