@@ -7,20 +7,25 @@
 
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script>
-        if (typeof(Storage) !== "undefined") {
-            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
-                document.documentElement.classList.add('dark');
-            }
+        if (localStorage.getItem('dark_mode') === 'true') {
+            document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
+    
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script>
+        // Add this before the Tailwind CDN script
+        window.tailwind = {
+          darkMode: ['attribute', '[data-theme="dark"]'],
+          // other config options if needed
+        };
+      </script>
     {tailwindcss}
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
     <div class="container">
-        <!-- <include src="square-lines.html"></include> -->
         <include src="header.html"></include>
         {slot}
         <include src="footer.html"></include>

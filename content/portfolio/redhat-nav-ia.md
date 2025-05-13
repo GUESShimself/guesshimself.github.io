@@ -8,9 +8,9 @@ image: /assets/images/portfolio/CAP-DS/CAPDS-cover.png
 
 <div class="flex items-center justify-center w-full mt-16">
     <div class="w-full">
-        <div class="absolute w-fit h-px bg-gradient-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
+        <div class="absolute w-fit h-px bg-linear-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
         <div class="w-full h-px border-t border-dashed border-neutral-300 dark:border-neutral-600"></div>
-        <!-- <div role="tablist" class="flex rounded-full shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
+        <!-- <div role="tablist" class="flex rounded-full shadow-sm items-center justify-center mx-auto max-w-fit -translate-y-1/2">
             <button id="tab-1"
                 class="inline-flex w-auto px-4 py-2 text-xs font-semibold duration-300 ease-out border rounded-l-full cursor-default"
                 :class="activeTab === 1 ? 'bg-white dark:bg-black text-black dark:text-white border-black dark:border-white' : 'bg-black dark:bg-white hover:bg-white dark:hover:bg-black text-white dark:text-black hover:text-black dark:hover:text-white border-black dark:border-white hover:border-black dark:hover:border-white cursor-pointer'"
