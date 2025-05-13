@@ -8,16 +8,36 @@
   var headerElement = null;
   document.addEventListener("DOMContentLoaded", function() {
     headerElement = document.getElementById("header");
-    if (localStorage.getItem("dark_mode") && localStorage.getItem("dark_mode") == "true") {
+    if (localStorage.getItem("dark_mode") === "true") {
       window.darkMode = true;
-      showNight();
+      document.documentElement.setAttribute("data-theme", "dark");
+      showNight(false);
     } else {
-      showDay();
+      showDay(false);
     }
     stickyHeaderFuncionality();
     applyMenuItemClasses();
     evaluateHeaderPosition();
     mobileMenuFunctionality();
+  });
+  window.toggleDarkMode = function(animate = true) {
+    const htmlElement = document.documentElement;
+    const isDark = htmlElement.getAttribute("data-theme") === "dark";
+    document.documentElement.classList.add("duration-300");
+    if (isDark) {
+      htmlElement.removeAttribute("data-theme");
+      localStorage.setItem("dark_mode", "false");
+      window.darkMode = false;
+      showDay(animate);
+    } else {
+      htmlElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("dark_mode", "true");
+      window.darkMode = true;
+      showNight(animate);
+    }
+  };
+  document.getElementById("darkToggle").addEventListener("click", function() {
+    window.toggleDarkMode(true);
   });
   window.stickyHeaderFuncionality = function() {
     window.addEventListener("scroll", function() {
@@ -41,16 +61,6 @@
       document.getElementById("menu").classList.add("top-[75px]");
     }
   };
-  document.getElementById("darkToggle").addEventListener("click", function() {
-    document.documentElement.classList.add("duration-300");
-    if (document.documentElement.classList.contains("dark")) {
-      localStorage.removeItem("dark_mode");
-      showDay(true);
-    } else {
-      localStorage.setItem("dark_mode", true);
-      showNight(true);
-    }
-  });
   function showDay(animate) {
     document.getElementById("sun").classList.remove("setting");
     document.getElementById("moon").classList.remove("rising");
@@ -65,7 +75,6 @@
       document.getElementById("moon").classList.add("hidden");
       document.getElementById("sun").classList.remove("hidden");
       if (animate) {
-        document.documentElement.classList.remove("dark");
         document.getElementById("sun").classList.add("rising");
       }
     }, timeout);
@@ -84,14 +93,12 @@
       document.getElementById("sun").classList.add("hidden");
       document.getElementById("moon").classList.remove("hidden");
       if (animate) {
-        document.documentElement.classList.add("dark");
         document.getElementById("moon").classList.add("rising");
       }
     }, timeout);
   }
   window.applyMenuItemClasses = function() {
     const menuItems = document.querySelectorAll("#menu a");
-    console.log(menuItems);
     for (let i = 0; i < menuItems.length; i++) {
       if (menuItems[i].pathname == window.location.pathname) {
         menuItems[i].classList.add("text-neutral-900", "dark:text-white");
@@ -180,13 +187,7 @@
           contentElement.style.marginTop = "0.75rem";
           allTriggersForTarget.forEach((t) => {
             const icon = t.querySelector(".trigger-icon");
-            if (icon) {
-              if (t.classList.contains("expandable-bottom-trigger")) {
-                icon.textContent = "\u25B2";
-              } else {
-                icon.textContent = "\u25B2";
-              }
-            }
+            if (icon) icon.textContent = "\u25B2";
           });
           allTriggersForTarget.forEach((t) => {
             t.setAttribute("aria-expanded", "true");
@@ -194,8 +195,7 @@
           const interactiveElements = contentElement.querySelectorAll("a, button, [tabindex]");
           interactiveElements.forEach((element) => {
             if (element.hasAttribute("data-original-tabindex")) {
-              const originalTabindex = element.getAttribute("data-original-tabindex");
-              element.setAttribute("tabindex", originalTabindex);
+              element.setAttribute("tabindex", element.getAttribute("data-original-tabindex"));
             } else if (element.getAttribute("tabindex") === "-1") {
               element.setAttribute("tabindex", "0");
             }
@@ -208,9 +208,7 @@
                 t.classList.remove("expanded");
                 t.setAttribute("aria-expanded", "false");
                 const icon = t.querySelector(".trigger-icon");
-                if (icon) {
-                  icon.textContent = t.classList.contains("expandable-bottom-trigger") ? "\u25B2" : "\u25BC";
-                }
+                if (icon) icon.textContent = t.classList.contains("expandable-bottom-trigger") ? "\u25B2" : "\u25BC";
               });
               const otherContent = document.getElementById(otherId);
               otherContent.classList.remove("expanded");
@@ -234,18 +232,13 @@
           contentElement.style.marginTop = "0";
           allTriggersForTarget.forEach((t) => {
             const icon = t.querySelector(".trigger-icon");
-            if (icon) {
-              icon.textContent = t.classList.contains("expandable-bottom-trigger") ? "\u25B2" : "\u25BC";
-            }
-          });
-          allTriggersForTarget.forEach((t) => {
+            if (icon) icon.textContent = t.classList.contains("expandable-bottom-trigger") ? "\u25B2" : "\u25BC";
             t.setAttribute("aria-expanded", "false");
           });
           if (isBottomTrigger && topTriggerPosition !== null) {
             setTimeout(() => {
               window.scrollTo({
                 top: topTriggerPosition - 100,
-                // Scroll slightly above the trigger for better visibility
                 behavior: "smooth"
               });
             }, 10);

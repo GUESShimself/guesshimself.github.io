@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwindcss;
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* Add Your Custom CSS Here */
 

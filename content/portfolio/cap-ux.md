@@ -8,7 +8,7 @@ image: /assets/images/portfolio/CAP-UI/CAPUI-cover.png
 
 <div class="flex items-center justify-center w-full mt-16">
     <div x-data="{ activeTab: 1 }" class="w-full">
-        <div class="absolute w-fit h-px bg-gradient-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
+        <div class="absolute w-fit h-px bg-linear-to-r from-transparent to-white md:from-white dark:from-transparent dark:to-neutral-950 md:dark:from-neutral-950 md:via-transparent md:dark:via-transparent md:to-white md:dark:to-neutral-950"></div>
         <div class="w-full h-px border-t border-dashed border-neutral-300 dark:border-neutral-600"></div>
         <div role="tablist" class="flex rounded-full shadow items-center justify-center mx-auto max-w-fit -translate-y-1/2">
             <button id="tab-1"
