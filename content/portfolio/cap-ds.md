@@ -424,7 +424,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                     Early sketches of the CAP header component design, created before implementation in Figma
                 </figcaption>
             </figure>
-            <div class="mt-12 pt-4 border-t border-gray-200 text-sm text-gray-500">
+            <div class="mt-12 pt-4 border-t border-gray-200 text-sm text-gray-500 dark:text-gray-400">
                 Click on the highlighted text to expand sections and see more detailed information about each aspect of the project.
             </div>
             </div>
