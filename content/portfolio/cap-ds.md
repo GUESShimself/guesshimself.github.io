@@ -163,9 +163,13 @@ alt: Cover image for case study that includes screenshots of component code, acc
             </div>
             <!-- Another visible image to break up content -->
             <figure class="mb-8">
-                <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" alt="CAP Table component documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
+                <img 
+                    src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" 
+                    alt="Sketch of header component prior to Figma work" 
+                    class="w-full rounded-lg shadow-lg object-cover max-h-96"
+                >
                 <figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 italic text-center">
-                    To improve clarity, documentation for complex components like the table grid was broken down into smaller, more manageable organisms.
+                    Early sketches of the CAP header component design, created before implementation in Figma
                 </figcaption>
             </figure>
             <div class="mb-10">
@@ -415,13 +419,9 @@ alt: Cover image for case study that includes screenshots of component code, acc
             </div>
             <!-- Another visible image to break up content -->
             <figure class="mb-8">
-                <img 
-                    src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" 
-                    alt="Sketch of header component prior to Figma work" 
-                    class="w-full rounded-lg shadow-lg object-cover max-h-96"
-                >
+                <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" alt="CAP Table component documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
                 <figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 italic text-center">
-                    Early sketches of the CAP header component design, created before implementation in Figma
+                    To improve clarity, documentation for complex components like the table grid was broken down into smaller, more manageable organisms.
                 </figcaption>
             </figure>
             <div class="mt-12 pt-4 border-t border-gray-200 text-sm text-gray-500 dark:text-gray-400">
