@@ -8,7 +8,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
 ---
 <div class="case-study text-slate-700 dark:text-slate-100">
         <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Overview</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">We set out to create a unified design language</h2>
                 <!-- Stats that are visible by default -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div class="bg-slate-50 dark:bg-slate-800 rounded-md shadow p-5 text-center border-t-4 border-slate-600 dark:border-slate-600">
@@ -97,7 +97,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
             <!-- Another visible image to break up content -->
             <img src="/assets/images/portfolio/CAP-DS/cap-ds-cover.png" alt="Design system button components and documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
             <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">The Challenge</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Fragmentation created friction for both designers and developers</h2>
                 <p class="mb-4 text-lg">
                     Conduent’s product suite was grappling with serious 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="legacy-issues" 
@@ -163,13 +163,17 @@ alt: Cover image for case study that includes screenshots of component code, acc
             </div>
             <!-- Another visible image to break up content -->
             <figure class="mb-8">
-                <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" alt="CAP Table component documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
+                <img 
+                    src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" 
+                    alt="Sketch of header component prior to Figma work" 
+                    class="w-full rounded-lg shadow-lg object-cover max-h-96"
+                >
                 <figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 italic text-center">
-                    To improve clarity, documentation for complex components like the table grid was broken down into smaller, more manageable organisms.
+                    Early sketches of the CAP header component design, created before implementation in Figma
                 </figcaption>
             </figure>
             <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">The Process</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Research and iteration shaped a scalable framework</h2>
                 <p class="mb-4 text-lg">
                     We approached the CAP Design System as more than a UI toolkit—it was a strategic initiative that started with 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="research-process" 
@@ -250,7 +254,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                 </figcaption>
             </figure>
             <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">The Solution</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">A shared component library accelerated delivery and ensured consistency</h2>
                 <p class="mb-4 text-lg">
                     We structured the system around three tightly integrated pillars:
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="figma-library" 
@@ -415,13 +419,9 @@ alt: Cover image for case study that includes screenshots of component code, acc
             </div>
             <!-- Another visible image to break up content -->
             <figure class="mb-8">
-                <img 
-                    src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" 
-                    alt="Sketch of header component prior to Figma work" 
-                    class="w-full rounded-lg shadow-lg object-cover max-h-96"
-                >
+                <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" alt="CAP Table component documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
                 <figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 italic text-center">
-                    Early sketches of the CAP header component design, created before implementation in Figma
+                    To improve clarity, documentation for complex components like the table grid was broken down into smaller, more manageable organisms.
                 </figcaption>
             </figure>
             <div class="mt-12 pt-4 border-t border-gray-200 text-sm text-gray-500 dark:text-gray-400">
