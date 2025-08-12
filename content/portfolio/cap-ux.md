@@ -10,7 +10,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
 <div class="case-study text-slate-700 dark:text-slate-100">
   <div class="mb-10">
     <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
-      Overview
+      We designed CAP to handle complex enterprise workflows from end to end
     </h2>
     <!-- Stats that are visible by default -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -180,7 +180,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
   />
   <div class="mb-10">
     <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
-      The Challenge
+      Bridging complexity, usability, and global collaboration
     </h2>
     <p class="mb-4 text-lg">
       Creating an enterprise automation platform came with significant
@@ -331,7 +331,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
   </figure>
   <div class="mb-10">
     <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
-      The Process
+      Design principles and quick validation paved clear paths forward
     </h2>
     <p class="mb-4 text-lg">
       My approach to designing this complex platform started with
@@ -344,7 +344,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
         aria-controls="design-principles"
         >establishing design principles</span
       >
-      that would guide both designers and developers. I employed rapid
+      that would guide both designers and developers. I employed 
       <span
         class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md"
         data-target="ideation-process"
@@ -472,7 +472,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
   </figure>
   <div class="mb-10">
     <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
-      The Solution
+      We streamlined workflows to boost productivity and user satisfaction
     </h2>
     <p class="mb-4 text-lg">
       The final product featured several key components designed to work
@@ -851,9 +851,9 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
     </div>
   </div> -->
   <div class="mb-10">
-    <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
+    <!-- <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
       Results & Impact
-    </h2>
+    </h2> -->
     <p class="mb-4 text-lg">
       The CAP platform has been widely adopted across Conduent, becoming the
       <span
@@ -995,7 +995,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
   </figure> -->
   <div class="mb-10">
     <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
-      Lessons Learned
+      Insights from designing a complex enterprise platform from the ground up
     </h2>
     <p class="mb-4 text-lg">
       This multi-year project provided valuable insights into
@@ -1129,7 +1129,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
     </figcaption>
   </figure>
   <div class="mb-10">
-    <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
+    <!-- <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">
       Conclusion
     </h2>
     <p class="mb-6 text-lg">
@@ -1140,7 +1140,7 @@ alt: Cover image for case study showing examples of search sketch, dashboard, an
       library established during this project have become the foundation for
       Conduent's digital transformation efforts, enabling faster development
       cycles and more consistent user experiences.
-    </p>
+    </p> -->
     <p class="text-lg">
       As a Senior Product Designer on this project, I'm proud of the balance we
       struck between powerful functionality and intuitive user
