@@ -305,7 +305,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         <ul class="list-disc pl-6 mb-4 text-lg">
                             <li class="mb-2">A CSS variable system using custom properties</li>
                             <li class="mb-2">Angular components mirroring the Figma library</li>
-                            <li class="mb-2">IBuilt-in accessibility behavior</li>
+                            <li class="mb-2">Built-in accessibility behavior</li>
                             <li class="mb-2">Performance-optimized, reusable code</li>
                             <li class="mb-2">Integration support for existing front-end stacks</li>
                         </ul>
@@ -350,7 +350,6 @@ alt: Cover image for case study that includes screenshots of component code, acc
             <!-- Another visible image to break up content -->
             <img src="/assets/images/portfolio/CAP-DS/cap-ds-a11y-pick-list.png" alt="CAP Pick List accessibility documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
             <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Results & Impact</h2>
                 <p class="mb-4 text-lg">
                     The results spoke for themselves. The CAP Design System delivered 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="business-impact" 
@@ -424,6 +423,12 @@ alt: Cover image for case study that includes screenshots of component code, acc
                     To improve clarity, documentation for complex components like the table grid was broken down into smaller, more manageable organisms.
                 </figcaption>
             </figure>
+            <!-- <div class="mb-10">
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">What unifying a large-scale design system taught us</h2>
+                <p class="mb-4 text-lg"><ul><li>How early collaboration with dev teams sped up adoption&hellip;</li>
+<li>The value of balancing off-the-shelf tools with custom solutions&hellip;</li>
+<li>The importance of planning for scale from the start&hellip;</li></ul></p>
+            </div> -->
             <div class="mt-12 pt-4 border-t border-gray-200 text-sm text-gray-500 dark:text-gray-400">
                 Click on the highlighted text to expand sections and see more detailed information about each aspect of the project.
             </div>
