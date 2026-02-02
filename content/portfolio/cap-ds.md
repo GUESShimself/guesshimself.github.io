@@ -8,7 +8,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
 ---
 <div class="case-study text-slate-700 dark:text-slate-100">
         <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">We set out to create a unified design language</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Overview</h2>
                 <!-- Stats that are visible by default -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div class="bg-slate-50 dark:bg-slate-800 rounded-md shadow p-5 text-center border-t-4 border-slate-600 dark:border-slate-600">
@@ -27,13 +27,16 @@ alt: Cover image for case study that includes screenshots of component code, acc
                 <p class="mb-4 text-lg">
                     As a Senior UX/UI Product Designer at Conduent, I helped lead the creation of the Conduent Automation Platform (CAP) Design System—a scalable, cross-product solution built on a foundation of 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" 
+
                         data-target="design-components" 
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="design-components">modular components</span> 
                     that brought clarity, consistency, and 
+
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" 
+
                         data-target="accessibility" 
                         tabindex="0" 
                         role="button" 
@@ -47,6 +50,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 mt-4 pt-4  border-t border-slate-500">Component Architecture</h3>
                         <p class="mb-4 text-lg">We structured the system using atomic design principles, organizing components into four tiers:</p>
                         <ul class="list-disc pl-6 text-lg">
+
                             <li class="mb-2"><span class="font-medium">Foundation</span>: color tokens, typography scales, spacing systems</li>
                             <li class="mb-2"><span class="font-medium">Core components</span>: buttons, inputs, checkboxes, etc.</li>
                             <li class="mb-2"><span class="font-medium">Patterns</span>: complex UI structures like forms, data tables, navigation</li>
@@ -57,6 +61,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                             <img src="/assets/images/portfolio/CAP-DS/component-variants-showcase.png" alt="Component variants showcase" class="w-full rounded-md">
                         </div>
                         <p class="text-lg">Each component was intentionally built with customization and variants in mind, allowing teams to address edge cases without breaking visual or functional consistency.</p>
+
                         <!-- <blockquote class="border-l-4 border-slate-600 pl-4 italic text-gray-600 my-4">
                             "The component library Eric created has dramatically improved our development velocity and product consistency. What used to take weeks now takes days." — Engineering Director
                         </blockquote> -->
@@ -74,15 +79,17 @@ alt: Cover image for case study that includes screenshots of component code, acc
                     <div class="p-4">
                         <p class="italic mb-0! text-lg">...accessibility compliance throughout the design system, ensuring all components met WCAG 2.1 AA standards and were usable by people with diverse abilities.</p>
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 mt-4 pt-4  border-t border-slate-500 pt-2 border-t border-stone-500">Accessibility Implementation</h3>
-                        <p class="mb-4 text-lg">Accessibility wasn’t a bolt-on—it was a guiding principle from day one. We:</p>
+                        <p class="mb-4 text-lg">Accessibility was a foundational part of CAP-DS, not a bolt-on or afterthought. The system was designed to meet <em>WCAG 2.1 AA</em> standards while remaining practical and usable for product teams working under real delivery constraints.</p>
+                        <h4>Accessibility implementation included:</h4>
                         <ul class="list-disc pl-6 mb-4 text-lg">
-                            <li class="mb-2">Met WCAG 2.1 AA contrast and interaction requirements</li>
-                            <li class="mb-2">Supported full keyboard navigation and focus states</li>
-                            <li class="mb-2">Used semantic markup and ARIA attributes to support screen readers</li>
-                            <li class="mb-2">Designed responsive layouts that scaled cleanly up to 200% zoom</li>
+                            <li class="mb-2">WCAG 2.1 AA–compliant color contrast and interaction patterns</li>
+                            <li class="mb-2">Full keyboard navigation, logical focus order, and visible focus states</li>
+                            <li class="mb-2">Semantic HTML patterns with appropriate ARIA roles to support assistive technologies</li>
+                            <li class="mb-2">Responsive layouts that maintained usability and clarity at up to 200% zoom</li>
                         </ul>
                         <img src="/assets/images/portfolio/CAP-DS/accessibility.png" alt="Accessibility audit tools and guidelines" class="w-full rounded-md mb-4">
-                        <p class="mb-4 text-lg">I also led accessibility documentation and ran cross-functional workshops to embed accessible design thinking into our process. This helped designers and engineers approach accessibility with clarity and consistency—not confusion.</p>
+                        <p class="mb-4 text-lg">Beyond compliance, I focused on <em>making accessibility actionable for designers and engineers</em>. I led the creation of designer-facing accessibility documentation, annotated component guidance, and ran cross-functional workshops to translate technical requirements into clear design decisions. This helped teams approach accessibility with confidence and consistency, embedding inclusive design into everyday workflows rather than treating it as a separate checklist.</p>
+
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" 
                             data-target="accessibility"
@@ -97,16 +104,19 @@ alt: Cover image for case study that includes screenshots of component code, acc
             <!-- Another visible image to break up content -->
             <img src="/assets/images/portfolio/CAP-DS/cap-ds-cover.png" alt="Design system button components and documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
             <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Fragmentation created friction for both designers and developers</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">The Challenge</h2>
                 <p class="mb-4 text-lg">
                     Conduent’s product suite was grappling with serious 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="legacy-issues" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="legacy-issues">consistency issues</span>.
                     Years of independent development had led to siloed products, each with its own UI patterns, visual language, and interaction quirks. This lack of cohesion slowed teams down, introduced usability challenges, and resulted in 
+
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="key-problems" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
@@ -128,6 +138,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         <!-- <img src="/api/placeholder/400/300" alt="Inconsistent UI elements from different products" class="w-full rounded-md">
                         <img src="/api/placeholder/400/300" alt="UI audit findings visualization" class="w-full rounded-md"> -->
                         <p class="mb-4 text-lg">The lack of consistency increased cognitive load for users and slowed teams down. Fixing this was more than a design task—it was a business necessity.</p>
+
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" data-target="legacy-issues"
                             tabindex="0"
@@ -151,6 +162,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         </ul>
                         <!-- <img src="/api/placeholder/700/350" alt="Development cycle comparison chart" class="w-full rounded-md mb-4"> -->
                         <p class="mb-4 text-lg">Product and engineering leads were especially concerned about velocity. Teams needed a way to ship faster without sacrificing quality—or reinventing basic components every time.</p>
+
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" data-target="key-problems"
                             tabindex="0"
@@ -163,26 +175,24 @@ alt: Cover image for case study that includes screenshots of component code, acc
             </div>
             <!-- Another visible image to break up content -->
             <figure class="mb-8">
-                <img 
-                    src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" 
-                    alt="Sketch of header component prior to Figma work" 
-                    class="w-full rounded-lg shadow-lg object-cover max-h-96"
-                >
+                <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" alt="CAP Table component documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
                 <figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 italic text-center">
-                    Early sketches of the CAP header component design, created before implementation in Figma
+                    To improve clarity, documentation for complex components like the table grid was broken down into smaller, more manageable organisms.
                 </figcaption>
             </figure>
             <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Research and iteration shaped a scalable framework</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">The Process</h2>
                 <p class="mb-4 text-lg">
                     We approached the CAP Design System as more than a UI toolkit—it was a strategic initiative that started with 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="research-process" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="research-process">extensive research</span> 
                     and conversations with stakeholders across product, design, and engineering. From there, I worked closely with teams to define and deliver a 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="component-development" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
@@ -206,6 +216,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                             <img src="/api/placeholder/400/300" alt="Stakeholder workshop session" class="w-full rounded-md">
                         </div> -->
                         <p class="mb-4 text-lg">The research provided critical insights into both the technical requirements and user needs that would drive the design system. It also helped identify priority components and patterns that would deliver the most immediate value.</p>
+
                         <!-- <blockquote class="border-l-4 border-slate-600 pl-4 italic text-gray-600 my-4">
                             "The research Eric conducted helped us understand that we weren't just building pretty UI components—we were creating the foundation for our entire product experience." — Product Manager
                         </blockquote> -->
@@ -236,6 +247,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         <!-- <img src="/api/placeholder/300/200" alt="Figma component library" class="w-full rounded-md">
                         <img src="/api/placeholder/300/200" alt="Storybook documentation" class="w-full rounded-md"> -->
                         <p class="mb-4 text-lg">We used atomic design to ensure scalability: smaller elements built into patterns, then templates. Every component was usability tested and engineering-reviewed before release.</p>
+
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" data-target="component-development"
                             tabindex="0"
@@ -254,20 +266,23 @@ alt: Cover image for case study that includes screenshots of component code, acc
                 </figcaption>
             </figure>
             <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">A shared component library accelerated delivery and ensured consistency</h2>
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">The Solution</h2>
                 <p class="mb-4 text-lg">
                     We structured the system around three tightly integrated pillars:
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="figma-library" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="figma-library">a comprehensive Figma library</span>,
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="component-code" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="component-code">reusable code components</span>, and
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="documentation" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
@@ -288,6 +303,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         </ul>
                         <img src="/assets/images/portfolio/CAP-DS/figma-libraries.png" alt="Figma component library overview" class="w-full rounded-md mb-4">
                         <p class="mb-4 text-lg">We structured everything to promote speed and flexibility—designers could drop in components and adapt them without breaking consistency.</p>
+
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" data-target="figma-library"
                             tabindex="0"
@@ -314,6 +330,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                             <img src="/api/placeholder/400/300" alt="Component testing in browser" class="w-full rounded-md">
                         </div> -->
                         <p class="mb-4 text-lg">Every component was stress-tested for responsiveness, accessibility, and browser support before being shipped to production.</p>
+
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" data-target="component-code"
                             tabindex="0"
@@ -350,14 +367,17 @@ alt: Cover image for case study that includes screenshots of component code, acc
             <!-- Another visible image to break up content -->
             <img src="/assets/images/portfolio/CAP-DS/cap-ds-a11y-pick-list.png" alt="CAP Pick List accessibility documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
             <div class="mb-10">
+                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">Results & Impact</h2>
                 <p class="mb-4 text-lg">
                     The results spoke for themselves. The CAP Design System delivered 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="business-impact" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="business-impact">significant business value</span>—not just in terms of faster development and better UX, but in the way it 
                     <span class="text-slate-700 dark:text-slate-200 hover:text-slate-800 dark:hover:text-slate-50 cursor-pointer underline decoration-dotted font-medium expandable-trigger p-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md" data-target="team-impact" 
+
                         tabindex="0" 
                         role="button" 
                         aria-expanded="false" 
@@ -406,6 +426,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         </ul>
                         <img src="/assets/images/portfolio/CAP-DS/figma-onboard.png" alt="Figma CAP DS onboarding" class="w-full rounded-md mb-4">
                         <p class="mb-4 text-lg">The CAP Design System didn’t just solve consistency issues—it helped design become a strategic asset for the business. It showed that thoughtful systems thinking could reduce friction, speed up delivery, and raise the quality bar across the board.</p>
+
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" data-target="team-impact"
                             tabindex="0"
@@ -418,18 +439,16 @@ alt: Cover image for case study that includes screenshots of component code, acc
             </div>
             <!-- Another visible image to break up content -->
             <figure class="mb-8">
-                <img src="/assets/images/portfolio/CAP-DS/cap-ds-table-behavior.png" alt="CAP Table component documentation" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
+                <img 
+                    src="/assets/images/portfolio/CAP-DS/cap-ds-header.jpeg" 
+                    alt="Sketch of header component prior to Figma work" 
+                    class="w-full rounded-lg shadow-lg object-cover max-h-96"
+                >
                 <figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 italic text-center">
-                    To improve clarity, documentation for complex components like the table grid was broken down into smaller, more manageable organisms.
+                    Early sketches of the CAP header component design, created before implementation in Figma
                 </figcaption>
             </figure>
-            <!-- <div class="mb-10">
-                <h2 class="text-2xl font-semibold text-slate-700 dark:text-slate-100 mb-4">What unifying a large-scale design system taught us</h2>
-                <p class="mb-4 text-lg"><ul><li>How early collaboration with dev teams sped up adoption&hellip;</li>
-<li>The value of balancing off-the-shelf tools with custom solutions&hellip;</li>
-<li>The importance of planning for scale from the start&hellip;</li></ul></p>
-            </div> -->
-            <div class="mt-12 pt-4 border-t border-gray-200 text-sm text-gray-500 dark:text-gray-400">
+            <div class="mt-12 pt-4 border-t border-gray-200 text-sm text-gray-500">
                 Click on the highlighted text to expand sections and see more detailed information about each aspect of the project.
             </div>
             </div>
