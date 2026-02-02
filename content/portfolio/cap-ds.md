@@ -15,7 +15,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         <div class="text-2xl font-bold text-slate-600 dark:text-slate-100 mb-2">40%</div>
                         <div class="text-sm text-slate-600 dark:text-slate-100">Faster Development</div>
                     </div>
-                    <div class="bbg-slate-50 dark:bg-slate-800 rounded-md shadow p-5 text-center border-t-4 border-slate-600 dark:border-slate-600">
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-md shadow p-5 text-center border-t-4 border-slate-600 dark:border-slate-600">
                         <div class="text-2xl font-bold text-slate-600 dark:text-slate-100 mb-2">3</div>
                         <div class="text-sm text-slate-600 dark:text-slate-100">Products Unified</div>
                     </div>
@@ -79,16 +79,16 @@ alt: Cover image for case study that includes screenshots of component code, acc
                     <div class="p-4">
                         <p class="italic mb-0! text-lg">...accessibility compliance throughout the design system, ensuring all components met WCAG 2.1 AA standards and were usable by people with diverse abilities.</p>
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3 mt-4 pt-4  border-t border-slate-500 pt-2 border-t border-stone-500">Accessibility Implementation</h3>
-                        <p class="mb-4 text-lg">Accessibility wasn’t a bolt-on—it was a guiding principle from day one. We:</p>
+                        <p class="mb-4 text-lg">Accessibility was a foundational part of CAP-DS, not a bolt-on or afterthought. The system was designed to meet <em>WCAG 2.1 AA</em> standards while remaining practical and usable for product teams working under real delivery constraints.</p>
+                        <h4>Accessibility implementation included:</h4>
                         <ul class="list-disc pl-6 mb-4 text-lg">
-
-                            <li class="mb-2">Met WCAG 2.1 AA contrast and interaction requirements</li>
-                            <li class="mb-2">Supported full keyboard navigation and focus states</li>
-                            <li class="mb-2">Used semantic markup and ARIA attributes to support screen readers</li>
-                            <li class="mb-2">Designed responsive layouts that scaled cleanly up to 200% zoom</li>
+                            <li class="mb-2">WCAG 2.1 AA–compliant color contrast and interaction patterns</li>
+                            <li class="mb-2">Full keyboard navigation, logical focus order, and visible focus states</li>
+                            <li class="mb-2">Semantic HTML patterns with appropriate ARIA roles to support assistive technologies</li>
+                            <li class="mb-2">Responsive layouts that maintained usability and clarity at up to 200% zoom</li>
                         </ul>
                         <img src="/assets/images/portfolio/CAP-DS/accessibility.png" alt="Accessibility audit tools and guidelines" class="w-full rounded-md mb-4">
-                        <p class="mb-4 text-lg">I also led accessibility documentation and ran cross-functional workshops to embed accessible design thinking into our process. This helped designers and engineers approach accessibility with clarity and consistency—not confusion.</p>
+                        <p class="mb-4 text-lg">Beyond compliance, I focused on <em>making accessibility actionable for designers and engineers</em>. I led the creation of designer-facing accessibility documentation, annotated component guidance, and ran cross-functional workshops to translate technical requirements into clear design decisions. This helped teams approach accessibility with confidence and consistency, embedding inclusive design into everyday workflows rather than treating it as a separate checklist.</p>
 
                     </div>
                     <button class="w-full py-2 text-center text-slate-600 dark:text-slate-200 hover:text-slate-700 dark:hover:text-slate-50 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer transition-colors font-medium expandable-bottom-trigger" 
@@ -321,7 +321,7 @@ alt: Cover image for case study that includes screenshots of component code, acc
                         <ul class="list-disc pl-6 mb-4 text-lg">
                             <li class="mb-2">A CSS variable system using custom properties</li>
                             <li class="mb-2">Angular components mirroring the Figma library</li>
-                            <li class="mb-2">IBuilt-in accessibility behavior</li>
+                            <li class="mb-2">Built-in accessibility behavior</li>
                             <li class="mb-2">Performance-optimized, reusable code</li>
                             <li class="mb-2">Integration support for existing front-end stacks</li>
                         </ul>

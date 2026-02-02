@@ -124,3 +124,26 @@ html.dark #darkToggle:hover .horizon{
         transform: translate3d(0, 10, 0)
     }
 }
+
+/* Case study styles for h4 and em tags */
+.case-study h4 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    color: #374151; /* gray-700 */
+    margin-bottom: 0.75rem; /* mb-3 */
+    margin-top: 0.5rem; /* mt-2 */
+}
+
+.case-study em {
+    font-style: normal; /* Remove italic */
+    font-weight: 700; /* Make it bold */
+}
+
+/* Dark mode styles */
+:where([data-theme=dark], [data-theme=dark] *) .case-study h4 {
+    color: #e5e7eb; /* gray-200 */
+}
+
+:where([data-theme=dark], [data-theme=dark] *) .case-study em {
+    color: #f3f4f6; /* gray-100 for better contrast in dark mode */
+}
