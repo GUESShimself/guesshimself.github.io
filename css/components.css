@@ -1,0 +1,501 @@
+/* Component Styles - Section-Specific */
+
+.theme-control {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 10;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 0;
+  border-radius: 4px;
+  transition: opacity 150ms ease-out;
+}
+
+.theme-toggle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  font-family: var(--font-primary);
+  transition: color 150ms ease-out;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  color: var(--color-accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.theme-control.is-dimmed {
+  opacity: 0.6;
+}
+
+.theme-control.is-interacting {
+  opacity: 1;
+}
+
+/* ===================================
+   Section 1: Hero
+   =================================== */
+
+#hero {
+  padding: var(--space-2xl) 0;
+}
+
+#hero h1 {
+  margin-bottom: var(--space-sm);
+}
+
+#hero .role {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  font-weight: 400;
+}
+
+#hero .positioning {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  max-width: 30ch;
+  line-height: var(--line-height-relaxed);
+}
+
+#hero .positioning span {
+  font-variation-settings:
+    "wght" 520,
+    "opsz" 18;
+}
+
+
+/* ===================================
+   Section 2: Credibility Strip
+   =================================== */
+
+#credibility {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-lg) 0;
+}
+
+.credibility-list {
+  display: grid;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   Section 3: What I Do (Capabilities)
+   =================================== */
+
+#capabilities h2 {
+  margin-bottom: var(--space-lg);
+}
+
+.capabilities-grid {
+  display: grid;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.capabilities-grid article h3 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.capabilities-grid article p {
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+}
+
+/* ===================================
+   Section 4: How I Think (Principles)
+   =================================== */
+
+#principles h2 {
+  margin-bottom: var(--space-2xl);
+}
+
+.principles-list {
+  margin-top: var(--space-xl);
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.principles-list li {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: normal;
+  padding-left: var(--space-lg);
+  border-left: 2px solid var(--color-border-emphasis);
+  color: var(--color-text-secondary);
+  position: relative;
+  transition: all 400ms ease-out;
+}
+
+.principles-list li.in-view {
+  color: var(--color-text-primary);
+  /* background-color: var(--color-accent-wash); */
+}
+
+.principle-anchor {
+  font-family: var(--font-primary);
+  position: absolute;
+  left: var(--space-xs);
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+}
+
+.principles-list li:hover .principle-anchor,
+.principle-anchor:focus-visible {
+  opacity: 1;
+}
+
+.principle-anchor:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===================================
+   Section 5: Selected Work
+   =================================== */
+
+#work h2 {
+  margin-bottom: var(--space-xl);
+}
+
+.work-grid {
+  display: grid;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+/* Project Cards */
+.project-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-surface);
+  transition: border-color 150ms ease-out, background-color 150ms ease-out;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+}
+
+.project-card h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+  transition: color 150ms ease-out;
+}
+
+.project-card:hover h3,
+.project-card:focus-within h3 {
+  color: var(--color-text-primary-hover);
+}
+
+.project-card .company {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-weight: 500;
+  display: inline;
+}
+
+.project-card time {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  display: inline;
+}
+
+.project-card time::before {
+  content: "·";
+  margin-right: 0.3125rem;
+}
+
+.project-card .description {
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.project-card .scope-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-sm);
+  transition: color 150ms ease-out;
+}
+
+.project-card:hover .scope-indicators,
+.project-card:focus-within .scope-indicators {
+  color: var(--color-text-secondary);
+}
+
+.project-card .scope-indicators li {
+  position: relative;
+  padding-right: var(--space-sm);
+}
+
+.project-card .scope-indicators li:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: 0;
+  color: var(--color-border);
+}
+
+/* Card Summary & Toggle Overlay */
+.card-summary {
+  position: relative;
+}
+
+.project-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.project-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Expansion Animation (CSS Grid) */
+.expanded-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 350ms ease-out;
+  padding-top: var(--space-lg);
+}
+
+.expanded-wrapper > .expanded-content {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.project-card.expanded .expanded-wrapper {
+  grid-template-rows: 1fr;
+}
+
+/* Expanded State */
+.project-card.expanded {
+  border-color: var(--color-border-emphasis);
+  padding-bottom: var(--space-xl);
+}
+
+.project-card.expanded .expanded-content {
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.expanded-content h4 {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: var(--space-lg);
+  color: var(--color-text-primary);
+}
+
+.expanded-content h4:first-child {
+  margin-top: 0;
+}
+
+.expanded-content ul li {
+  position: relative;
+  padding-left: var(--space-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-xs);
+}
+
+.expanded-content ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--color-text-tertiary);
+}
+
+.expanded-content p {
+  color: var(--color-text-secondary);
+}
+
+.artifact {
+  border-radius: 4px;
+  padding: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.artifact p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: 0;
+}
+
+.artifact img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.collapse-toggle {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-primary);
+  text-align: left;
+  margin-top: var(--space-md);
+  padding: 0;
+  transition: color 150ms ease-out;
+}
+
+.collapse-toggle:hover,
+.collapse-toggle:focus {
+  color: var(--color-accent-hover);
+}
+
+.collapse-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===================================
+   Section 6: About
+   =================================== */
+
+#about h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+#about p {
+  color: var(--color-text-secondary);
+  max-width: 60ch;
+}
+
+/* About Section with Portrait */
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.about-portrait {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  opacity: 0.45;
+}
+
+.about-portrait svg {
+  width: 100%;
+  height: auto;
+}
+
+.about-portrait path {
+  stroke: var(--portrait-stroke);
+  stroke-opacity: var(--portrait-stroke-opacity);
+  fill: var(--portrait-stroke);
+  fill-opacity: var(--portrait-stroke-opacity);
+}
+
+
+.about-text {
+  flex: 1;
+}
+
+/* Tablet and up: side-by-side layout */
+@media (min-width: 48rem) {
+  .about-container {
+    flex-direction: row;
+    gap: var(--space-2xl);
+    align-items: flex-start;
+  }
+
+  .about-portrait {
+    max-width: 200px;
+    flex-shrink: 0;
+  }
+}
+
+/* Desktop: slightly larger portrait */
+@media (min-width: 64rem) {
+  .about-portrait {
+    max-width: 240px;
+  }
+}
+
+/* ===================================
+   Section 7: Footer
+   =================================== */
+
+.contact-links {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+}
+
+/* ===================================
+   Reduced Motion
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .theme-control {
+    transition: none !important;
+  }
+
+  .project-card,
+  .project-card h3,
+  .project-card .scope-indicators,
+  .expanded-wrapper,
+  .principles-list li,
+  .principle-anchor,
+  .collapse-toggle {
+    transition: none !important;
+  }
+}

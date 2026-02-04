@@ -1,0 +1,66 @@
+/* Responsive Enhancements - Mobile-First Approach */
+
+/* ===================================
+   Tablet and Up (768px / 48rem)
+   =================================== */
+
+@media (min-width: 48rem) {
+  /* Layout adjustments */
+  main {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  /* Hero - more generous spacing */
+  #hero {
+    padding: var(--space-3xl) 0;
+  }
+
+  #hero .positioning {
+    font-size: var(--font-size-2xl);
+  }
+
+  /* Credibility Strip - 2 columns on tablet */
+  .credibility-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  /* Capabilities - 3 columns on tablet */
+  .capabilities-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  /* Principles - single column at all breakpoints for deliberate reading rhythm */
+
+  /* Work cards - maintain single column but increase spacing */
+  .work-grid {
+    gap: var(--space-2xl);
+  }
+}
+
+/* ===================================
+   Desktop (1024px / 64rem)
+   =================================== */
+
+@media (min-width: 64rem) {
+  /* Hero - even more generous spacing */
+  #hero {
+    padding: var(--space-4xl) 0;
+  }
+
+  /* Work cards - could use 2 columns if desired, keeping 1 for now */
+  /* .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  } */
+}
+
+/* ===================================
+   Large Desktop (1280px / 80rem)
+   Optional: Add subtle enhancements for very large screens
+   =================================== */
+
+@media (min-width: 80rem) {
+  /* Optional: Increase max-width for very large screens */
+  /* Or add more subtle spacing adjustments */
+}
