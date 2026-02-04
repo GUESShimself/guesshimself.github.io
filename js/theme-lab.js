@@ -183,7 +183,7 @@
   }
 
   function onDocClick(e) {
-    if (button && menu && !button.contains(e.target) && !menu.contains(e.target)) {
+    if (isMenuOpen && button && menu && !button.contains(e.target) && !menu.contains(e.target)) {
       closeMenu();
     }
   }

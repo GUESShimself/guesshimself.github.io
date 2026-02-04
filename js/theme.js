@@ -120,25 +120,27 @@
       }
     }
 
-    control.addEventListener('pointerenter', function() {
+    // Only listen to the button directly, not the control div
+    // This prevents menu items from triggering the is-interacting state
+    btn.addEventListener('pointerenter', function() {
       setInteracting(true);
     });
-    control.addEventListener('pointerleave', function() {
+    btn.addEventListener('pointerleave', function() {
       setInteracting(false);
     });
-    control.addEventListener('focusin', function() {
+    btn.addEventListener('focusin', function() {
       setInteracting(true);
     });
-    control.addEventListener('focusout', function() {
+    btn.addEventListener('focusout', function() {
       setInteracting(false);
     });
-    control.addEventListener('touchstart', function() {
+    btn.addEventListener('touchstart', function() {
       setInteracting(true);
     }, { passive: true });
-    control.addEventListener('touchend', function() {
+    btn.addEventListener('touchend', function() {
       setInteracting(false);
     });
-    control.addEventListener('touchcancel', function() {
+    btn.addEventListener('touchcancel', function() {
       setInteracting(false);
     });
 
