@@ -1,59 +1,87 @@
-// Theme System — system default, manual override, localStorage persistence
+// Theme System — appearance mode (system/light/dark), localStorage persistence
 // Loaded in <head> so data-theme is set before first paint (no flash).
+// Skins are handled separately by theme-lab.js
 
 (function() {
   'use strict';
 
-  var STORAGE_KEY = 'theme';
+  var APPEARANCE_KEY = 'appearance';
+  var LEGACY_KEY = 'theme';  // for migration
   var CYCLE_ORDER = ['system', 'light', 'dark'];
   var root = document.documentElement;
 
-  // ── Read & Apply ──────────────────────────────────────────────
+  // ── Migration: handle old "theme" key ──────────────────────
+
+  function migrateIfNeeded() {
+    var legacy = localStorage.getItem(LEGACY_KEY);
+    if (legacy) {
+      // If it's an appearance mode, migrate it
+      if (CYCLE_ORDER.indexOf(legacy) !== -1) {
+        localStorage.setItem(APPEARANCE_KEY, legacy);
+      }
+      localStorage.removeItem(LEGACY_KEY);
+    }
+  }
+
+  // ── Read & Apply ──────────────────────────────────────────
 
   function getStored() {
-    return localStorage.getItem(STORAGE_KEY) || 'system';
+    return localStorage.getItem(APPEARANCE_KEY) || 'system';
   }
 
-  function applyTheme(theme) {
-    if (theme === 'system') {
+  function applyAppearance(appearance) {
+    if (appearance === 'system') {
       root.removeAttribute('data-theme');
     } else {
-      root.setAttribute('data-theme', theme);
+      root.setAttribute('data-theme', appearance);
     }
-    updateLabel(theme);
+    updateLabel(appearance);
   }
 
-  function updateLabel(theme) {
+  function updateLabel(appearance) {
     var btn = document.getElementById('theme-toggle');
     if (btn) {
-      btn.textContent = 'Theme: ' + theme.charAt(0).toUpperCase() + theme.slice(1);
+      btn.textContent = 'Theme: ' + appearance.charAt(0).toUpperCase() + appearance.slice(1);
     }
   }
 
-  // ── Public API ────────────────────────────────────────────────
+  // ── Public API ─────────────────────────────────────────
 
-  function setTheme(theme) {
-    localStorage.setItem(STORAGE_KEY, theme);
-    applyTheme(theme);
+  function setAppearance(appearance) {
+    localStorage.setItem(APPEARANCE_KEY, appearance);
+    applyAppearance(appearance);
   }
 
-  function cycleTheme() {
+  function getAppearance() {
+    return getStored();
+  }
+
+  function cycleAppearance() {
     var current = getStored();
     var idx = CYCLE_ORDER.indexOf(current);
     var next = CYCLE_ORDER[(idx + 1) % CYCLE_ORDER.length];
-    setTheme(next);
+    setAppearance(next);
   }
 
-  // ── Init: apply stored theme immediately (before DOM ready) ──
+  // For backward compatibility during transition
+  function setTheme(theme) {
+    setAppearance(theme);
+  }
 
-  applyTheme(getStored());
+  function cycleTheme() {
+    cycleAppearance();
+  }
+
+  // ── Init: apply stored appearance immediately (before DOM ready) ──
+
+  migrateIfNeeded();
+  applyAppearance(getStored());
 
   // ── Wire toggle button (after DOM is available) ──────────────
 
   document.addEventListener('DOMContentLoaded', function() {
     var btn = document.getElementById('theme-toggle');
     if (btn) {
-      btn.addEventListener('click', cycleTheme);
       updateLabel(getStored());
     }
 
@@ -119,8 +147,12 @@
     syncDimState();
   });
 
-  // ── Expose for programmatic use ───────────────────────────────
+  // ── Expose for programmatic use ────────────────────────────
 
+  window.setAppearance = setAppearance;
+  window.getAppearance = getAppearance;
+  window.cycleAppearance = cycleAppearance;
+  // Backward compat
   window.setTheme = setTheme;
   window.cycleTheme = cycleTheme;
 

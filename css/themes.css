@@ -88,6 +88,88 @@ html[data-theme="y2k"] {
   --radius: 12px;
 }
 
+/* Theme Lab UI — popover menu anchored to the #theme-toggle button */
+
+.theme-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: 8px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  margin-top: 4px;
+  z-index: 9999;
+}
+
+.theme-menu[hidden] {
+  display: none;
+}
+
+.menu-group {
+  padding: 8px 0;
+}
+
+.menu-group:not(:last-child) {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.menu-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  padding: 6px 12px;
+  letter-spacing: 0.5px;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  transition: background-color 150ms ease;
+}
+
+.menu-item:hover,
+.menu-item:focus {
+  background-color: var(--color-accent-wash, rgba(0, 0, 0, 0.04));
+  color: var(--color-accent);
+  outline: none;
+}
+
+.theme-menu hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+}
+
+.theme-lab-only {
+  display: none;
+}
+
+.theme-lab-only:not([hidden]) {
+  display: block;
+}
+
+@media (max-width: 420px) {
+  .theme-menu {
+    position: fixed;
+    top: auto;
+    bottom: 60px;
+    right: 12px;
+    left: auto;
+  }
+}
+
 /* Theme Lab UI (small, unobtrusive bottom-right) */
 #theme-lab { position: fixed; bottom: 16px; right: 16px; z-index: 9999; font-family: var(--font-body); }
 #theme-lab[hidden] { display: none; }

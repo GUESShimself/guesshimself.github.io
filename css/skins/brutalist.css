@@ -1,0 +1,18 @@
+/* Brutalist Skin — sharp, high-contrast, no decoration */
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-text-primary: #0b0b0b;
+  --color-text-primary-hover: #000000;
+  --color-text-secondary: #2e2e2e;
+  --color-text-tertiary: #6b6b6b;
+  --color-surface-hover: rgba(0, 0, 0, 0.03);
+  --color-accent: #d62828;
+  --color-accent-hover: #a01f1f;
+  --color-accent-wash: rgba(214, 40, 40, 0.04);
+  --color-border: #000000;
+  --color-border-hover: #000000;
+  --color-border-emphasis: #000000;
+  --color-focus-ring: #d62828;
+}

@@ -1,0 +1,18 @@
+/* Y2K Skin — bright, saturated, playful 2000s aesthetic */
+
+:root {
+  --color-bg: #f0f8ff;
+  --color-surface: #ffffff;
+  --color-text-primary: #0b2545;
+  --color-text-primary-hover: #001a33;
+  --color-text-secondary: #3b5a7a;
+  --color-text-tertiary: #5a6f8a;
+  --color-surface-hover: rgba(11, 37, 69, 0.03);
+  --color-accent: #ff6b6b;
+  --color-accent-hover: #ff4d4d;
+  --color-accent-wash: rgba(255, 107, 107, 0.06);
+  --color-border: #9ad3ff;
+  --color-border-hover: #6fb3ff;
+  --color-border-emphasis: #4a8fcc;
+  --color-focus-ring: #ff6b6b;
+}

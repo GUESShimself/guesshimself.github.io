@@ -1,0 +1,19 @@
+/* Terminal Skin — monospace, dark, retro-computing aesthetic */
+
+:root {
+  --color-bg: #0b0d0b;
+  --color-surface: #0b0d0b;
+  --color-text-primary: #c7f9cc;
+  --color-text-primary-hover: #e8ffe8;
+  --color-text-secondary: #8fb38b;
+  --color-text-tertiary: #6b7f6b;
+  --color-surface-hover: rgba(199, 249, 204, 0.04);
+  --color-accent: #39ff14;
+  --color-accent-hover: #66ff4d;
+  --color-accent-wash: rgba(57, 255, 20, 0.05);
+  --color-border: #203020;
+  --color-border-hover: #2e4d2e;
+  --color-border-emphasis: #3d5d3d;
+  --color-focus-ring: #39ff14;
+  --font-primary: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+}

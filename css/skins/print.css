@@ -1,0 +1,19 @@
+/* Print Skin — serif, warm, paper-like aesthetic */
+
+:root {
+  --color-bg: #fcfbf8;
+  --color-surface: #ffffff;
+  --color-text-primary: #0b0a09;
+  --color-text-primary-hover: #000000;
+  --color-text-secondary: #5b5753;
+  --color-text-tertiary: #7a746f;
+  --color-surface-hover: rgba(11, 10, 9, 0.02);
+  --color-accent: #6b6b6b;
+  --color-accent-hover: #4a4a4a;
+  --color-accent-wash: rgba(107, 107, 107, 0.04);
+  --color-border: #dcd7cf;
+  --color-border-hover: #b8b2a8;
+  --color-border-emphasis: #8a8480;
+  --color-focus-ring: #6b6b6b;
+  --font-primary: Georgia, 'Times New Roman', serif;
+}
