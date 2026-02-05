@@ -1,6 +1,12 @@
 /* Y2K Skin — bright, saturated, playful 2000s aesthetic */
+/* Supports both light and dark appearance modes */
 
-:root {
+/* ===============================
+   Light Variant (default)
+   =============================== */
+
+html[data-skin="y2k"] {
+  /* Color Palette - Light (bright, bubbly) */
   --color-bg: #f0f8ff;
   --color-surface: #ffffff;
   --color-text-primary: #0b2545;
@@ -15,4 +21,58 @@
   --color-border-hover: #6fb3ff;
   --color-border-emphasis: #4a8fcc;
   --color-focus-ring: #ff6b6b;
+  --portrait-stroke: #0b2545;
+  --portrait-stroke-opacity: 0.85;
+
+  /* Typography */
+  --font-primary: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+  --font-heading: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+}
+
+/* ===============================
+   Dark Variant (explicit)
+   =============================== */
+
+html[data-skin="y2k"][data-appearance="dark"] {
+  --color-bg: #0a0a1a;
+  --color-surface: #12122a;
+  --color-text-primary: #e0e8ff;
+  --color-text-primary-hover: #ffffff;
+  --color-text-secondary: #a0b0d0;
+  --color-text-tertiary: #7080a0;
+  --color-surface-hover: rgba(224, 232, 255, 0.04);
+  --color-accent: #ff6bff;
+  --color-accent-hover: #ff99ff;
+  --color-accent-wash: rgba(255, 107, 255, 0.08);
+  --color-border: #3040a0;
+  --color-border-hover: #4050c0;
+  --color-border-emphasis: #6080ff;
+  --color-focus-ring: #ff6bff;
+  --portrait-stroke: #6080ff;
+  --portrait-stroke-opacity: 0.7;
+}
+
+/* ===============================
+   Dark Variant (system preference)
+   =============================== */
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="y2k"]:not([data-appearance]) {
+    --color-bg: #0a0a1a;
+    --color-surface: #12122a;
+    --color-text-primary: #e0e8ff;
+    --color-text-primary-hover: #ffffff;
+    --color-text-secondary: #a0b0d0;
+    --color-text-tertiary: #7080a0;
+    --color-surface-hover: rgba(224, 232, 255, 0.04);
+    --color-accent: #ff6bff;
+    --color-accent-hover: #ff99ff;
+    --color-accent-wash: rgba(255, 107, 255, 0.08);
+    --color-border: #3040a0;
+    --color-border-hover: #4050c0;
+    --color-border-emphasis: #6080ff;
+    --color-focus-ring: #ff6bff;
+    --portrait-stroke: #6080ff;
+    --portrait-stroke-opacity: 0.7;
+  }
 }

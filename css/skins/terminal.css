@@ -1,8 +1,41 @@
-/* Terminal Skin — monospace, dark, retro-computing aesthetic */
+/* Terminal Skin — monospace, retro-computing aesthetic */
+/* Supports both light and dark appearance modes */
 
-:root {
+/* ===============================
+   Light Variant (default)
+   =============================== */
+
+html[data-skin="terminal"] {
+  /* Color Palette - Light (amber on cream, like old CRT) */
+  --color-bg: #f5f5e8;
+  --color-surface: #fffff0;
+  --color-text-primary: #1a3a1a;
+  --color-text-primary-hover: #0d1f0d;
+  --color-text-secondary: #2d5a2d;
+  --color-text-tertiary: #4a7a4a;
+  --color-surface-hover: rgba(26, 58, 26, 0.04);
+  --color-accent: #228b22;
+  --color-accent-hover: #1a6b1a;
+  --color-accent-wash: rgba(34, 139, 34, 0.08);
+  --color-border: #3d6d3d;
+  --color-border-hover: #2d5d2d;
+  --color-border-emphasis: #1a4a1a;
+  --color-focus-ring: #228b22;
+  --portrait-stroke: #1a3a1a;
+  --portrait-stroke-opacity: 0.85;
+
+  /* Typography - Monospace everywhere */
+  --font-primary: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+  --font-heading: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+}
+
+/* ===============================
+   Dark Variant (explicit)
+   =============================== */
+
+html[data-skin="terminal"][data-appearance="dark"] {
   --color-bg: #0b0d0b;
-  --color-surface: #0b0d0b;
+  --color-surface: #0f120f;
   --color-text-primary: #c7f9cc;
   --color-text-primary-hover: #e8ffe8;
   --color-text-secondary: #8fb38b;
@@ -15,5 +48,31 @@
   --color-border-hover: #2e4d2e;
   --color-border-emphasis: #3d5d3d;
   --color-focus-ring: #39ff14;
-  --font-primary: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+  --portrait-stroke: #39ff14;
+  --portrait-stroke-opacity: 0.7;
+}
+
+/* ===============================
+   Dark Variant (system preference)
+   =============================== */
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="terminal"]:not([data-appearance]) {
+    --color-bg: #0b0d0b;
+    --color-surface: #0f120f;
+    --color-text-primary: #c7f9cc;
+    --color-text-primary-hover: #e8ffe8;
+    --color-text-secondary: #8fb38b;
+    --color-text-tertiary: #6b7f6b;
+    --color-surface-hover: rgba(199, 249, 204, 0.04);
+    --color-accent: #39ff14;
+    --color-accent-hover: #66ff4d;
+    --color-accent-wash: rgba(57, 255, 20, 0.05);
+    --color-border: #203020;
+    --color-border-hover: #2e4d2e;
+    --color-border-emphasis: #3d5d3d;
+    --color-focus-ring: #39ff14;
+    --portrait-stroke: #39ff14;
+    --portrait-stroke-opacity: 0.7;
+  }
 }

@@ -23,15 +23,16 @@
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link id="skin-stylesheet" rel="stylesheet" href="" disabled>
-    <!-- Theme: loaded in head to set data-theme before first paint -->
-    <script src="js/theme.js"></script>
+    <!-- Theme Manager: loaded in head to set attributes before first paint -->
+    <script src="js/theme-manager.js"></script>
 
     <!-- Umami analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
+    <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script> -->
   </head>
   <body>
     <div class="theme-control">
-      <button id="theme-toggle" class="theme-toggle" aria-haspopup="menu" aria-expanded="false">Theme: System</button>
+      <button id="theme-toggle" class="theme-toggle" aria-haspopup="menu" aria-expanded="false">Appearance: System</button>
+      <div id="theme-menu" class="theme-menu" role="menu" hidden></div>
     </div>
     <main>
       <!-- Section 1: Hero -->
@@ -1140,6 +1141,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/interactions.js"></script>
-    <script src="js/theme-lab.js" defer></script>
+    <script src="js/easter-egg.js" defer></script>
   </body>
 </html>

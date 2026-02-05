@@ -1,6 +1,12 @@
 /* Print Skin — serif, warm, paper-like aesthetic */
+/* Supports both light and dark appearance modes */
 
-:root {
+/* ===============================
+   Light Variant (default)
+   =============================== */
+
+html[data-skin="print"] {
+  /* Color Palette - Light (warm paper) */
   --color-bg: #fcfbf8;
   --color-surface: #ffffff;
   --color-text-primary: #0b0a09;
@@ -15,5 +21,58 @@
   --color-border-hover: #b8b2a8;
   --color-border-emphasis: #8a8480;
   --color-focus-ring: #6b6b6b;
+  --portrait-stroke: #0b0a09;
+  --portrait-stroke-opacity: 0.9;
+
+  /* Typography - Serif */
   --font-primary: Georgia, 'Times New Roman', serif;
+  --font-heading: Georgia, 'Times New Roman', serif;
+}
+
+/* ===============================
+   Dark Variant (explicit)
+   =============================== */
+
+html[data-skin="print"][data-appearance="dark"] {
+  --color-bg: #1a1816;
+  --color-surface: #252220;
+  --color-text-primary: #e8e4dc;
+  --color-text-primary-hover: #f5f2eb;
+  --color-text-secondary: #b8b2a8;
+  --color-text-tertiary: #8a8480;
+  --color-surface-hover: rgba(232, 228, 220, 0.03);
+  --color-accent: #c9c4ba;
+  --color-accent-hover: #ddd8ce;
+  --color-accent-wash: rgba(201, 196, 186, 0.06);
+  --color-border: #3d3a36;
+  --color-border-hover: #4d4a45;
+  --color-border-emphasis: #5d5955;
+  --color-focus-ring: #c9c4ba;
+  --portrait-stroke: #e8e4dc;
+  --portrait-stroke-opacity: 0.75;
+}
+
+/* ===============================
+   Dark Variant (system preference)
+   =============================== */
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="print"]:not([data-appearance]) {
+    --color-bg: #1a1816;
+    --color-surface: #252220;
+    --color-text-primary: #e8e4dc;
+    --color-text-primary-hover: #f5f2eb;
+    --color-text-secondary: #b8b2a8;
+    --color-text-tertiary: #8a8480;
+    --color-surface-hover: rgba(232, 228, 220, 0.03);
+    --color-accent: #c9c4ba;
+    --color-accent-hover: #ddd8ce;
+    --color-accent-wash: rgba(201, 196, 186, 0.06);
+    --color-border: #3d3a36;
+    --color-border-hover: #4d4a45;
+    --color-border-emphasis: #5d5955;
+    --color-focus-ring: #c9c4ba;
+    --portrait-stroke: #e8e4dc;
+    --portrait-stroke-opacity: 0.75;
+  }
 }

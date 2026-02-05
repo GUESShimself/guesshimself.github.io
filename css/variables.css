@@ -56,8 +56,8 @@
   --portrait-stroke-opacity: 1;
 }
 
-/* Dark mode — manual override */
-html[data-theme="dark"] {
+/* Dark mode — explicit override */
+html[data-appearance="dark"] {
   --color-bg: #1e1d1a;
   --color-surface: #252420;
   --color-text-primary: #e4dfd8;
@@ -76,9 +76,9 @@ html[data-theme="dark"] {
   --portrait-stroke-opacity: 0.78;
 }
 
-/* Dark mode — system preference (fires only when no manual override) */
+/* Dark mode — system preference (only when no explicit appearance set) */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
+  html:not([data-appearance]) {
     --color-bg: #1e1d1a;
     --color-surface: #252420;
     --color-text-primary: #e4dfd8;
