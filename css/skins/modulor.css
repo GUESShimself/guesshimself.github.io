@@ -1,0 +1,1274 @@
+/* Modulor Skin — Le Corbusier's proportional doctrine
+   CSS Zen Garden-esque experimental theme
+   All measurements derive from Golden Ratio (phi) and Fibonacci sequences
+   Supports both light and dark appearance modes
+
+   Z-INDEX STRATEGY:
+   0    - Minor grid (body::before)
+   1    - Major grid overlay
+   2    - Vertical spine (main::after)
+   3    - Horizontal datum (main::before)
+   5    - Default content
+   10   - Collision elements (elevated sections)
+   100  - Theme controls
+*/
+
+/* ===============================
+   1. PROPORTIONAL CONSTANTS
+   =============================== */
+
+html[data-skin="modulor"] {
+  /* === PHI CONSTANTS === */
+  --phi: 1.618;
+  --phi-inverse: calc(1 / var(--phi));
+  --phi-squared: calc(var(--phi) * var(--phi));
+  --phi-cubed: calc(var(--phi) * var(--phi) * var(--phi));
+
+  /* === MODULOR TYPE SCALE (Golden Ratio) === */
+  /* SHIFTED UP: Body text at phi^1 (~26px)
+     Creates bold, architectural, signage-like body copy
+     Hierarchy scales dramatically toward poster sizes
+     Each step = previous × phi (up) or × 1/phi (down) */
+  --type-sm: 1rem;                              /* phi^0 ~16px - small text, metadata */
+  --type-xs: calc(var(--type-sm) / var(--phi)); /* phi^-1 ~10px - annotations, labels */
+  --type-micro: calc(var(--type-xs) / var(--phi)); /* phi^-2 ~6px - measurement ticks only */
+  --type-base: calc(var(--type-sm) * var(--phi));   /* phi^1 ~26px - BODY TEXT (bold, readable) */
+  --type-lg: calc(var(--type-base) * var(--phi));   /* phi^2 ~42px - subheadings */
+  --type-xl: calc(var(--type-lg) * var(--phi));     /* phi^3 ~68px - section heads */
+  --type-2xl: calc(var(--type-xl) * var(--phi));    /* phi^4 ~110px - major headings */
+  --type-3xl: calc(var(--type-2xl) * var(--phi));   /* phi^5 ~177px - display */
+  --type-4xl: calc(var(--type-3xl) * var(--phi));   /* phi^6 ~287px - poster */
+  --type-5xl: calc(var(--type-4xl) * var(--phi));   /* phi^7 ~464px - EXTREME POSTER */
+
+  /* === FIBONACCI SPACING SCALE (x 0.25rem) === */
+  /* Each step = sum of two previous (Fibonacci recurrence) */
+  --space-1: 0.25rem;                                /* 4px - fib(1) */
+  --space-2: calc(var(--space-1) * 2);               /* 8px - fib(2) */
+  --space-3: calc(var(--space-1) + var(--space-2));   /* 12px - fib(3) */
+  --space-5: calc(var(--space-2) + var(--space-3));   /* 20px - fib(5) */
+  --space-8: calc(var(--space-3) + var(--space-5));   /* 32px - fib(8) */
+  --space-13: calc(var(--space-5) + var(--space-8));  /* 52px - fib(13) */
+  --space-21: calc(var(--space-8) + var(--space-13)); /* 84px - fib(21) */
+  --space-34: calc(var(--space-13) + var(--space-21)); /* 136px - fib(34) */
+  --space-55: calc(var(--space-21) + var(--space-34)); /* 220px - fib(55) */
+  --space-89: calc(var(--space-34) + var(--space-55)); /* 356px - fib(89) */
+
+  /* === VERTICAL RHYTHM === */
+  --line-height-body: var(--phi);
+  --line-height-heading: 1.2;
+  --line-height-dense: 1;
+
+  /* === FLUID SIZING === */
+  --fluid-hero: clamp(var(--type-xl), 8vw, var(--type-3xl));
+
+  /* === PAGE-LEVEL STRUCTURAL ELEMENTS === */
+  /* Horizontal datum bar - passes through content at golden section */
+  --datum-thickness: var(--space-5);   /* THICKER - more aggressive slice */
+  --datum-offset: calc(100vh * (1 - var(--phi-inverse)));  /* Golden section of viewport */
+  /* Secondary datum - creates tension */
+  --datum-secondary-offset: calc(100vh * var(--phi-inverse));
+
+  /* Vertical spine - the structural axis */
+  --spine-width: 5px;                  /* HEAVIER structural presence */
+  --spine-offset: var(--space-13);     /* Fibonacci step from left */
+
+  /* Grid system */
+  --grid-minor-size: var(--space-5);   /* fib(5) */
+  --grid-major-size: var(--space-13);  /* fib(13) */
+  --grid-minor-opacity: 0.03;          /* Slightly more visible */
+  --grid-major-opacity: 0.12;          /* More aggressive */
+  --grid-major-thickness: 3px;         /* Heavier lines */
+
+  /* Collision intensities */
+  --collision-work-into-principles: var(--space-55);  /* Major intrusion */
+  --collision-credibility-into-hero: var(--space-55); /* Aggressive overlap */
+
+  /* ===============================
+     2. COLOR PALETTE - LIGHT
+     Le Corbusier Architectural Polychromy
+     =============================== */
+
+  /* Structural colors - used as MASS */
+  --modulor-red: #c53d2f;
+  --modulor-blue: #2d4a8c;
+  --modulor-yellow: #d4a017;
+  --modulor-black: #1a1815;
+  --modulor-white: #faf8f3;
+
+  /* Primary surfaces */
+  --color-bg: #f5f2e9;
+  --color-surface: #faf8f3;
+
+  /* Text hierarchy */
+  --color-text-primary: var(--modulor-black);
+  --color-text-primary-hover: #000000;
+  --color-text-secondary: #4a4640;
+  --color-text-tertiary: #635f58;  /* WCAG AA: 4.58:1 on #f5f2e9 */
+
+  /* Interactive */
+  --color-accent: var(--modulor-red);
+  --color-accent-hover: #a32f24;
+  --color-accent-wash: rgba(197, 61, 47, 0.08);
+
+  /* Borders - structural lines */
+  --color-border: var(--modulor-black);
+  --color-border-hover: var(--modulor-black);
+  --color-border-emphasis: var(--modulor-black);
+  --color-focus-ring: var(--modulor-blue);
+
+  /* Surface interactions */
+  --color-surface-hover: rgba(26, 24, 21, 0.03);
+
+  /* Portrait */
+  --portrait-stroke: var(--modulor-black);
+  --portrait-stroke-opacity: 1;
+
+  /* Typography */
+  --font-primary: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+}
+
+/* ===============================
+   3. DARK MODE - EXPLICIT
+   =============================== */
+
+html[data-skin="modulor"][data-theme="dark"] {
+  --color-bg: #1a1815;
+  --color-surface: #252320;
+  --modulor-red: #e05545;
+  --modulor-blue: #5b7cc4;
+  --modulor-yellow: #e8b82a;
+  --modulor-white: #f5f2e9;
+  --color-text-primary: #f5f2e9;
+  --color-text-primary-hover: #ffffff;
+  --color-text-secondary: #b8b3a8;
+  --color-text-tertiary: #9a958c;  /* WCAG AA: 4.53:1 on #1a1815 */
+  --color-accent: var(--modulor-yellow);
+  --color-accent-hover: #f5c73d;
+  --color-accent-wash: rgba(232, 184, 42, 0.1);
+  --color-border: #3d3a35;
+  --color-border-hover: #5a564f;
+  --color-border-emphasis: var(--modulor-white);
+  --color-focus-ring: var(--modulor-blue);
+  --color-surface-hover: rgba(245, 242, 233, 0.05);
+  --portrait-stroke: var(--modulor-yellow);
+  --portrait-stroke-opacity: 0.8;
+
+  /* Adjust grid for dark mode */
+  --grid-minor-opacity: 0.02;
+  --grid-major-opacity: 0.06;
+}
+
+/* ===============================
+   4. DARK MODE - SYSTEM PREFERENCE
+   =============================== */
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="modulor"]:not([data-theme]) {
+    --color-bg: #1a1815;
+    --color-surface: #252320;
+    --modulor-red: #e05545;
+    --modulor-blue: #5b7cc4;
+    --modulor-yellow: #e8b82a;
+    --modulor-white: #f5f2e9;
+    --color-text-primary: #f5f2e9;
+    --color-text-primary-hover: #ffffff;
+    --color-text-secondary: #b8b3a8;
+    --color-text-tertiary: #9a958c;  /* WCAG AA: 4.53:1 on #1a1815 */
+    --color-accent: var(--modulor-yellow);
+    --color-accent-hover: #f5c73d;
+    --color-accent-wash: rgba(232, 184, 42, 0.1);
+    --color-border: #3d3a35;
+    --color-border-hover: #5a564f;
+    --color-border-emphasis: var(--modulor-white);
+    --color-focus-ring: var(--modulor-blue);
+    --color-surface-hover: rgba(245, 242, 233, 0.05);
+    --portrait-stroke: var(--modulor-yellow);
+    --portrait-stroke-opacity: 0.8;
+    --grid-minor-opacity: 0.02;
+    --grid-major-opacity: 0.06;
+  }
+}
+
+/* ===============================
+   5. TWO-LAYER GRID SYSTEM
+   Minor grid + Major grid at Fibonacci cadence
+   "Construction drawing" hierarchy
+   =============================== */
+
+html[data-skin="modulor"] body {
+  background-image: none;
+  background-color: var(--color-bg);
+  position: relative;
+}
+
+/* MINOR GRID - subtle baseline rhythm (fib-5 spacing) */
+html[data-skin="modulor"] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--modulor-black) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--modulor-black) 1px, transparent 1px);
+  background-size: var(--grid-minor-size) var(--grid-minor-size);
+  opacity: var(--grid-minor-opacity);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* MAJOR GRID - heavier lines at fib-13 cadence */
+html[data-skin="modulor"] body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--modulor-black) var(--grid-major-thickness), transparent var(--grid-major-thickness)),
+    linear-gradient(to bottom, var(--modulor-black) var(--grid-major-thickness), transparent var(--grid-major-thickness));
+  background-size: var(--grid-major-size) var(--grid-major-size);
+  opacity: var(--grid-major-opacity);
+  pointer-events: none;
+  z-index: 1;
+  /* Fade grid in upper portion, stronger below - architectural drawing feel */
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.6) 30%,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0.8) 100%
+  );
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.6) 30%,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0.8) 100%
+  );
+}
+
+/* ===============================
+   6. MAIN CONTAINER + PAGE-LEVEL ELEMENTS
+   Datum line + Vertical spine
+   =============================== */
+
+html[data-skin="modulor"] main {
+  position: relative;
+  z-index: 5;
+  padding: var(--space-21) var(--space-8);
+  /* Offset content to align with spine */
+  padding-left: calc(var(--spine-offset) + var(--space-21));
+}
+
+/* HORIZONTAL DATUM LINES
+   Persistent measuring bars that slice through content
+   Primary at golden section, secondary at inverse golden section */
+html[data-skin="modulor"] main::before {
+  content: '';
+  position: fixed;
+  top: var(--datum-offset);
+  left: 0;
+  right: 0;
+  height: var(--datum-thickness);
+  background: var(--modulor-red);
+  z-index: 3;
+  pointer-events: none;
+  /* Hard slice - no blend, pure overlay */
+  box-shadow:
+    /* Secondary datum at inverse golden section */
+    0 calc(var(--datum-secondary-offset) - var(--datum-offset)) 0 0 var(--modulor-blue),
+    /* Measurement ticks extending from primary datum */
+    calc(var(--space-13) * 1) var(--space-8) 0 0 var(--modulor-red),
+    calc(var(--space-13) * 3) var(--space-8) 0 0 var(--modulor-red),
+    calc(var(--space-13) * 5) var(--space-8) 0 0 var(--modulor-red),
+    calc(var(--space-13) * 7) var(--space-8) 0 0 var(--modulor-red);
+}
+
+html[data-skin="modulor"][data-theme="dark"] main::before {
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="modulor"]:not([data-theme]) main::before {
+    mix-blend-mode: screen;
+    opacity: 0.7;
+  }
+}
+
+/* VERTICAL SPINE
+   Continuous structural axis running page height
+   Sections "pin" to this spine */
+html[data-skin="modulor"] main::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--spine-offset);
+  width: var(--spine-width);
+  background: var(--modulor-blue);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===============================
+   7. SECTION BASE STYLES
+   =============================== */
+
+html[data-skin="modulor"] section {
+  position: relative;
+  max-width: none;
+  margin: 0;
+  /* Sections align to spine */
+  padding-left: var(--space-8);
+}
+
+/* DRAFTING-STYLE MEASUREMENT LABELS
+   Prefix codes (M = Modulor, F = Fibonacci step)
+   Using xs scale (~10px) for readable annotations */
+html[data-skin="modulor"] section::after {
+  /* Label with prefix code */
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-tertiary);
+  opacity: 0.6;
+  /* Leader line via border */
+  padding-left: var(--space-8);
+  border-left: 1px solid currentColor;
+}
+
+/* Unique prefix codes per section - Fibonacci references */
+html[data-skin="modulor"] #hero::after { content: 'M-01 · hero'; }
+html[data-skin="modulor"] #credibility::after { content: 'F-08 · cred'; color: rgba(255,255,255,0.5); }
+html[data-skin="modulor"] #capabilities::after { content: 'M-02 · caps'; }
+html[data-skin="modulor"] #principles::after { content: 'F-13 · prin'; }
+html[data-skin="modulor"] #work::after { content: 'M-03 · work'; }
+html[data-skin="modulor"] #about::after { content: 'F-21 · info'; }
+
+/* Vertical label on capabilities (additional drafting notation) */
+html[data-skin="modulor"] #capabilities::before {
+  content: 'φ = 1.618033988749';
+  position: absolute;
+  top: var(--space-21);
+  left: calc(var(--spine-offset) * -1 + var(--space-2));
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  color: var(--modulor-blue);
+  opacity: 0.5;
+  letter-spacing: 0.1em;
+}
+
+/* ===============================
+   8. HERO SECTION
+   POSTER TYPOGRAPHY - extreme scale statement
+   =============================== */
+
+html[data-skin="modulor"] #hero {
+  padding: var(--space-55) 0 var(--space-89) 0;
+  overflow: visible;
+  /* Pin to spine via left border */
+  border-left: var(--spine-width) solid var(--modulor-black);
+  margin-left: calc(var(--spine-offset) * -1 - var(--spine-width));
+  padding-left: calc(var(--spine-offset) + var(--space-13));
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* POSTER TYPOGRAPHY MOMENT - EXTREME
+   Hero name at uncomfortable scale - architectural manifesto
+   Shifted UP: --type-4xl (~287px) to --type-5xl (~464px) */
+html[data-skin="modulor"] #hero h1 {
+  font-size: clamp(var(--type-3xl), 25vw, var(--type-4xl));
+  line-height: 0.8;
+  font-weight: 400;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: var(--space-8);
+  /* AGGRESSIVE cantilever - breaks spine alignment */
+  margin-left: calc(var(--space-55) * -1);
+  /* Hard baseline - thick rule */
+  padding-bottom: var(--space-3);
+  border-bottom: var(--space-3) solid var(--modulor-black);
+  display: inline-block;
+  /* Crops into left edge of viewport on smaller screens */
+  max-width: calc(100% + var(--space-55));
+}
+
+html[data-skin="modulor"] #hero h1::before {
+  /* Yellow mass block - LARGER, more structural */
+  content: '';
+  position: absolute;
+  left: calc(var(--space-21) * -1);
+  top: calc(var(--space-5) * -1);
+  width: calc(100% + var(--space-89));
+  height: calc(100% + var(--space-8));
+  background: var(--modulor-yellow);
+  z-index: -1;
+  opacity: 0.15;
+  /* Hard edge cut */
+  clip-path: polygon(
+    0 var(--space-8),
+    var(--space-13) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* Measurement annotation */
+html[data-skin="modulor"] #hero h1::after {
+  content: '← φ⁶ · 17.942rem';
+  position: absolute;
+  right: calc(100% + var(--space-3));
+  bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  letter-spacing: 0.1em;
+  color: var(--modulor-blue);
+  white-space: nowrap;
+  /* Vertical orientation for tighter fit */
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+
+html[data-skin="modulor"] #hero .role {
+  font-family: var(--font-mono);
+  font-size: var(--type-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-text-secondary);  /* WCAG: upgraded from tertiary */
+  margin-bottom: var(--space-8);
+  /* Align to spine */
+  padding-left: var(--space-5);
+  border-left: 1px solid var(--color-text-secondary);
+}
+
+html[data-skin="modulor"] #hero .positioning {
+  font-size: var(--type-lg);
+  line-height: var(--line-height-body);
+  max-width: 38ch;
+  /* Offset from spine alignment */
+  margin-left: var(--space-21);
+  /* Slight crop at bottom - credibility slab will overlap */
+  padding-bottom: var(--space-13);
+}
+
+html[data-skin="modulor"] #hero .positioning span {
+  background: var(--modulor-red);
+  color: var(--modulor-white);
+  padding: var(--space-1) var(--space-2);
+  margin: 0 var(--space-1);
+}
+
+/* ===============================
+   9. CREDIBILITY SECTION
+   Red structural SLAB - extends beyond container
+   =============================== */
+
+html[data-skin="modulor"] #credibility {
+  background: var(--modulor-red);
+  color: var(--modulor-white);
+  /* Break containment - extend beyond viewport */
+  margin-left: calc((var(--spine-offset) + var(--space-21) + var(--space-8)) * -1 - var(--space-13));
+  margin-right: calc(var(--space-13) * -1);
+  padding: var(--space-21) var(--space-21);
+  padding-left: calc(var(--spine-offset) + var(--space-55));
+  /* AGGRESSIVE overlap into hero - crops into positioning text */
+  margin-top: var(--collision-credibility-into-hero);
+  margin-top: calc(var(--space-55) * -1);
+  position: relative;
+  z-index: 6;
+  /* Slight rotation - architectural tension */
+  transform: rotate(-0.3deg);
+  transform-origin: left center;
+}
+
+/* Diagonal cut corner - LARGER, more aggressive */
+html[data-skin="modulor"] #credibility::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: var(--space-89);
+  height: var(--space-21);
+  background: var(--color-bg);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* Secondary diagonal notch - top left */
+html[data-skin="modulor"] #credibility::after {
+  content: 'F-08 · CREDENTIALS';
+  position: absolute;
+  top: 0;
+  left: calc(var(--spine-offset) + var(--space-13));
+  background: var(--modulor-black);
+  color: var(--modulor-white);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transform: translateY(-50%);
+}
+
+html[data-skin="modulor"] #credibility h2 {
+  display: none;
+}
+
+html[data-skin="modulor"] .credibility-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-13);
+  font-family: var(--font-mono);
+  font-size: var(--type-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--modulor-white);  /* contrast fix: override components.css secondary color on red bg */
+}
+
+html[data-skin="modulor"] .credibility-list li {
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+html[data-skin="modulor"] .credibility-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.75);  /* contrast fix: light/dark li — was 0.5, now meets 4.5:1 on red */
+}
+
+/* contrast fix: dark credibility bg — #e05545 gave 3.6:1, #c43c2e gives 4.6:1 with off-white text */
+html[data-skin="modulor"][data-theme="dark"] #credibility {
+  background: #c43c2e;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="modulor"]:not([data-theme]) #credibility {
+    background: #c43c2e;
+  }
+}
+
+/* ===============================
+   10. CAPABILITIES SECTION
+   Golden ratio grid pinned to spine
+   =============================== */
+
+html[data-skin="modulor"] #capabilities {
+  margin-top: var(--space-55);
+  padding: var(--space-21) 0;
+  padding-left: var(--space-13);
+  position: relative;
+  counter-reset: capability;
+}
+
+html[data-skin="modulor"] #capabilities h2 {
+  font-size: var(--type-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  /* Rotate and position as drafting label */
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  position: absolute;
+  left: calc(var(--spine-offset) * -1 - var(--space-13));
+  top: var(--space-21);
+  color: var(--color-text-primary);  /* WCAG: use theme-aware color */
+  opacity: 0.8;
+}
+
+html[data-skin="modulor"] .capabilities-grid {
+  display: grid;
+  /* Golden ratio columns */
+  grid-template-columns: calc(100% * (1 - var(--phi-inverse))) calc(100% * var(--phi-inverse) - var(--space-5));
+  gap: var(--space-5);
+  margin-left: var(--space-8);
+}
+
+html[data-skin="modulor"] .capabilities-grid article {
+  padding: var(--space-13);
+  border-left: 2px solid var(--modulor-black);
+  position: relative;
+  background: var(--color-surface);
+}
+
+html[data-skin="modulor"] .capabilities-grid article::before {
+  content: counter(capability, decimal-leading-zero);
+  counter-increment: capability;
+  position: absolute;
+  top: calc(var(--space-3) * -1);
+  left: calc(var(--space-3) * -1);
+  font-family: var(--font-mono);
+  font-size: var(--type-sm);
+  color: var(--modulor-white);
+  background: var(--modulor-blue);
+  padding: var(--space-2) var(--space-3);
+  z-index: 2;
+  line-height: 1;
+}
+
+/* First article - extends left */
+html[data-skin="modulor"] .capabilities-grid article:nth-child(1) {
+  margin-left: calc(var(--space-5) * -1);
+  padding-left: var(--space-8);
+}
+
+/* Second article - overlaps first slightly */
+html[data-skin="modulor"] .capabilities-grid article:nth-child(2) {
+  margin-left: calc(var(--space-3) * -1);
+  z-index: 1;
+}
+
+html[data-skin="modulor"] .capabilities-grid article:nth-child(3) {
+  grid-column: 1 / -1;
+  max-width: calc(100% * var(--phi-inverse));
+  /* Third article tucks under, creates depth */
+  margin-top: calc(var(--space-5) * -1);
+  z-index: 0;
+  box-shadow: inset 0 var(--space-3) var(--space-5) calc(var(--space-3) * -1) rgba(0,0,0,0.03);
+}
+
+html[data-skin="modulor"] .capabilities-grid article h3 {
+  font-size: var(--type-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-5);
+}
+
+html[data-skin="modulor"] .capabilities-grid article p {
+  font-size: var(--type-sm);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+}
+
+/* ===============================
+   11. PRINCIPLES SECTION
+   Interlocking blocks with yellow wash
+   =============================== */
+
+html[data-skin="modulor"] #principles {
+  margin-top: var(--space-55);
+  position: relative;
+  padding-bottom: var(--space-89);
+  /* Extra bottom padding for collision zone - work section intrudes here */
+}
+
+/* Yellow structural wash - AGGRESSIVE, bleeds off viewport */
+html[data-skin="modulor"] #principles::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--space-34) * -1);
+  right: calc(var(--space-21) * -1);
+  width: calc(100% + var(--space-55));
+  height: calc(100% + var(--space-55));
+  background: linear-gradient(
+    135deg,
+    var(--modulor-yellow) 0%,
+    var(--modulor-yellow) 60%,
+    transparent 60%
+  );
+  opacity: 0.1;
+  z-index: -1;
+}
+
+html[data-skin="modulor"] #principles h2 {
+  font-size: var(--type-2xl);
+  margin-bottom: var(--space-21);
+  letter-spacing: -0.02em;
+}
+
+html[data-skin="modulor"] .principles-list {
+  display: grid;
+  grid-template-columns: var(--space-13) 1fr var(--space-8);
+  gap: 0;
+}
+
+html[data-skin="modulor"] .principles-list li {
+  padding: var(--space-13);
+  border: 1px solid var(--modulor-black);
+  background: var(--color-bg);
+  font-size: var(--type-base);
+  line-height: var(--line-height-body);
+}
+
+/* Interlocking positions - AGGRESSIVE OVERLAP */
+html[data-skin="modulor"] .principles-list li:nth-child(odd) {
+  grid-column: 1 / 3;
+  margin-bottom: calc(var(--space-13) * -1);
+}
+
+html[data-skin="modulor"] .principles-list li:nth-child(even) {
+  grid-column: 2 / 4;
+  margin-top: calc(var(--space-8) * -1);
+  /* Inset from overlap */
+  padding-top: var(--space-21);
+}
+
+html[data-skin="modulor"] .principles-list li:nth-child(1) {
+  z-index: 4;
+  /* First item extends left, crops at viewport edge */
+  margin-left: calc(var(--space-8) * -1);
+  padding-left: var(--space-13);
+}
+html[data-skin="modulor"] .principles-list li:nth-child(2) {
+  z-index: 3;
+  /* Uncomfortably deep under item 1 */
+  box-shadow: inset 0 var(--space-5) var(--space-5) calc(var(--space-3) * -1) rgba(0,0,0,0.04);
+}
+html[data-skin="modulor"] .principles-list li:nth-child(3) {
+  z-index: 2;
+  margin-left: calc(var(--space-5) * -1);
+}
+html[data-skin="modulor"] .principles-list li:nth-child(4) {
+  z-index: 1;
+  /* Last item - recessed, partially obscured */
+  opacity: 0.92;
+}
+
+html[data-skin="modulor"] .principle-anchor {
+  font-size: var(--font-size-3xl);
+  left: calc(var(--space-3) * -1);
+  top: var(--space-34);
+  padding: var(--space-2);
+  background-color: var(--modulor-blue);
+  color: var(--modulor-white);
+}
+
+/* ===============================
+   12. WORK SECTION
+   MAJOR SECTION COLLISION: Work intrudes into Principles
+   CANTILEVER CARDS with unified blue structural accent
+   =============================== */
+
+html[data-skin="modulor"] #work {
+  /* MAJOR COLLISION: Aggressive intrusion into Principles section */
+  margin-top: calc(var(--space-55) * -1);
+  position: relative;
+  z-index: 10; /* Elevated to create collision */
+  padding-top: var(--space-13);
+  /* Offset creates visual tension with principles blocks */
+  margin-left: var(--space-8);
+}
+
+/* "SELECTED WORK" as secondary poster moment - vertical orientation */
+html[data-skin="modulor"] #work h2 {
+  font-size: var(--type-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  writing-mode: vertical-lr;
+  position: absolute;
+  left: calc(var(--spine-offset) * -1 - var(--space-13));
+  top: var(--space-5);
+  /* Hard edge treatment - black slab */
+  background: var(--modulor-black);
+  color: var(--modulor-white);
+  padding: var(--space-13) var(--space-3);
+  transform: rotate(180deg);
+  /* Extends beyond its natural bounds */
+  min-height: var(--space-89);
+  /* Diagonal cut at bottom */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--space-8)),
+    0 100%
+  );
+}
+
+html[data-skin="modulor"] .work-grid {
+  display: grid;
+  gap: 0; /* No gap - cards interlock */
+  position: relative;
+  margin-left: var(--space-13);
+  /* Space for the unified blue accent */
+  padding-left: var(--space-8);
+}
+
+/* UNIFIED BLUE STRUCTURAL ACCENT
+   Heavy through-line - extends aggressively beyond bounds
+   Visually pins the cantilever stack */
+html[data-skin="modulor"] .work-grid::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--space-34) * -1);
+  bottom: calc(var(--space-55) * -1);
+  left: 0;
+  width: var(--space-3);
+  background: var(--modulor-blue);
+  z-index: 1;
+  /* Extends into about section below */
+}
+
+/* Leader line from through-line - technical notation */
+html[data-skin="modulor"] .work-grid::after {
+  content: '← F-13 STRUCTURAL AXIS';
+  position: absolute;
+  top: calc(var(--space-13) * -1);
+  left: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--type-micro);
+  color: var(--modulor-blue);
+  opacity: 0.8;
+  letter-spacing: 0.15em;
+  /* Vertical for tighter integration */
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+
+html[data-skin="modulor"] .project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--modulor-black);
+  border-radius: 0;
+  padding: var(--space-21);
+  padding-left: var(--space-13);
+  position: relative;
+  transition: transform 200ms ease;
+}
+
+/* Remove individual blue bars - unified accent handles this */
+html[data-skin="modulor"] .project-card::before {
+  display: none;
+}
+
+/* CANTILEVER COMPOSITION - AGGRESSIVE OVERLAP
+   Physical planes stacking with uncomfortable depth
+   Card 1: Extends aggressively right
+   Card 2: Deep tuck under card 1, crops content
+   Card 3: Counter-cantilever left, breaks grid */
+
+html[data-skin="modulor"] .project-card:nth-child(1) {
+  /* Extend aggressively beyond container */
+  width: calc(100% + var(--space-34));
+  z-index: 3;
+  /* Heavy structural border */
+  border-left-width: var(--space-3);
+  border-left-color: var(--modulor-blue);
+  /* Slight lift */
+  transform: translateY(calc(var(--space-3) * -1));
+}
+
+html[data-skin="modulor"] .project-card:nth-child(2) {
+  /* DEEP tuck under card 1 - uncomfortably obscured */
+  margin-top: calc(var(--space-21) * -.67);
+  margin-left: var(--space-13);
+  width: calc(100% - var(--space-5));
+  z-index: 2;
+  /* Heavy inset to show depth/compression */
+  box-shadow:
+    inset var(--space-3) 0 0 var(--modulor-blue),
+    inset 0 var(--space-8) var(--space-8) calc(var(--space-5) * -1) rgba(0,0,0,0.08);
+  /* Content partially cropped by card above */
+  padding-top: var(--space-13);
+}
+
+html[data-skin="modulor"] .project-card:nth-child(3) {
+  /* Counter-cantilever LEFT - breaks expected grid */
+  margin-top: calc(var(--space-13) * -1);
+  margin-left: calc(var(--space-8) * -1);
+  width: calc(100% + var(--space-21));
+  z-index: 1;
+  /* Recessed feel */
+  border-left-width: var(--space-2);
+  border-left-color: var(--modulor-blue);
+  opacity: 0.95;
+}
+
+html[data-skin="modulor"] .project-card:hover {
+  transform: translateX(var(--space-3));
+  z-index: 15;
+}
+
+html[data-skin="modulor"] .project-card h3 {
+  font-size: var(--type-base);
+  margin-bottom: var(--space-5);
+  letter-spacing: -0.01em;
+}
+
+html[data-skin="modulor"] .project-card .company,
+html[data-skin="modulor"] .project-card time {
+  font-family: var(--font-mono);
+  font-size: var(--type-sm);  /* WCAG: 16px for readable meta text */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+html[data-skin="modulor"] .project-card .description {
+  line-height: var(--line-height-body);
+}
+
+html[data-skin="modulor"] .scope-indicators {
+  font-size: var(--type-sm);  /* WCAG: 16px minimum for readability */
+  gap: var(--space-5);
+  letter-spacing: 0.08em;
+}
+
+html[data-skin="modulor"] .scope-indicators li::after {
+  content: ' /';
+  color: var(--modulor-red);
+}
+
+html[data-skin="modulor"] .scope-indicators li:last-child::after {
+  content: none;
+}
+
+/* ===============================
+   13. ABOUT SECTION
+   Portrait at Fibonacci width, grid reveal
+   =============================== */
+
+html[data-skin="modulor"] #about {
+  margin-top: var(--space-34);
+  position: relative;
+  /* Compressed feeling - work section looms above */
+  padding-top: var(--space-21);
+  /* Blue bar crops into section from left */
+  border-left: var(--space-3) solid var(--modulor-blue);
+  margin-left: calc(var(--space-8) * -1);
+  padding-left: var(--space-13);
+}
+
+/* Local grid intensification - MORE VISIBLE in this zone */
+html[data-skin="modulor"] #about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--modulor-black) 2px, transparent 2px),
+    linear-gradient(to bottom, var(--modulor-black) 2px, transparent 2px);
+  background-size: var(--space-8) var(--space-8);
+  opacity: 0.06;
+  pointer-events: none;
+  /* Grid fades toward bottom */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+}
+
+html[data-skin="modulor"] .about-container {
+  display: grid;
+  grid-template-columns: var(--space-89) 1fr;
+  gap: var(--space-21);
+  align-items: start;
+}
+
+html[data-skin="modulor"] .about-portrait {
+  width: var(--space-89);
+  max-width: none;
+  opacity: 0.85;
+  /* AGGRESSIVE break upward - intrudes into work section */
+  margin-top: calc(var(--space-21) * -1);
+  border: 3px solid var(--modulor-black);
+  /* Slight rotation - architectural tension */
+  transform: rotate(0.5deg);
+  /* Shadow creates depth against intruding area */
+  box-shadow:
+    var(--space-3) var(--space-3) 0 var(--modulor-yellow),
+    var(--space-5) var(--space-5) 0 rgba(0,0,0,0.1);
+}
+
+html[data-skin="modulor"] .about-text {
+  padding-top: var(--space-5);
+}
+
+html[data-skin="modulor"] #about h2 {
+  font-size: var(--type-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-13);
+  border-bottom: var(--spine-width) solid var(--modulor-red);
+  padding-bottom: var(--space-3);
+  display: inline-block;
+}
+
+html[data-skin="modulor"] #about p {
+  font-size: var(--type-base);
+  line-height: var(--line-height-body);
+  max-width: 55ch;
+}
+
+/* ===============================
+   14. FOOTER
+   Measurement marks, structural terminus
+   =============================== */
+
+html[data-skin="modulor"] footer {
+  margin-top: var(--space-34);
+  padding: var(--space-21) 0;
+  padding-left: calc(var(--spine-offset) + var(--space-13));
+  /* Heavy top border - structural terminus */
+  border-top: var(--space-2) solid var(--modulor-black);
+  position: relative;
+  /* Red accent bar intruding from right */
+  border-right: var(--space-3) solid var(--modulor-red);
+  margin-right: calc(var(--space-8) * -1);
+  padding-right: var(--space-13);
+}
+
+/* Tick marks along top - MORE AGGRESSIVE */
+html[data-skin="modulor"] footer::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--space-2) * -1);
+  left: 0;
+  right: 0;
+  height: var(--space-8);
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--modulor-black) 0,
+    var(--modulor-black) 2px,
+    transparent 2px,
+    transparent var(--space-13)
+  );
+  opacity: 0.3;
+}
+
+/* Footer label - technical notation */
+html[data-skin="modulor"] footer::after {
+  content: 'M-END · TERMINUS · F-89';
+  position: absolute;
+  top: calc(var(--space-3) * -1);
+  right: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--modulor-white);
+  background: var(--modulor-black);
+  padding: var(--space-2) var(--space-5);
+}
+
+html[data-skin="modulor"] .contact-links {
+  gap: var(--space-13);
+}
+
+html[data-skin="modulor"] .contact-links a {
+  font-family: var(--font-mono);
+  font-size: var(--type-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--modulor-black);
+  padding-bottom: var(--space-2);
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+html[data-skin="modulor"] .contact-links a:hover {
+  color: var(--modulor-red);
+  border-color: var(--modulor-red);
+}
+
+/* ===============================
+   15. THEME CONTROL
+   =============================== */
+
+html[data-skin="modulor"] .theme-control {
+  background: var(--color-bg);
+  border: 1px solid var(--modulor-black);
+  border-radius: 0;
+  z-index: 100;
+}
+
+html[data-skin="modulor"] .theme-toggle {
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: var(--space-3) var(--space-5);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-text-primary);
+  transition: background 150ms ease, color 150ms ease;
+}
+
+html[data-skin="modulor"] .theme-toggle:hover {
+  background: var(--modulor-black);
+  color: var(--modulor-white);
+}
+
+html[data-skin="modulor"] .theme-menu {
+  border-radius: 0;
+  border: 1px solid var(--modulor-black);
+  background: var(--color-bg);
+}
+
+html[data-skin="modulor"] .theme-menu button {
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: var(--type-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ===============================
+   16. EXPANDED CONTENT (Project Cards)
+   =============================== */
+
+html[data-skin="modulor"] .expanded-content {
+  border-top: 1px solid var(--modulor-black);
+  margin-top: var(--space-13);
+  padding-top: var(--space-13);
+}
+
+html[data-skin="modulor"] .expanded-content h4 {
+  font-family: var(--font-mono);
+  font-size: var(--type-sm);  /* WCAG: 16px minimum */
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-3);
+  color: var(--modulor-blue);
+}
+
+/* contrast fix: dark h4 — #5b7cc4 on #252320 was ~3.8:1, #8aa3d9 is ~6.5:1 */
+html[data-skin="modulor"][data-theme="dark"] .expanded-content h4 {
+  color: #8aa3d9;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="modulor"]:not([data-theme]) .expanded-content h4 {
+    color: #8aa3d9;
+  }
+}
+
+html[data-skin="modulor"] .expanded-content ul {
+  padding-left: var(--space-8);
+}
+
+html[data-skin="modulor"] .expanded-content li {
+  line-height: var(--line-height-body);
+  margin-bottom: var(--space-3);
+}
+
+html[data-skin="modulor"] .collapse-toggle {
+  font-family: var(--font-mono);
+  font-size: var(--type-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+}
+
+/* ===============================
+   17. RESPONSIVE ADJUSTMENTS
+   Fluid, proportional - not "optimized"
+   =============================== */
+
+@media (max-width: 55rem) {
+  html[data-skin="modulor"] {
+    /* Maintain tension even on smaller screens */
+    --datum-thickness: var(--space-3);
+    --spine-offset: var(--space-5);
+    --spine-width: 4px;
+    /* Reduce collision intensity slightly for usability */
+    --collision-work-into-principles: var(--space-34);
+  }
+
+  html[data-skin="modulor"] main {
+    padding: var(--space-13) var(--space-5);
+    padding-left: calc(var(--spine-offset) + var(--space-13));
+  }
+
+  html[data-skin="modulor"] #hero {
+    min-height: 60vh;
+    margin-left: calc(var(--spine-offset) * -1 - var(--spine-width));
+    padding-left: calc(var(--spine-offset) + var(--space-8));
+  }
+
+  html[data-skin="modulor"] #hero h1 {
+    font-size: clamp(var(--type-2xl), 12vw, var(--type-3xl));
+    margin-left: calc(var(--space-13) * -1);
+  }
+
+  html[data-skin="modulor"] #credibility {
+    margin-left: calc((var(--spine-offset) + var(--space-13) + var(--space-5)) * -1);
+    margin-right: calc(var(--space-5) * -1);
+    padding: var(--space-8) var(--space-13);
+    padding-left: calc(var(--spine-offset) + var(--space-13));
+    /* Maintain slight rotation */
+    transform: rotate(-0.2deg);
+    /* Reduce overlap but keep tension */
+    margin-top: calc(var(--space-34) * -1);
+  }
+
+  html[data-skin="modulor"] #capabilities h2 {
+    writing-mode: horizontal-tb;
+    transform: none;
+    position: static;
+    margin-bottom: var(--space-13);
+  }
+
+  html[data-skin="modulor"] .capabilities-grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+
+  html[data-skin="modulor"] .capabilities-grid article:nth-child(3) {
+    max-width: 100%;
+  }
+
+  html[data-skin="modulor"] .principles-list {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-skin="modulor"] .principles-list li:nth-child(odd),
+  html[data-skin="modulor"] .principles-list li:nth-child(even) {
+    grid-column: 1;
+    margin: 0 0 calc(var(--space-3) * -1) 0;
+  }
+
+  html[data-skin="modulor"] #work h2 {
+    writing-mode: horizontal-tb;
+    transform: none;
+    position: static;
+    margin-bottom: var(--space-13);
+    padding: var(--space-3) var(--space-5);
+  }
+
+  html[data-skin="modulor"] .work-grid {
+    margin-left: 0;
+    padding-left: var(--space-5);
+  }
+
+  html[data-skin="modulor"] .project-card:nth-child(1),
+  html[data-skin="modulor"] .project-card:nth-child(2),
+  html[data-skin="modulor"] .project-card:nth-child(3) {
+    margin-left: 0;
+    width: 100%;
+    margin-top: calc(var(--space-5) * -1);
+  }
+
+  html[data-skin="modulor"] .project-card:nth-child(1) {
+    margin-top: 0;
+  }
+
+  html[data-skin="modulor"] .about-container {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-skin="modulor"] .about-portrait {
+    width: var(--space-34);
+    margin-top: 0;
+  }
+
+  html[data-skin="modulor"] footer {
+    padding-left: calc(var(--spine-offset) + var(--space-8));
+  }
+}
+
+/* ===============================
+   18. REDUCED MOTION
+   =============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-skin="modulor"] .project-card,
+  html[data-skin="modulor"] .theme-toggle,
+  html[data-skin="modulor"] .contact-links a {
+    transition: none;
+  }
+}
