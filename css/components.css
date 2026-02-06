@@ -499,3 +499,40 @@
     transition: none !important;
   }
 }
+
+/* ── Modulor toggle (φ) ─────────────────────────────────────── */
+
+.modulor-toggle {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 100;
+  padding: var(--space-xs);
+  border: none;
+  background: none;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  line-height: 1;
+  color: var(--color-text-tertiary);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.modulor-toggle:hover,
+.modulor-toggle:focus-visible {
+  opacity: 0.65;
+  color: var(--color-accent-hover);
+}
+
+.modulor-toggle:focus-visible {
+  outline: 1.5px solid var(--color-focus-ring);
+  outline-offset: 4px;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modulor-toggle { transition: none; }
+}

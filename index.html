@@ -24,6 +24,14 @@
     <!-- Theme: loaded in head to set data-theme before first paint -->
     <script src="js/theme.js"></script>
 
+    <!-- Modulor skin: apply before paint to prevent flash -->
+    <script>
+      if (localStorage.getItem('skin') === 'modulor') {
+        document.documentElement.setAttribute('data-skin', 'modulor');
+        document.write('<link rel="stylesheet" href="css/skins/modulor.css">');
+      }
+    </script>
+
     <!-- Umami analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
   </head>
@@ -1136,6 +1144,8 @@
       </nav>
     </footer>
 
+    <button id="modulor-toggle" class="modulor-toggle" aria-label="Toggle Modulor skin">φ</button>
+    <script src="js/modulor-toggle.js"></script>
     <script src="js/main.js"></script>
     <script src="js/interactions.js"></script>
   </body>

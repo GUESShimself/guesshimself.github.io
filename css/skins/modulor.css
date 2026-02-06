@@ -1,5 +1,5 @@
 /* Modulor Skin — Le Corbusier's proportional doctrine
-   CSS Zen Garden experimental theme
+   CSS Zen Garden-esque experimental theme
    All measurements derive from Golden Ratio (phi) and Fibonacci sequences
    Supports both light and dark appearance modes
 
@@ -20,39 +20,41 @@
 html[data-skin="modulor"] {
   /* === PHI CONSTANTS === */
   --phi: 1.618;
-  --phi-inverse: 0.618;
-  --phi-squared: 2.618;
-  --phi-cubed: 4.236;
+  --phi-inverse: calc(1 / var(--phi));
+  --phi-squared: calc(var(--phi) * var(--phi));
+  --phi-cubed: calc(var(--phi) * var(--phi) * var(--phi));
 
   /* === MODULOR TYPE SCALE (Golden Ratio) === */
-  /* SHIFTED UP: Body text at phi^1 (1.618rem / ~26px)
+  /* SHIFTED UP: Body text at phi^1 (~26px)
      Creates bold, architectural, signage-like body copy
-     Hierarchy scales dramatically toward poster sizes */
-  --type-micro: 0.382rem;  /* 1/phi^2 ~6px - measurement ticks only */
-  --type-xs: 0.618rem;     /* 1/phi ~10px - annotations, labels */
-  --type-sm: 1rem;         /* phi^0 ~16px - small text, metadata */
-  --type-base: 1.618rem;   /* phi^1 ~26px - BODY TEXT (bold, readable) */
-  --type-lg: 2.618rem;     /* phi^2 ~42px - subheadings */
-  --type-xl: 4.236rem;     /* phi^3 ~68px - section heads */
-  --type-2xl: 6.854rem;    /* phi^4 ~110px - major headings */
-  --type-3xl: 11.089rem;   /* phi^5 ~177px - display */
-  --type-4xl: 17.942rem;   /* phi^6 ~287px - poster */
-  --type-5xl: 29.03rem;    /* phi^7 ~464px - EXTREME POSTER */
+     Hierarchy scales dramatically toward poster sizes
+     Each step = previous × phi (up) or × 1/phi (down) */
+  --type-sm: 1rem;                              /* phi^0 ~16px - small text, metadata */
+  --type-xs: calc(var(--type-sm) / var(--phi)); /* phi^-1 ~10px - annotations, labels */
+  --type-micro: calc(var(--type-xs) / var(--phi)); /* phi^-2 ~6px - measurement ticks only */
+  --type-base: calc(var(--type-sm) * var(--phi));   /* phi^1 ~26px - BODY TEXT (bold, readable) */
+  --type-lg: calc(var(--type-base) * var(--phi));   /* phi^2 ~42px - subheadings */
+  --type-xl: calc(var(--type-lg) * var(--phi));     /* phi^3 ~68px - section heads */
+  --type-2xl: calc(var(--type-xl) * var(--phi));    /* phi^4 ~110px - major headings */
+  --type-3xl: calc(var(--type-2xl) * var(--phi));   /* phi^5 ~177px - display */
+  --type-4xl: calc(var(--type-3xl) * var(--phi));   /* phi^6 ~287px - poster */
+  --type-5xl: calc(var(--type-4xl) * var(--phi));   /* phi^7 ~464px - EXTREME POSTER */
 
   /* === FIBONACCI SPACING SCALE (x 0.25rem) === */
-  --space-1: 0.25rem;    /* 4px - fib(1) */
-  --space-2: 0.5rem;     /* 8px - fib(2) */
-  --space-3: 0.75rem;    /* 12px - fib(3) */
-  --space-5: 1.25rem;    /* 20px - fib(5) */
-  --space-8: 2rem;       /* 32px - fib(8) */
-  --space-13: 3.25rem;   /* 52px - fib(13) */
-  --space-21: 5.25rem;   /* 84px - fib(21) */
-  --space-34: 8.5rem;    /* 136px - fib(34) */
-  --space-55: 13.75rem;  /* 220px - fib(55) */
-  --space-89: 22.25rem;  /* 356px - fib(89) */
+  /* Each step = sum of two previous (Fibonacci recurrence) */
+  --space-1: 0.25rem;                                /* 4px - fib(1) */
+  --space-2: calc(var(--space-1) * 2);               /* 8px - fib(2) */
+  --space-3: calc(var(--space-1) + var(--space-2));   /* 12px - fib(3) */
+  --space-5: calc(var(--space-2) + var(--space-3));   /* 20px - fib(5) */
+  --space-8: calc(var(--space-3) + var(--space-5));   /* 32px - fib(8) */
+  --space-13: calc(var(--space-5) + var(--space-8));  /* 52px - fib(13) */
+  --space-21: calc(var(--space-8) + var(--space-13)); /* 84px - fib(21) */
+  --space-34: calc(var(--space-13) + var(--space-21)); /* 136px - fib(34) */
+  --space-55: calc(var(--space-21) + var(--space-34)); /* 220px - fib(55) */
+  --space-89: calc(var(--space-34) + var(--space-55)); /* 356px - fib(89) */
 
   /* === VERTICAL RHYTHM === */
-  --line-height-body: 1.618;
+  --line-height-body: var(--phi);
   --line-height-heading: 1.2;
   --line-height-dense: 1;
 
@@ -62,9 +64,9 @@ html[data-skin="modulor"] {
   /* === PAGE-LEVEL STRUCTURAL ELEMENTS === */
   /* Horizontal datum bar - passes through content at golden section */
   --datum-thickness: var(--space-5);   /* THICKER - more aggressive slice */
-  --datum-offset: calc(100vh * 0.382);  /* Golden section of viewport */
+  --datum-offset: calc(100vh * (1 - var(--phi-inverse)));  /* Golden section of viewport */
   /* Secondary datum - creates tension */
-  --datum-secondary-offset: calc(100vh * 0.618);
+  --datum-secondary-offset: calc(100vh * var(--phi-inverse));
 
   /* Vertical spine - the structural axis */
   --spine-width: 5px;                  /* HEAVIER structural presence */
@@ -584,7 +586,7 @@ html[data-skin="modulor"] #capabilities h2 {
 html[data-skin="modulor"] .capabilities-grid {
   display: grid;
   /* Golden ratio columns */
-  grid-template-columns: calc(100% * 0.382) calc(100% * 0.618 - var(--space-5));
+  grid-template-columns: calc(100% * (1 - var(--phi-inverse))) calc(100% * var(--phi-inverse) - var(--space-5));
   gap: var(--space-5);
   margin-left: var(--space-8);
 }
@@ -625,7 +627,7 @@ html[data-skin="modulor"] .capabilities-grid article:nth-child(2) {
 
 html[data-skin="modulor"] .capabilities-grid article:nth-child(3) {
   grid-column: 1 / -1;
-  max-width: calc(100% * 0.618);
+  max-width: calc(100% * var(--phi-inverse));
   /* Third article tucks under, creates depth */
   margin-top: calc(var(--space-5) * -1);
   z-index: 0;
@@ -731,7 +733,12 @@ html[data-skin="modulor"] .principles-list li:nth-child(4) {
 }
 
 html[data-skin="modulor"] .principle-anchor {
-  display: none;
+  font-size: var(--font-size-3xl);
+  left: calc(var(--space-3) * -1);
+  top: var(--space-34);
+  padding: var(--space-2);
+  background-color: var(--modulor-blue);
+  color: var(--modulor-white);
 }
 
 /* ===============================
@@ -849,7 +856,7 @@ html[data-skin="modulor"] .project-card:nth-child(1) {
 
 html[data-skin="modulor"] .project-card:nth-child(2) {
   /* DEEP tuck under card 1 - uncomfortably obscured */
-  margin-top: calc(var(--space-21) * -1);
+  margin-top: calc(var(--space-21) * -.67);
   margin-left: var(--space-13);
   width: calc(100% - var(--space-5));
   z-index: 2;
@@ -945,13 +952,13 @@ html[data-skin="modulor"] #about::before {
 
 html[data-skin="modulor"] .about-container {
   display: grid;
-  grid-template-columns: var(--space-55) 1fr;
+  grid-template-columns: var(--space-89) 1fr;
   gap: var(--space-21);
   align-items: start;
 }
 
 html[data-skin="modulor"] .about-portrait {
-  width: var(--space-55);
+  width: var(--space-89);
   max-width: none;
   opacity: 0.85;
   /* AGGRESSIVE break upward - intrudes into work section */
