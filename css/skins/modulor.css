@@ -201,6 +201,7 @@ html[data-skin="modulor"] body {
   background-image: none;
   background-color: var(--color-bg);
   position: relative;
+  overflow-x: hidden;
 }
 
 /* MINOR GRID - subtle baseline rhythm (fib-5 spacing) */
@@ -862,8 +863,8 @@ html[data-skin="modulor"] .project-card:nth-child(2) {
   z-index: 2;
   /* Heavy inset to show depth/compression */
   box-shadow:
-    inset var(--space-3) 0 0 var(--modulor-blue),
-    inset 0 var(--space-8) var(--space-8) calc(var(--space-5) * -1) rgba(0,0,0,0.08);
+    inset var(--space-3) 0 0 var(--modulor-blue);
+    /* inset 0 var(--space-8) var(--space-8) calc(var(--space-5) * -1) rgba(0,0,0,0.08); */
   /* Content partially cropped by card above */
   padding-top: var(--space-13);
 }
@@ -1111,9 +1112,11 @@ html[data-skin="modulor"] .theme-menu button {
    16. EXPANDED CONTENT (Project Cards)
    =============================== */
 
-html[data-skin="modulor"] .expanded-content {
-  border-top: 1px solid var(--modulor-black);
-  margin-top: var(--space-13);
+html[data-skin="modulor"] .expanded-wrapper {
+  padding-top: 0;
+}
+
+html[data-skin="modulor"] .project-card.expanded .expanded-content {
   padding-top: var(--space-13);
 }
 
@@ -1148,7 +1151,7 @@ html[data-skin="modulor"] .expanded-content li {
 
 html[data-skin="modulor"] .collapse-toggle {
   font-family: var(--font-mono);
-  font-size: var(--type-micro);
+  font-size: var(--type-xs);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   border-radius: 0;
