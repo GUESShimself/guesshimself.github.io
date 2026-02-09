@@ -40,7 +40,12 @@
   // Init state (attribute may already be set by head script)
   btn.setAttribute('aria-pressed', isActive() ? 'true' : 'false');
 
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   btn.addEventListener('click', function () {
     if (isActive()) { deactivate(); } else { activate(); }
+    scrollToTop();
   });
 })();
