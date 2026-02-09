@@ -1,0 +1,24 @@
+# Development Rules
+
+## Design Philosophy
+- Prioritize systems thinking: look for patterns and reusable solutions over one-off fixes
+- Balance flexibility with constraints - establish guardrails that enable controlled customization
+- Every design decision should scale and maintain consistency across contexts
+- Favor restrained, editorial aesthetics over decorative complexity
+
+## Code & Implementation
+- Use semantic HTML5 elements
+- Maintain existing variable font implementation (Fraunces and Inter)
+- Keep micro-interactions subtle and purposeful
+- Follow established naming conventions and file organization patterns
+
+## Working with AI Assistance
+- Present options and trade-offs rather than making decisions for me
+- Explain the reasoning behind suggestions so I can make informed choices
+- Don't assume what's "best" - I want to maintain my design judgment and decision-making skills
+- Flag potential issues or considerations, but let me decide the path forward
+
+## Future-Proofing
+- Consider how solutions support planned features: blog posts, individual case study pages, and navigation systems
+- Keep routing and content structure flexible for growth
+- Document architectural decisions that will impact future development

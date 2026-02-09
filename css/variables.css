@@ -63,7 +63,7 @@ html[data-theme="dark"] {
   --color-text-primary: #e4dfd8;
   --color-text-primary-hover: #ebe7e0;
   --color-text-secondary: #a89f93;
-  --color-text-tertiary: #8e8680;
+  --color-text-tertiary: #938a84;
   --color-surface-hover: rgba(255, 255, 255, 0.06);
   --color-accent: #7a9ec4;
   --color-accent-hover: #9ab8d8;
@@ -84,7 +84,7 @@ html[data-theme="dark"] {
     --color-text-primary: #e4dfd8;
     --color-text-primary-hover: #ebe7e0;
     --color-text-secondary: #a89f93;
-    --color-text-tertiary: #8e8680;
+    --color-text-tertiary: #938a84;
     --color-surface-hover: rgba(255, 255, 255, 0.06);
     --color-accent: #7a9ec4;
     --color-accent-hover: #9ab8d8;
