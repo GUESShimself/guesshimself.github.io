@@ -22,3 +22,12 @@
 - Consider how solutions support planned features: blog posts, individual case study pages, and navigation systems
 - Keep routing and content structure flexible for growth
 - Document architectural decisions that will impact future development
+
+## Visual Changes Protocol
+For CSS, layout, or structural changes that could affect visual presentation:
+1. Capture screenshots of affected areas before starting
+2. Complete the work
+3. Take after screenshots for comparison
+4. Document visual changes in CLAUDE.md
+
+For minor text or content updates, skip the screenshot process.

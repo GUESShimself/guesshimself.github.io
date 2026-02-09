@@ -58,19 +58,16 @@ html[data-skin="modulor"] {
   --line-height-heading: 1.2;
   --line-height-dense: 1;
 
-  /* === FLUID SIZING === */
-  --fluid-hero: clamp(var(--type-xl), 8vw, var(--type-3xl));
-
   /* === PAGE-LEVEL STRUCTURAL ELEMENTS === */
   /* Horizontal datum bar - passes through content at golden section */
-  --datum-thickness: var(--space-5);   /* THICKER - more aggressive slice */
+  --datum-thickness: var(--space-3);   /* Mobile: lighter slice */
   --datum-offset: calc(100vh * (1 - var(--phi-inverse)));  /* Golden section of viewport */
   /* Secondary datum - creates tension */
   --datum-secondary-offset: calc(100vh * var(--phi-inverse));
 
   /* Vertical spine - the structural axis */
-  --spine-width: 5px;                  /* HEAVIER structural presence */
-  --spine-offset: var(--space-13);     /* Fibonacci step from left */
+  --spine-width: 3px;                  /* Mobile: lighter presence */
+  --spine-offset: var(--space-3);      /* Mobile: tight to left edge */
 
   /* Grid system */
   --grid-minor-size: var(--space-5);   /* fib(5) */
@@ -80,8 +77,8 @@ html[data-skin="modulor"] {
   --grid-major-thickness: 3px;         /* Heavier lines */
 
   /* Collision intensities */
-  --collision-work-into-principles: var(--space-55);  /* Major intrusion */
-  --collision-credibility-into-hero: var(--space-55); /* Aggressive overlap */
+  --collision-work-into-principles: var(--space-21);  /* Mobile: reduced intrusion */
+  --collision-credibility-into-hero: var(--space-21); /* Mobile: reduced overlap */
 
   /* ===============================
      2. COLOR PALETTE - LIGHT
@@ -253,9 +250,9 @@ html[data-skin="modulor"] body::after {
 html[data-skin="modulor"] main {
   position: relative;
   z-index: 5;
-  padding: var(--space-21) var(--space-8);
+  padding: var(--space-8) var(--space-3);
   /* Offset content to align with spine */
-  padding-left: calc(var(--spine-offset) + var(--space-21));
+  padding-left: calc(var(--spine-offset) + var(--space-8));
 }
 
 /* HORIZONTAL DATUM LINES
@@ -271,7 +268,7 @@ html[data-skin="modulor"] main::before {
   background: var(--modulor-red);
   z-index: 3;
   pointer-events: none;
-  /* Hard slice - no blend, pure overlay */
+  /* Structural overlay with blend mode */
   box-shadow:
     /* Secondary datum at inverse golden section */
     0 calc(var(--datum-secondary-offset) - var(--datum-offset)) 0 0 var(--modulor-blue),
@@ -280,6 +277,7 @@ html[data-skin="modulor"] main::before {
     calc(var(--space-13) * 3) var(--space-8) 0 0 var(--modulor-red),
     calc(var(--space-13) * 5) var(--space-8) 0 0 var(--modulor-red),
     calc(var(--space-13) * 7) var(--space-8) 0 0 var(--modulor-red);
+    mix-blend-mode: multiply;
 }
 
 html[data-skin="modulor"][data-theme="dark"] main::before {
@@ -325,7 +323,8 @@ html[data-skin="modulor"] section {
    Prefix codes (M = Modulor, F = Fibonacci step)
    Using xs scale (~10px) for readable annotations */
 html[data-skin="modulor"] section::after {
-  /* Label with prefix code */
+  /* Label with prefix code — hidden on mobile, shown at 48rem+ */
+  display: none;
   position: absolute;
   top: var(--space-2);
   right: var(--space-3);
@@ -351,6 +350,8 @@ html[data-skin="modulor"] #about::after { content: 'F-21 · info'; }
 /* Vertical label on capabilities (additional drafting notation) */
 html[data-skin="modulor"] #capabilities::before {
   content: 'φ = 1.618033988749';
+  /* Hidden on mobile, shown at 48rem+ */
+  display: none;
   position: absolute;
   top: var(--space-21);
   left: calc(var(--spine-offset) * -1 + var(--space-2));
@@ -369,37 +370,36 @@ html[data-skin="modulor"] #capabilities::before {
    =============================== */
 
 html[data-skin="modulor"] #hero {
-  padding: var(--space-55) 0 var(--space-89) 0;
+  padding: var(--space-21) 0 var(--space-34) 0;
   overflow: visible;
   /* Pin to spine via left border */
   border-left: var(--spine-width) solid var(--modulor-black);
   margin-left: calc(var(--spine-offset) * -1 - var(--spine-width));
-  padding-left: calc(var(--spine-offset) + var(--space-13));
-  min-height: 80vh;
+  padding-left: calc(var(--spine-offset) + var(--space-8));
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* POSTER TYPOGRAPHY MOMENT - EXTREME
+/* POSTER TYPOGRAPHY MOMENT
    Hero name at uncomfortable scale - architectural manifesto
-   Shifted UP: --type-4xl (~287px) to --type-5xl (~464px) */
+   Mobile: φ³–φ⁴, scaling up to φ⁵–φ⁶ at desktop */
 html[data-skin="modulor"] #hero h1 {
-  font-size: clamp(var(--type-3xl), 25vw, var(--type-4xl));
+  font-size: clamp(var(--type-xl), 12vw, var(--type-2xl));
   line-height: 0.8;
   font-weight: 400;
   letter-spacing: -0.08em;
   text-transform: uppercase;
   position: relative;
   margin-bottom: var(--space-8);
-  /* AGGRESSIVE cantilever - breaks spine alignment */
-  margin-left: calc(var(--space-55) * -1);
+  /* Mild cantilever on mobile */
+  margin-left: calc(var(--space-8) * -1);
   /* Hard baseline - thick rule */
   padding-bottom: var(--space-3);
   border-bottom: var(--space-3) solid var(--modulor-black);
   display: inline-block;
-  /* Crops into left edge of viewport on smaller screens */
-  max-width: calc(100% + var(--space-55));
+  max-width: calc(100% + var(--space-8));
 }
 
 html[data-skin="modulor"] #hero h1::before {
@@ -452,11 +452,11 @@ html[data-skin="modulor"] #hero .role {
 }
 
 html[data-skin="modulor"] #hero .positioning {
-  font-size: var(--type-lg);
+  font-size: var(--type-base);
   line-height: var(--line-height-body);
   max-width: 38ch;
-  /* Offset from spine alignment */
-  margin-left: var(--space-21);
+  /* Offset from spine alignment — scales up at larger breakpoints */
+  margin-left: calc(var(--space-8) * -1);
   /* Slight crop at bottom - credibility slab will overlap */
   padding-bottom: var(--space-13);
 }
@@ -477,27 +477,26 @@ html[data-skin="modulor"] #credibility {
   background: var(--modulor-red);
   color: var(--modulor-white);
   /* Break containment - extend beyond viewport */
-  margin-left: calc((var(--spine-offset) + var(--space-21) + var(--space-8)) * -1 - var(--space-13));
-  margin-right: calc(var(--space-13) * -1);
-  padding: var(--space-21) var(--space-21);
-  padding-left: calc(var(--spine-offset) + var(--space-55));
-  /* AGGRESSIVE overlap into hero - crops into positioning text */
-  margin-top: var(--collision-credibility-into-hero);
-  margin-top: calc(var(--space-55) * -1);
+  margin-left: calc((var(--spine-offset) + var(--space-8) + var(--space-3)) * -1);
+  margin-right: calc(var(--space-3) * -1);
+  padding: var(--space-8) var(--space-8);
+  padding-left: calc(var(--spine-offset) + var(--space-8));
+  /* Overlap into hero */
+  margin-top: calc(var(--space-21) * -1);
   position: relative;
   z-index: 6;
   /* Slight rotation - architectural tension */
-  transform: rotate(-0.3deg);
+  transform: rotate(-0.2deg);
   transform-origin: left center;
 }
 
-/* Diagonal cut corner - LARGER, more aggressive */
+/* Diagonal cut corner - scales up across breakpoints */
 html[data-skin="modulor"] #credibility::before {
   content: '';
   position: absolute;
   bottom: 0;
   right: 0;
-  width: var(--space-89);
+  width: var(--space-34);
   height: var(--space-21);
   background: var(--color-bg);
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
@@ -574,22 +573,21 @@ html[data-skin="modulor"] #capabilities h2 {
   font-size: var(--type-xl);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  /* Rotate and position as drafting label */
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  position: absolute;
-  left: calc(var(--spine-offset) * -1 - var(--space-13));
-  top: var(--space-21);
+  /* Horizontal on mobile — vertical at 48rem+ */
+  writing-mode: horizontal-tb;
+  transform: none;
+  position: static;
+  margin-bottom: var(--space-13);
   color: var(--color-text-primary);  /* WCAG: use theme-aware color */
   opacity: 0.8;
 }
 
 html[data-skin="modulor"] .capabilities-grid {
   display: grid;
-  /* Golden ratio columns */
-  grid-template-columns: calc(100% * (1 - var(--phi-inverse))) calc(100% * var(--phi-inverse) - var(--space-5));
+  /* Single column on mobile — golden ratio columns at 48rem+ */
+  grid-template-columns: 1fr;
   gap: var(--space-5);
-  margin-left: var(--space-8);
+  margin-left: 0;
 }
 
 html[data-skin="modulor"] .capabilities-grid article {
@@ -628,7 +626,7 @@ html[data-skin="modulor"] .capabilities-grid article:nth-child(2) {
 
 html[data-skin="modulor"] .capabilities-grid article:nth-child(3) {
   grid-column: 1 / -1;
-  max-width: calc(100% * var(--phi-inverse));
+  max-width: 100%;
   /* Third article tucks under, creates depth */
   margin-top: calc(var(--space-5) * -1);
   z-index: 0;
@@ -681,13 +679,15 @@ html[data-skin="modulor"] #principles::before {
 
 html[data-skin="modulor"] #principles h2 {
   font-size: var(--type-2xl);
-  margin-bottom: var(--space-21);
+  margin-left: calc(var(--space-13) * -1);
+  margin-bottom: var(--space-13);
   letter-spacing: -0.02em;
 }
 
 html[data-skin="modulor"] .principles-list {
   display: grid;
-  grid-template-columns: var(--space-13) 1fr var(--space-8);
+  /* Single column on mobile — 3-column interlocking at 48rem+ */
+  grid-template-columns: 1fr;
   gap: 0;
 }
 
@@ -699,33 +699,31 @@ html[data-skin="modulor"] .principles-list li {
   line-height: var(--line-height-body);
 }
 
-/* Interlocking positions - AGGRESSIVE OVERLAP */
+/* Mobile: stacked with slight overlap, break left into spine — interlocking at 48rem+ */
 html[data-skin="modulor"] .principles-list li:nth-child(odd) {
-  grid-column: 1 / 3;
-  margin-bottom: calc(var(--space-13) * -1);
+  grid-column: 1;
+  margin-bottom: calc(var(--space-3) * -1);
+  margin-left: calc(var(--spine-offset) * -2);
 }
 
 html[data-skin="modulor"] .principles-list li:nth-child(even) {
-  grid-column: 2 / 4;
-  margin-top: calc(var(--space-8) * -1);
-  /* Inset from overlap */
-  padding-top: var(--space-21);
+  grid-column: 1;
+  margin-top: 0;
+  padding-top: var(--space-13);
+  margin-bottom: calc(var(--space-3) * -1);
+  margin-left: calc(var(--spine-offset) * -2);
 }
 
 html[data-skin="modulor"] .principles-list li:nth-child(1) {
   z-index: 4;
-  /* First item extends left, crops at viewport edge */
-  margin-left: calc(var(--space-8) * -1);
   padding-left: var(--space-13);
 }
 html[data-skin="modulor"] .principles-list li:nth-child(2) {
   z-index: 3;
-  /* Uncomfortably deep under item 1 */
   box-shadow: inset 0 var(--space-5) var(--space-5) calc(var(--space-3) * -1) rgba(0,0,0,0.04);
 }
 html[data-skin="modulor"] .principles-list li:nth-child(3) {
   z-index: 2;
-  margin-left: calc(var(--space-5) * -1);
 }
 html[data-skin="modulor"] .principles-list li:nth-child(4) {
   z-index: 1;
@@ -750,46 +748,38 @@ html[data-skin="modulor"] .principle-anchor {
 
 html[data-skin="modulor"] #work {
   /* MAJOR COLLISION: Aggressive intrusion into Principles section */
-  margin-top: calc(var(--space-55) * -1);
+  margin-top: calc(var(--collision-work-into-principles) * -1);
   position: relative;
   z-index: 10; /* Elevated to create collision */
   padding-top: var(--space-13);
-  /* Offset creates visual tension with principles blocks */
-  margin-left: var(--space-8);
+  /* Offset creates visual tension with principles blocks — restored at 48rem+ */
+  margin-left: calc(var(--space-13) * -1);
 }
 
-/* "SELECTED WORK" as secondary poster moment - vertical orientation */
+/* "SELECTED WORK" — horizontal on mobile, vertical poster moment at 48rem+ */
 html[data-skin="modulor"] #work h2 {
   font-size: var(--type-xl);
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  writing-mode: vertical-lr;
-  position: absolute;
-  left: calc(var(--spine-offset) * -1 - var(--space-13));
-  top: var(--space-5);
+  writing-mode: horizontal-tb;
+  position: static;
   /* Hard edge treatment - black slab */
   background: var(--modulor-black);
   color: var(--modulor-white);
-  padding: var(--space-13) var(--space-3);
-  transform: rotate(180deg);
-  /* Extends beyond its natural bounds */
-  min-height: var(--space-89);
-  /* Diagonal cut at bottom */
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - var(--space-8)),
-    0 100%
-  );
+  padding: var(--space-3) var(--space-5);
+  transform: none;
+  min-height: auto;
+  clip-path: none;
+  margin-bottom: var(--space-13);
 }
 
 html[data-skin="modulor"] .work-grid {
   display: grid;
   gap: 0; /* No gap - cards interlock */
   position: relative;
-  margin-left: var(--space-13);
+  margin-left: 0;
   /* Space for the unified blue accent */
-  padding-left: var(--space-8);
+  padding-left: var(--space-5);
 }
 
 /* UNIFIED BLUE STRUCTURAL ACCENT
@@ -810,6 +800,8 @@ html[data-skin="modulor"] .work-grid::before {
 /* Leader line from through-line - technical notation */
 html[data-skin="modulor"] .work-grid::after {
   content: '← F-13 STRUCTURAL AXIS';
+  /* Hidden on mobile, shown at 48rem+ */
+  display: none;
   position: absolute;
   top: calc(var(--space-13) * -1);
   left: var(--space-3);
@@ -827,8 +819,8 @@ html[data-skin="modulor"] .project-card {
   background: var(--color-surface);
   border: 1px solid var(--modulor-black);
   border-radius: 0;
-  padding: var(--space-21);
-  padding-left: var(--space-13);
+  padding: var(--space-8);
+  padding-left: var(--space-5);
   position: relative;
   transition: transform 200ms ease;
 }
@@ -838,42 +830,33 @@ html[data-skin="modulor"] .project-card::before {
   display: none;
 }
 
-/* CANTILEVER COMPOSITION - AGGRESSIVE OVERLAP
-   Physical planes stacking with uncomfortable depth
-   Card 1: Extends aggressively right
-   Card 2: Deep tuck under card 1, crops content
-   Card 3: Counter-cantilever left, breaks grid */
-
+/* CANTILEVER COMPOSITION
+   Mobile: full-width stacked with slight overlap
+   64rem+: aggressive cantilever — card 1 extends right,
+   card 2 tucks under, card 3 counter-cantilevers left */
 html[data-skin="modulor"] .project-card:nth-child(1) {
-  /* Extend aggressively beyond container */
-  width: calc(100% + var(--space-34));
+  width: 100%;
   z-index: 3;
   /* Heavy structural border */
   border-left-width: var(--space-3);
   border-left-color: var(--modulor-blue);
-  /* Slight lift */
-  transform: translateY(calc(var(--space-3) * -1));
+  transform: none;
 }
 
 html[data-skin="modulor"] .project-card:nth-child(2) {
-  /* DEEP tuck under card 1 - uncomfortably obscured */
-  margin-top: calc(var(--space-21) * -.67);
-  margin-left: var(--space-13);
-  width: calc(100% - var(--space-5));
+  margin-top: calc(var(--space-5) * -1);
+  margin-left: 0;
+  width: 100%;
   z-index: 2;
-  /* Heavy inset to show depth/compression */
   box-shadow:
     inset var(--space-3) 0 0 var(--modulor-blue);
-    /* inset 0 var(--space-8) var(--space-8) calc(var(--space-5) * -1) rgba(0,0,0,0.08); */
-  /* Content partially cropped by card above */
-  padding-top: var(--space-13);
+  padding-top: var(--space-8);
 }
 
 html[data-skin="modulor"] .project-card:nth-child(3) {
-  /* Counter-cantilever LEFT - breaks expected grid */
-  margin-top: calc(var(--space-13) * -1);
-  margin-left: calc(var(--space-8) * -1);
-  width: calc(100% + var(--space-21));
+  margin-top: calc(var(--space-5) * -1);
+  margin-left: 0;
+  width: 100%;
   z-index: 1;
   /* Recessed feel */
   border-left-width: var(--space-2);
@@ -953,17 +936,18 @@ html[data-skin="modulor"] #about::before {
 
 html[data-skin="modulor"] .about-container {
   display: grid;
-  grid-template-columns: var(--space-89) 1fr;
-  gap: var(--space-21);
+  /* Single column on mobile — side-by-side at 48rem+ */
+  grid-template-columns: 1fr;
+  gap: var(--space-13);
   align-items: start;
 }
 
 html[data-skin="modulor"] .about-portrait {
-  width: var(--space-89);
+  width: var(--space-34);
   max-width: none;
   opacity: 0.85;
-  /* AGGRESSIVE break upward - intrudes into work section */
-  margin-top: calc(var(--space-21) * -1);
+  /* No upward intrusion on mobile — restored at 64rem+ */
+  margin-top: 0;
   border: 3px solid var(--modulor-black);
   /* Slight rotation - architectural tension */
   transform: rotate(0.5deg);
@@ -1001,7 +985,7 @@ html[data-skin="modulor"] #about p {
 html[data-skin="modulor"] footer {
   margin-top: var(--space-34);
   padding: var(--space-21) 0;
-  padding-left: calc(var(--spine-offset) + var(--space-13));
+  padding-left: calc(var(--spine-offset) + var(--space-8));
   /* Heavy top border - structural terminus */
   border-top: var(--space-2) solid var(--modulor-black);
   position: relative;
@@ -1117,7 +1101,7 @@ html[data-skin="modulor"] .expanded-wrapper {
 }
 
 html[data-skin="modulor"] .project-card.expanded .expanded-content {
-  padding-top: var(--space-13);
+  padding-top: var(--space-5);
 }
 
 html[data-skin="modulor"] .expanded-content h4 {
@@ -1141,7 +1125,7 @@ html[data-skin="modulor"][data-theme="dark"] .expanded-content h4 {
 }
 
 html[data-skin="modulor"] .expanded-content ul {
-  padding-left: var(--space-8);
+  padding-left: var(--space-5);
 }
 
 html[data-skin="modulor"] .expanded-content li {
@@ -1158,18 +1142,18 @@ html[data-skin="modulor"] .collapse-toggle {
 }
 
 /* ===============================
-   17. RESPONSIVE ADJUSTMENTS
-   Fluid, proportional - not "optimized"
+   17. RESPONSIVE — MOBILE-FIRST
+   Progressive enhancement at 30rem, 48rem, 64rem
+   Base styles (above) are mobile defaults
    =============================== */
 
-@media (max-width: 55rem) {
+/* --- Larger phones (480px+) --- */
+@media (min-width: 30rem) {
   html[data-skin="modulor"] {
-    /* Maintain tension even on smaller screens */
-    --datum-thickness: var(--space-3);
     --spine-offset: var(--space-5);
     --spine-width: 4px;
-    /* Reduce collision intensity slightly for usability */
     --collision-work-into-principles: var(--space-34);
+    --collision-credibility-into-hero: var(--space-34);
   }
 
   html[data-skin="modulor"] main {
@@ -1179,13 +1163,17 @@ html[data-skin="modulor"] .collapse-toggle {
 
   html[data-skin="modulor"] #hero {
     min-height: 60vh;
-    margin-left: calc(var(--spine-offset) * -1 - var(--spine-width));
-    padding-left: calc(var(--spine-offset) + var(--space-8));
+    padding: var(--space-34) 0 var(--space-55) 0;
   }
 
   html[data-skin="modulor"] #hero h1 {
-    font-size: clamp(var(--type-2xl), 12vw, var(--type-3xl));
+    font-size: clamp(var(--type-2xl), 15vw, var(--type-3xl));
     margin-left: calc(var(--space-13) * -1);
+    max-width: calc(100% + var(--space-13));
+  }
+
+  html[data-skin="modulor"] #hero .positioning {
+    margin-left: var(--space-8);
   }
 
   html[data-skin="modulor"] #credibility {
@@ -1193,74 +1181,237 @@ html[data-skin="modulor"] .collapse-toggle {
     margin-right: calc(var(--space-5) * -1);
     padding: var(--space-8) var(--space-13);
     padding-left: calc(var(--spine-offset) + var(--space-13));
-    /* Maintain slight rotation */
-    transform: rotate(-0.2deg);
-    /* Reduce overlap but keep tension */
     margin-top: calc(var(--space-34) * -1);
   }
 
+  html[data-skin="modulor"] #credibility::before {
+    width: var(--space-55);
+  }
+
+  /* Work: step up card padding */
+  html[data-skin="modulor"] .project-card {
+    padding: var(--space-13);
+    padding-left: var(--space-8);
+  }
+}
+
+/* --- Tablet (768px+) --- */
+@media (min-width: 48rem) {
+  html[data-skin="modulor"] {
+    --spine-offset: var(--space-8);
+    --datum-thickness: var(--space-5);
+  }
+
+  html[data-skin="modulor"] #hero {
+    min-height: 70vh;
+    padding-left: calc(var(--spine-offset) + var(--space-13));
+  }
+
+  html[data-skin="modulor"] #hero h1 {
+    font-size: clamp(var(--type-2xl), 20vw, var(--type-3xl));
+    margin-left: calc(var(--space-34) * -1);
+    max-width: calc(100% + var(--space-34));
+  }
+
+  html[data-skin="modulor"] #hero .positioning {
+    margin-left: var(--space-13);
+  }
+
+  html[data-skin="modulor"] #credibility {
+    padding: var(--space-13) var(--space-21);
+    padding-left: calc(var(--spine-offset) + var(--space-34));
+    transform: rotate(-0.3deg);
+  }
+
+  html[data-skin="modulor"] #credibility::before {
+    width: var(--space-89);
+  }
+
+  /* Capabilities: vertical heading + phi-ratio grid */
   html[data-skin="modulor"] #capabilities h2 {
-    writing-mode: horizontal-tb;
-    transform: none;
-    position: static;
-    margin-bottom: var(--space-13);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    position: absolute;
+    left: calc(var(--spine-offset) * -1 - var(--space-13));
+    top: var(--space-21);
+    margin-bottom: 0;
   }
 
   html[data-skin="modulor"] .capabilities-grid {
-    grid-template-columns: 1fr;
-    margin-left: 0;
+    grid-template-columns: calc(100% * (1 - var(--phi-inverse))) calc(100% * var(--phi-inverse) - var(--space-5));
+    margin-left: var(--space-8);
   }
 
   html[data-skin="modulor"] .capabilities-grid article:nth-child(3) {
-    max-width: 100%;
+    max-width: calc(100% * var(--phi-inverse));
   }
 
+  /* Principles: 3-column interlocking grid */
   html[data-skin="modulor"] .principles-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: var(--space-13) 1fr var(--space-8);
   }
 
-  html[data-skin="modulor"] .principles-list li:nth-child(odd),
+  html[data-skin="modulor"] .principles-list li:nth-child(odd) {
+    grid-column: 1 / 3;
+    margin-left: 0;
+    margin-bottom: calc(var(--space-13) * -1);
+  }
+
   html[data-skin="modulor"] .principles-list li:nth-child(even) {
-    grid-column: 1;
-    margin: 0 0 calc(var(--space-3) * -1) 0;
+    grid-column: 2 / 4;
+    margin-left: 0;
+    margin-top: calc(var(--space-8) * -1);
+    margin-bottom: 0;
+    padding-top: var(--space-21);
   }
 
+  html[data-skin="modulor"] .principles-list li:nth-child(1) {
+    margin-left: calc(var(--space-8) * -1);
+  }
+
+  html[data-skin="modulor"] .principles-list li:nth-child(3) {
+    margin-left: calc(var(--space-5) * -1);
+  }
+
+  /* Annotations: show at tablet+ */
+  html[data-skin="modulor"] section::after {
+    display: block;
+  }
+
+  html[data-skin="modulor"] #capabilities::before {
+    display: block;
+  }
+
+  html[data-skin="modulor"] .work-grid::after {
+    display: block;
+  }
+
+  /* Work: restore margin-left + card padding */
+  html[data-skin="modulor"] #work {
+    margin-left: var(--space-8);
+  }
+
+  html[data-skin="modulor"] .project-card {
+    padding: var(--space-21);
+    padding-left: var(--space-13);
+  }
+
+  html[data-skin="modulor"] .project-card:nth-child(2) {
+    padding-top: var(--space-13);
+  }
+
+  /* Expanded content: restore spacing */
+  html[data-skin="modulor"] .project-card.expanded .expanded-content {
+    padding-top: var(--space-13);
+  }
+
+  html[data-skin="modulor"] .expanded-content ul {
+    padding-left: var(--space-8);
+  }
+
+  /* Work: vertical heading + structural accent */
   html[data-skin="modulor"] #work h2 {
-    writing-mode: horizontal-tb;
-    transform: none;
-    position: static;
-    margin-bottom: var(--space-13);
-    padding: var(--space-3) var(--space-5);
+    writing-mode: vertical-lr;
+    position: absolute;
+    left: calc(var(--spine-offset) * -1 - var(--space-13));
+    top: var(--space-5);
+    transform: rotate(180deg);
+    padding: var(--space-13) var(--space-3);
+    min-height: var(--space-89);
+    margin-bottom: 0;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - var(--space-8)),
+      0 100%
+    );
   }
 
   html[data-skin="modulor"] .work-grid {
-    margin-left: 0;
-    padding-left: var(--space-5);
+    margin-left: var(--space-13);
+    padding-left: var(--space-8);
   }
 
-  html[data-skin="modulor"] .project-card:nth-child(1),
-  html[data-skin="modulor"] .project-card:nth-child(2),
-  html[data-skin="modulor"] .project-card:nth-child(3) {
-    margin-left: 0;
-    width: 100%;
-    margin-top: calc(var(--space-5) * -1);
-  }
-
-  html[data-skin="modulor"] .project-card:nth-child(1) {
-    margin-top: 0;
-  }
-
+  /* About: side-by-side */
   html[data-skin="modulor"] .about-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: var(--space-55) 1fr;
+    gap: var(--space-21);
   }
 
   html[data-skin="modulor"] .about-portrait {
-    width: var(--space-34);
+    width: var(--space-55);
+  }
+}
+
+/* --- Desktop (1024px+) --- */
+@media (min-width: 64rem) {
+  html[data-skin="modulor"] {
+    --spine-offset: var(--space-13);
+    --spine-width: 5px;
+    --collision-work-into-principles: var(--space-55);
+    --collision-credibility-into-hero: var(--space-55);
+  }
+
+  html[data-skin="modulor"] main {
+    padding: var(--space-21) var(--space-8);
+    padding-left: calc(var(--spine-offset) + var(--space-21));
+  }
+
+  html[data-skin="modulor"] #hero {
+    min-height: 80vh;
+    padding: var(--space-55) 0 var(--space-89) 0;
+    padding-left: calc(var(--spine-offset) + var(--space-13));
+  }
+
+  html[data-skin="modulor"] #hero h1 {
+    font-size: clamp(var(--type-3xl), 25vw, var(--type-4xl));
+    margin-left: calc(var(--space-55) * -1);
+    max-width: calc(100% + var(--space-55));
+  }
+
+  html[data-skin="modulor"] #hero .positioning {
+    margin-left: var(--space-21);
+  }
+
+  html[data-skin="modulor"] #credibility {
+    margin-left: calc((var(--spine-offset) + var(--space-21) + var(--space-8)) * -1 - var(--space-13));
+    margin-right: calc(var(--space-13) * -1);
+    padding: var(--space-21) var(--space-21);
+    padding-left: calc(var(--spine-offset) + var(--space-55));
+    margin-top: calc(var(--space-55) * -1);
+  }
+
+  /* Work: full cantilever composition */
+  html[data-skin="modulor"] .project-card:nth-child(1) {
+    width: calc(100% + var(--space-34));
+    transform: translateY(calc(var(--space-3) * -1));
     margin-top: 0;
   }
 
+  html[data-skin="modulor"] .project-card:nth-child(2) {
+    margin-top: calc(var(--space-21) * -.67);
+    margin-left: var(--space-13);
+    width: calc(100% - var(--space-5));
+  }
+
+  html[data-skin="modulor"] .project-card:nth-child(3) {
+    margin-top: calc(var(--space-13) * -1);
+    margin-left: calc(var(--space-8) * -1);
+    width: calc(100% + var(--space-21));
+  }
+
+  /* About: full-width portrait with upward intrusion */
+  html[data-skin="modulor"] .about-container {
+    grid-template-columns: var(--space-89) 1fr;
+  }
+
+  html[data-skin="modulor"] .about-portrait {
+    width: var(--space-89);
+    margin-top: calc(var(--space-21) * -1);
+  }
+
   html[data-skin="modulor"] footer {
-    padding-left: calc(var(--spine-offset) + var(--space-8));
+    padding-left: calc(var(--spine-offset) + var(--space-13));
   }
 }
 
