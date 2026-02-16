@@ -114,6 +114,65 @@
   opacity: 1;
 }
 
+/* ── Utility Bar ───────────────────────────────────────── */
+
+.utility-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.utility-bar__left {
+  display: flex;
+  align-items: center;
+}
+
+.utility-bar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-left: auto; /* Push to right when left slot is empty */
+}
+
+.utility-bar__link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  transition: color 150ms ease-out;
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.utility-bar__link:hover,
+.utility-bar__link:focus {
+  color: var(--color-accent);
+}
+
+.utility-bar__link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Override fixed positioning when theme-control is inside utility bar
+.utility-bar .theme-control {
+  position: static;
+  top: auto;
+  right: auto;
+} */
+
+/* Responsive behavior */
+@media (max-width: 47.99rem) {
+  .utility-bar {
+    gap: var(--space-md);
+  }
+
+  .utility-bar__right {
+    gap: var(--space-sm);
+  }
+}
+
 /* ===================================
    Section 1: Hero
    =================================== */
@@ -627,8 +686,8 @@
   font-family: var(--font-heading);
   font-size: var(--font-size-sm);
   line-height: 1;
-  color: var(--color-text-tertiary);
-  opacity: 0.25;
+  color: var(--color-text-accent);
+  opacity: 0.33;
   cursor: pointer;
   transition: opacity 0.2s ease;
   -webkit-user-select: none;
@@ -637,7 +696,7 @@
 
 .modulor-toggle:hover,
 .modulor-toggle:focus-visible {
-  opacity: 0.65;
+  opacity: 0.67;
   color: var(--color-accent-hover);
 }
 

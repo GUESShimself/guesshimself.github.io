@@ -45,10 +45,20 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
   </head>
   <body>
-    <a href="/studio/" class="studio-nav-link">Studio</a>
-    <div class="theme-control">
-      <button id="theme-toggle" class="theme-toggle">Theme: System</button>
-    </div>
+    <nav class="utility-bar" aria-label="Site utility">
+      <!-- Optional left slot for studio child pages -->
+      <!--
+      <div class="utility-bar__left">
+        <a href="/studio/" class="utility-bar__link">← Studio</a>
+      </div>
+      -->
+      <div class="utility-bar__right">
+        <a href="/studio/" class="utility-bar__link studio-nav-link">Studio</a>
+        <div class="theme-control">
+          <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+        </div>
+      </div>
+    </nav>
     <main>
       <!-- Section 1: Hero -->
       <section id="hero" aria-labelledby="hero-heading">

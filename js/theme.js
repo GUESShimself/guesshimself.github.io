@@ -57,8 +57,12 @@
       updateLabel(getStored());
     }
 
-    var control = document.querySelector('.theme-control');
-    var navLink = document.querySelector('.studio-nav-link') || document.querySelector('.home-nav-link');
+    var control = document.querySelector('.utility-bar .theme-control') || document.querySelector('.theme-control');
+    var navLink =
+      document.querySelector('.utility-bar .studio-nav-link') ||
+      document.querySelector('.utility-bar .home-nav-link') ||
+      document.querySelector('.studio-nav-link') ||
+      document.querySelector('.home-nav-link');
     if (!control) {
       return;
     }

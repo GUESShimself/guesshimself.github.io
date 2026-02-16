@@ -46,17 +46,27 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
   </head>
   <body>
-    <a href="/" class="home-nav-link">Home</a>
-    <div class="theme-control">
-      <button id="theme-toggle" class="theme-toggle">Theme: System</button>
-    </div>
+    <nav class="utility-bar" aria-label="Site utility">
+      <!-- Optional left slot for studio child pages -->
+      <!--
+      <div class="utility-bar__left">
+        <a href="/studio/" class="utility-bar__link">← Studio</a>
+      </div>
+      -->
+      <div class="utility-bar__right">
+        <a href="/" class="utility-bar__link home-nav-link">Home</a>
+        <div class="theme-control">
+          <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+        </div>
+      </div>
+    </nav>
 
     <main>
       <!-- Studio Header -->
       <header class="studio-header">
         <h1>Studio</h1>
         <p class="studio-description">
-          Experiments, case studies, and writing on design systems, interaction design, and the craft of building digital products.
+          A working space for experiments, case studies, and writing on systems, interaction, and craft.
         </p>
       </header>
 
@@ -73,11 +83,11 @@
         <!-- Item: Genera -->
         <article class="studio-item" data-type="experiment">
           <a href="/studio/genera/" class="studio-item-link">
-            <h2>Genera</h2>
           <div class="studio-item-header">
             <span class="studio-item-type">Experiment</span>
             <time datetime="2026-02">February 2026</time>
           </div>
+            <h2>Genera</h2>
             <p class="studio-item-description">
               Generative typography experiment exploring algorithmic letter-form generation and parametric design systems.
             </p>
@@ -89,9 +99,9 @@
         </article>
 
         <!-- Placeholder for future items -->
-        <!--
+        
         <article class="studio-item" data-type="case-study">
-          <a href="/studio/cap-ds/" class="studio-item-link">
+          <a href="/studio/case-study-template/" class="studio-item-link">
             <div class="studio-item-header">
               <span class="studio-item-type">Case Study</span>
               <time datetime="2023-06">June 2023</time>
@@ -100,9 +110,14 @@
             <p class="studio-item-description">
               Building a token-driven design system for a Fortune 100 financial services company.
             </p>
+            <ul class="scope-indicators">
+              <li>Design Tokens</li>
+              <li>Components</li>
+              <li>Documentation</li>
+            </ul>
           </a>
         </article>
-        -->
+       
       </div>
     </main>
 
