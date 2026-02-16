@@ -47,6 +47,13 @@
   .work-grid {
     gap: var(--space-2xl);
   }
+
+  /* Footer - side-by-side layout on tablet+ */
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 /* ===================================

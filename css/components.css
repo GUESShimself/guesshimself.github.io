@@ -13,6 +13,66 @@
   container-name: project-card;
 }
 
+.studio-nav-link {
+  position: fixed;
+  top: var(--space-md);
+  right: calc(var(--space-md) * 2 + 8rem);
+  z-index: 10;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  font-family: var(--font-primary);
+  text-decoration: none;
+  transition: color 150ms ease-out, opacity 150ms ease-out;
+}
+
+.studio-nav-link:hover,
+.studio-nav-link:focus {
+  color: var(--color-accent);
+}
+
+.studio-nav-link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.studio-nav-link.is-dimmed {
+  opacity: 0.6;
+}
+
+.home-nav-link {
+  position: fixed;
+  top: var(--space-md);
+  right: calc(var(--space-md) * 2 + 8rem);
+  z-index: 10;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  font-family: var(--font-primary);
+  text-decoration: none;
+  transition: color 150ms ease-out, opacity 150ms ease-out;
+}
+
+.home-nav-link:hover,
+.home-nav-link:focus {
+  color: var(--color-accent);
+}
+
+.home-nav-link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.home-nav-link.is-dimmed {
+  opacity: 0.6;
+}
+
 .theme-control {
   position: fixed;
   top: var(--space-md);
@@ -515,6 +575,17 @@
 .contact-links a {
   font-size: var(--font-size-sm);
   color: var(--color-accent);
+}
+
+.contact-links li.separator {
+  padding-left: var(--space-md);
+  border-left: 1px solid var(--color-border);
+}
+
+.copyright {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: 0;
 }
 
 /* ===================================
