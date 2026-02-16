@@ -1,3 +1,5 @@
+@layer base {
+
 /* Base Typography and Element Styles */
 
 html {
@@ -106,3 +108,5 @@ button:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+} /* end @layer base */

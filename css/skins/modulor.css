@@ -1,3 +1,5 @@
+@layer skins {
+
 /* Modulor Skin — Le Corbusier's proportional doctrine
    CSS Zen Garden-esque experimental theme
    All measurements derive from Golden Ratio (phi) and Fibonacci sequences
@@ -1426,3 +1428,36 @@ html[data-skin="modulor"] .collapse-toggle {
     transition: none;
   }
 }
+
+/* ===============================
+   19. CONTAINER QUERIES
+   =============================== */
+
+/* Project card container - adjust padding based on card width */
+@container project-card (min-width: 30rem) {
+  html[data-skin="modulor"] .project-card {
+    padding: var(--space-13);
+    padding-left: var(--space-8);
+  }
+}
+
+@container project-card (min-width: 48rem) {
+  html[data-skin="modulor"] .project-card {
+    padding: var(--space-21);
+    padding-left: var(--space-13);
+  }
+
+  html[data-skin="modulor"] .project-card:nth-child(2) {
+    padding-top: var(--space-13);
+  }
+
+  html[data-skin="modulor"] .project-card.expanded .expanded-content {
+    padding-top: var(--space-13);
+  }
+
+  html[data-skin="modulor"] .expanded-content ul {
+    padding-left: var(--space-8);
+  }
+}
+
+} /* end @layer skins */
