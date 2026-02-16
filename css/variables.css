@@ -1,3 +1,5 @@
+@layer variables {
+
 /* Design Token System */
 
 :root {
@@ -8,6 +10,7 @@
   --color-text-primary-hover: #141414;
   --color-text-secondary: #4a4a4a;
   --color-text-tertiary: #727272;
+  --color-text-body-strong: color-mix(in srgb, var(--color-text-primary) 70%, var(--color-text-secondary));
   --color-surface-hover: rgba(0, 0, 0, 0.02);
   --color-accent: #4a6fa5;
   --color-accent-hover: #2c4a78;
@@ -99,16 +102,4 @@ html[data-theme="dark"] {
   }
 }
 
-/* Tablet and Desktop Typography Adjustments (768px+) */
-@media (min-width: 48rem) {
-  :root {
-    /* Adjust typography scale for desktop (1.333 ratio) */
-    --font-size-2xl: 1.777rem;   /* 28px */
-    --font-size-3xl: 2.369rem;   /* 38px */
-    --font-size-4xl: 3.157rem;   /* 51px */
-    --font-size-5xl: 4.209rem;   /* 67px */
-
-    /* Increase section spacing for desktop */
-    --section-spacing: var(--space-4xl);
-  }
-}
+} /* end @layer variables */

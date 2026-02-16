@@ -1,4 +1,17 @@
+@layer components {
+
 /* Component Styles - Section-Specific */
+
+/* Container contexts for card queries */
+.work-grid {
+  container-type: inline-size;
+  container-name: work-grid;
+}
+
+.project-card {
+  container-type: inline-size;
+  container-name: project-card;
+}
 
 .theme-control {
   position: fixed;
@@ -566,3 +579,5 @@
 @media (prefers-reduced-motion: reduce) {
   .modulor-toggle { transition: none; }
 }
+
+} /* end @layer components */
