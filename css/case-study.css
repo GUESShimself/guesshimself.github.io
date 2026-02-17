@@ -1,0 +1,246 @@
+@layer case-study {
+
+/* Case Study Specific Styles */
+
+/* ── Back Navigation ─────────────────────────────────────── */
+
+.back-nav {
+  margin-bottom: var(--space-xl);
+}
+
+.back-nav.bottom {
+  margin-top: var(--space-3xl);
+  margin-bottom: 0;
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.back-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  transition: color 150ms ease-out;
+}
+
+.back-link:hover,
+.back-link:focus {
+  color: var(--color-accent);
+}
+
+.back-link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Header Block ────────────────────────────────────────── */
+
+.case-study-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.case-study-header h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.dek {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 48rem;
+}
+
+/* ── Metadata Grid ───────────────────────────────────────── */
+
+.case-study-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--space-md) var(--space-lg);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.case-study-meta dt {
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.case-study-meta dd {
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── TL;DR / Impact Box ──────────────────────────────────── */
+
+.tldr-box {
+  background: var(--color-accent-wash);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-lg) var(--space-xl);
+  margin: var(--space-2xl) 0;
+  border-radius: 2px;
+}
+
+.tldr-box h3 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-md);
+}
+
+.tldr-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tldr-box li {
+  padding-left: var(--space-md);
+  position: relative;
+  margin-bottom: var(--space-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.tldr-box li:last-child {
+  margin-bottom: 0;
+}
+
+.tldr-box li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Constraint Highlight ────────────────────────────────── */
+
+.constraint-highlight {
+  background: var(--color-surface-hover);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+  border-radius: 2px;
+}
+
+.constraint-highlight h3 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-sm);
+}
+
+.constraint-highlight p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── Artifact / Image Blocks ─────────────────────────────── */
+
+.artifact {
+  margin: var(--space-2xl) 0;
+}
+
+.artifact-placeholder {
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-md);
+  border-radius: 2px;
+}
+
+.artifact figcaption {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* ── Content Sections ────────────────────────────────────── */
+
+/* Ensure sections have good reading width */
+section {
+  max-width: var(--max-width-content);
+}
+
+/* Section headings */
+section > h2 {
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-3xl);
+}
+
+/* Subsection headings */
+section > h3 {
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-xl);
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+/* Paragraphs with comfortable reading */
+section > p {
+  margin-bottom: var(--space-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Lists in sections */
+section > ul {
+  margin-bottom: var(--space-xl);
+  padding-left: var(--space-lg);
+}
+
+section > ul > li {
+  margin-bottom: var(--space-md);
+  line-height: var(--line-height-relaxed);
+}
+
+section > ul > li:last-child {
+  margin-bottom: 0;
+}
+
+/* Strong emphasis in lists */
+section > ul > li strong {
+  color: var(--color-text-primary);
+}
+
+/* ── Responsive Adjustments ──────────────────────────────── */
+
+@media (min-width: 48rem) {
+  .dek {
+    font-size: var(--font-size-2xl);
+  }
+
+  .case-study-meta {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tldr-box {
+    padding: var(--space-xl) var(--space-2xl);
+  }
+}
+
+@media (min-width: 64rem) {
+  .case-study-meta {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+} /* end @layer case-study */

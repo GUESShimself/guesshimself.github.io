@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Personal portfolio site for Eric Guess, a design systems and product design professional. Single-page static site deployed to GitHub Pages at **guesshimself.work**.
+Personal portfolio site for Eric Guess, a design systems and product design professional. Static HTML site with homepage portfolio and **Studio** area for experiments, case studies, and writing. Deployed to GitHub Pages at **guesshimself.work**.
 
 **Repository:** `GUESShimself/guesshimself.github.io`
 **Main branch:** `main` (auto-deploys via GitHub Pages)
@@ -24,7 +24,7 @@ Personal portfolio site for Eric Guess, a design systems and product design prof
 ## File Structure
 
 ```
-├── index.html                      # Single-page portfolio (all content)
+├── index.html                      # Homepage portfolio
 ├── favicon.svg                     # Adaptive SVG favicon (prefers-color-scheme)
 ├── CNAME                           # Custom domain config
 ├── eric-guess-ux-product-design-systems.pdf
@@ -33,15 +33,22 @@ Personal portfolio site for Eric Guess, a design systems and product design prof
 │   ├── variables.css               # Design tokens (colors, type, spacing)
 │   ├── base.css                    # Typography & element defaults
 │   ├── layout.css                  # Section containers & spacing
-│   ├── components.css              # Component-specific styles
+│   ├── components.css              # Component-specific styles (utility bar, theme toggle, etc.)
 │   ├── responsive.css              # Breakpoint overrides (mobile-first)
+│   ├── studio.css                  # Studio page-specific styles (filters, cards)
+│   ├── case-study.css              # Case study page-specific styles
 │   └── skins/
 │       └── modulor.css             # Experimental Le Corbusier skin (lazy-loaded)
 ├── js/
 │   ├── theme.js                    # Light/dark/system toggle (loaded in <head>)
 │   ├── main.js                     # Smooth scroll enhancements
 │   ├── interactions.js             # Accordion cards, scroll-reveal, hash routing
-│   └── modulor-toggle.js           # φ button toggle for Modulor skin
+│   ├── modulor-toggle.js           # φ button toggle for Modulor skin
+│   └── studio-filters.js           # Studio page filtering (experiments/case studies/writing)
+├── studio/
+│   ├── index.html                  # Studio landing page with filterable items
+│   ├── case-study-template/        # Case study template (copy and customize)
+│   └── genera/                     # Generative typography experiment
 └── images/
     ├── cap-ds-diagram.png
     └── guess-contour-illustration.svg
@@ -49,7 +56,9 @@ Personal portfolio site for Eric Guess, a design systems and product design prof
 
 ### CSS load order matters
 
-`reset → variables → base → layout → components → responsive`
+**Core (all pages):** `reset → variables → base → layout → components → responsive`
+
+**Page-specific:** Add `studio.css` on studio pages, `case-study.css` on case study pages
 
 Modulor skin CSS is conditionally loaded at runtime — never included in the default stylesheet chain.
 
@@ -68,6 +77,110 @@ The page follows a narrative arc, each section a semantic `<section>` with `aria
 | 5 | `#work`         | Selected Work (expandable cards) |
 | 6 | `#about`        | Personal statement + portrait    |
 | 7 | `<footer>`      | Contact links                    |
+
+---
+
+## Studio Page (`/studio/`)
+
+Filterable landing page for experiments, case studies, and writing. Editorial style with minimal chrome.
+
+### Structure
+- **Header**: Title ("Studio") + description
+- **Filters**: Horizontal text-style buttons with underline active state (All, Experiments, Case Studies, Writing)
+- **Grid**: Responsive card grid (1 col → 2 cols → 3 cols at breakpoints)
+- **Footer**: Standard site footer with contact links
+
+### Filter System (`js/studio-filters.js`)
+- IIFE pattern, URL hash support for deep linking
+- Shows/hides items based on `data-type` attribute
+- Active filter: bold weight + accent underline (no pill background)
+- Editorial aesthetic: transparent buttons, tertiary text color, accent hover
+
+### Studio Item Cards (`.studio-item`)
+- Type badge + date (uppercase, inline with separator)
+- H2 title (Fraunces, 2xl)
+- Description (primary color, lg font, relaxed line-height)
+- Scope indicators (bullets, xs font, tertiary color)
+- Hover: border color change, subtle lift, shadow
+
+### Responsive Behavior
+- Mobile: Single column, stacked filters
+- Tablet (48rem): 2-column grid
+- Desktop (64rem): 3-column grid
+
+---
+
+## Case Study Pages (`/studio/<slug>/`)
+
+Long-form editorial pages with scan-first structure. Template at `/studio/case-study-template/`.
+
+### Page Structure
+1. **Header Block**: Title, dek (positioning sentence), metadata grid (Company, Date, Role, Scope, Team, Platform)
+2. **TL;DR Box**: 4-6 key outcomes in callout box with accent wash background, left border, arrow bullets
+3. **Context & Constraints**: Short paragraphs, optional "Core Constraint" highlight block
+4. **Problem**: Bullet list or short paragraphs
+5. **Approach**: Subsections (e.g., System Foundations, Adoption & Enablement, Governance)
+6. **Solution**: Artifact blocks (image placeholders with captions)
+7. **Results**: Bullets + narrative
+8. **Reflection**: What I'd refine, What this changed
+
+### Case Study Components (`css/case-study.css`)
+- **Metadata grid** (`.case-study-meta`): Responsive grid (2 cols → 3 cols → 6 cols)
+- **Dek** (`.dek`): Large subtitle (xl → 2xl at tablet), secondary color, relaxed line-height
+- **TL;DR box** (`.tldr-box`): Accent wash background, 3px left border, arrow bullets
+- **Constraint highlight** (`.constraint-highlight`): Surface hover background, small uppercase label
+- **Artifact placeholders** (`.artifact`): 16:9 aspect ratio, border, caption (sm font, italic, secondary color)
+
+### Typography
+- Reading width: max 42rem
+- Relaxed line-height (1.75) for body text
+- Section h2: 3xl, generous top margin
+- Subsection h3: xl, primary font bold
+
+---
+
+## Utility Bar Navigation
+
+Unified horizontal navigation pattern across all pages. Copy/paste markup, structured to become a component/partial later.
+
+### Structure
+```html
+<nav class="utility-bar" aria-label="Site utility">
+  <!-- Optional left slot for breadcrumb/back links -->
+  <div class="utility-bar__left">
+    <a href="/studio/" class="utility-bar__link">← Studio</a>
+  </div>
+
+  <!-- Right slot: page nav + theme toggle -->
+  <div class="utility-bar__right">
+    <a href="/" class="utility-bar__link home-nav-link">Home</a>
+    <div class="theme-control">
+      <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+    </div>
+  </div>
+</nav>
+```
+
+### Variants
+1. **Home page**: Right slot only (Studio link + theme toggle)
+2. **Studio index**: Right slot only (Home link + theme toggle)
+3. **Studio child pages**: Left slot (← Studio) + Right slot (Home + theme toggle)
+
+### Styling (`.utility-bar` in `components.css`)
+- Flexbox with `space-between`, wraps on narrow screens
+- Left slot: optional, for back navigation
+- Right slot: `margin-left: auto` pushes to right when left slot empty
+- Links: tertiary color, accent hover, sm font, subtle padding
+- Theme control: inline positioning (not fixed) when inside utility bar
+
+### Theme.js Integration
+Selectors updated to prefer `.utility-bar` context with fallback:
+```javascript
+var control = document.querySelector('.utility-bar .theme-control') ||
+              document.querySelector('.theme-control');
+```
+
+Maintains scroll dimming behavior (adds `.is-dimmed` at >80px scroll).
 
 ---
 
@@ -108,7 +221,8 @@ The page follows a narrative arc, each section a semantic `<section>` with `aria
 - Reads `localStorage.getItem('theme')` → sets `data-theme` attribute on `<html>`
 - Exposes `window.setTheme()` and `window.cycleTheme()`
 - Three states: `system` → `light` → `dark` (cycles)
-- Auto-dims theme control div on scroll (>80px threshold)
+- Auto-dims theme control and adjacent nav links on scroll (>80px threshold)
+- Selectors prefer `.utility-bar` context with fallback to direct selectors for backwards compatibility
 
 ### `interactions.js` (loaded at end of body)
 - **Accordion:** One card expanded at a time, URL hash updated on expand
@@ -120,6 +234,12 @@ The page follows a narrative arc, each section a semantic `<section>` with `aria
 - Dynamically creates `<link>` to load `css/skins/modulor.css` on first activation
 - Scrolls to top on toggle
 
+### `studio-filters.js` (loaded on studio pages)
+- **Filtering:** Shows/hides studio items based on `data-type` attribute (experiment, case-study, writing)
+- **URL hash support:** Reads and updates `location.hash` for deep linking (e.g., `#case-study`)
+- **Button states:** Updates `.is-active` class and manages `aria-pressed` for accessibility
+- **IIFE pattern:** Self-contained, no global pollution
+
 ### Anti-flash pattern
 `theme.js` in `<head>` sets `data-theme` before first paint. An inline `<script>` also checks `localStorage('skin')` and writes the Modulor `<link>` tag + `data-skin` attribute before paint.
 
@@ -129,7 +249,8 @@ The page follows a narrative arc, each section a semantic `<section>` with `aria
 
 ### Naming
 - Kebab-case classes: `.project-card`, `.theme-toggle`, `.credibility-list`
-- State classes prefixed: `.is-dimmed`, `.is-interacting`, `.in-view`, `.expanded`
+- BEM-style for multi-part components: `.utility-bar__left`, `.utility-bar__link`, `.studio-item-header`
+- State classes prefixed: `.is-dimmed`, `.is-interacting`, `.in-view`, `.expanded`, `.is-active`, `.is-hidden`
 - Custom properties prefixed by domain: `--color-*`, `--font-*`, `--space-*`
 
 ### Specificity
@@ -192,14 +313,36 @@ Uses `data-theme` selectors (same as base site):
 
 ## Component Inventory
 
+### Navigation & Controls
 | Component | Class | Behavior |
 |-----------|-------|----------|
-| Theme toggle | `.theme-control` / `.theme-toggle` | Fixed top-right, auto-dims on scroll, cycles system/light/dark |
+| Utility bar | `.utility-bar` | Horizontal nav with optional left/right slots, flexbox layout, wraps on mobile |
+| Utility bar link | `.utility-bar__link` | Tertiary color, accent hover, sm font, maintains `.studio-nav-link` or `.home-nav-link` for JS |
+| Theme toggle | `.theme-control` / `.theme-toggle` | Inside utility bar (or standalone), auto-dims on scroll, cycles system/light/dark |
 | Modulor toggle | `.modulor-toggle` | Fixed bottom-right φ symbol, very low opacity, toggles skin |
+
+### Homepage Components
+| Component | Class | Behavior |
+|-----------|-------|----------|
 | Project cards | `.project-card` | Accordion expand/collapse, one at a time, URL hash sync |
 | Principles | `.principles-list` | Scroll-reveal animation, anchor links on hover |
 | Credibility strip | `.credibility-list` | Simple grid, responsive 1→2 columns |
 | Portrait | `.about-portrait` | Inline SVG, CSS-controlled stroke/opacity |
+
+### Studio Page Components
+| Component | Class | Behavior |
+|-----------|-------|----------|
+| Studio filters | `.filter-btn` | Text-style buttons with underline active state, filtering by data-type |
+| Studio items | `.studio-item` | Card with type/date, title, description, scope indicators |
+| Studio grid | `.studio-grid` | Responsive grid (1→2→3 cols) |
+
+### Case Study Components
+| Component | Class | Behavior |
+|-----------|-------|----------|
+| Metadata grid | `.case-study-meta` | Definition list grid (2→3→6 cols), uppercase labels |
+| TL;DR box | `.tldr-box` | Accent wash background, left border, arrow bullets |
+| Constraint highlight | `.constraint-highlight` | Surface hover background, uppercase label |
+| Artifact placeholder | `.artifact` | 16:9 ratio placeholder with caption, border |
 
 ---
 
@@ -214,30 +357,35 @@ Uses `data-theme` selectors (same as base site):
 
 ## Planned Evolution
 
-### Blog / Article Publishing
-- Add a content publishing capability for articles and writing
-- Should follow the same design language and token system
-- Consider how the single-page architecture might expand to multi-page
-- Maintain the zero-dependency philosophy where possible
+### Studio Content Expansion
+- **✓ Studio landing page** — Implemented with filtering system
+- **✓ Case study template** — Editorial long-form template ready for content
+- **In Progress: Writing pages** — Template for article/blog post format
+- **Future: Individual experiments** — Dedicated pages for generative experiments (Genera example exists)
 
-### Dedicated Case Study Pages
-- Current project cards in `#work` contain condensed case studies
-- Plan to expand each into a full, dedicated page with richer content
-- Should reuse existing CSS architecture (variables, base, layout, components)
-- URL structure and navigation patterns TBD
+### Content Migration
+- Expand project cards from homepage `#work` section into full case study pages using the template
+- Migrate condensed case studies to `/studio/<slug>/` format
+- Maintain homepage cards as entry points, link to full studio pages
 
-### Fixed Sidebar Navigation
-- Section-jumping sidebar navigation pattern
-- Applicable to both the homepage and future case study pages
-- Should indicate current section (scroll-spy behavior)
-- Consider responsive behavior: sidebar on desktop, collapsed/drawer on mobile
-- The existing `interactions.js` IntersectionObserver pattern is a foundation for scroll-spy
+### Navigation Enhancements
+- **✓ Utility bar** — Implemented across all pages with left/right slot pattern
+- **Future: Fixed sidebar navigation** — Section-jumping sidebar for long case studies
+  - Scroll-spy behavior using IntersectionObserver
+  - Responsive: sidebar on desktop, collapsed/drawer on mobile
+  - Can reuse existing `.in-view` pattern from `interactions.js`
 
-### Architectural Considerations
-- The current CSS is split by concern (reset/variables/base/layout/components/responsive) — this scales well to multi-page
-- Shared CSS can remain as-is; page-specific styles could go in new per-page files
-- `theme.js` and the anti-flash pattern work independently of page content
-- The Modulor skin would need per-page selectors if new pages have unique sections
+### Component System Evolution
+- Current approach: copy/paste HTML with shared CSS
+- **Future consideration:** Static site generator (e.g., 11ty, Static by DevDojo) when duplication becomes unwieldy
+- Would enable reusable utility bar, header, footer as partials/components
+- For now, copy/paste is acceptable with 3-4 pages
+
+### Architectural Notes
+- CSS architecture scales well: shared core (reset/variables/base/layout/components/responsive) + page-specific files
+- `theme.js` and anti-flash pattern work independently of page content
+- Modulor skin may need per-page adjustments as new page types are added
+- Zero-dependency philosophy maintained
 
 ---
 

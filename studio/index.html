@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Studio - Experiments, case studies, and writing by Eric Guess"
+    />
+    <title>Studio - Eric Guess</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=block" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/layers.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/studio.css" />
+    <!-- Theme: loaded in head to set data-theme before first paint -->
+    <script src="../js/theme.js"></script>
+
+    <!-- Modulor skin: apply before paint to prevent flash -->
+    <script>
+      if (localStorage.getItem('skin') === 'modulor') {
+        document.documentElement.setAttribute('data-skin', 'modulor');
+        document.write('<link rel="stylesheet" href="../css/skins/modulor.css">');
+      }
+    </script>
+
+    <!-- Disable analytics on localhost -->
+    <script>
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        localStorage.setItem('umami.disabled', 1);
+      }
+    </script>
+    <!-- Umami analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
+  </head>
+  <body>
+    <nav class="utility-bar" aria-label="Site utility">
+      <!-- Optional left slot for studio child pages -->
+      <!--
+      <div class="utility-bar__left">
+        <a href="/studio/" class="utility-bar__link">← Studio</a>
+      </div>
+      -->
+      <div class="utility-bar__right">
+        <a href="/" class="utility-bar__link home-nav-link">Home</a>
+        <div class="theme-control">
+          <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Studio Header -->
+      <header class="studio-header">
+        <h1>Studio</h1>
+        <p class="studio-description">
+          A working space for experiments, case studies, and writing on systems, interaction, and craft.
+        </p>
+      </header>
+
+      <!-- Filter Controls -->
+      <div class="studio-filters" role="navigation" aria-label="Content filters">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="experiment">Experiments</button>
+        <button class="filter-btn" data-filter="case-study">Case Studies</button>
+        <button class="filter-btn" data-filter="writing">Writing</button>
+      </div>
+
+      <!-- Studio Items Grid -->
+      <div class="studio-grid">
+        <!-- Item: Genera -->
+        <article class="studio-item" data-type="experiment">
+          <a href="/studio/genera/" class="studio-item-link">
+          <div class="studio-item-header">
+            <span class="studio-item-type">Experiment</span>
+            <time datetime="2026-02">February 2026</time>
+          </div>
+            <h2>Genera</h2>
+            <p class="studio-item-description">
+              Algorithmic generative art playground inspired by Joshua Davis — layered compositions with varied shape types, noise-driven layouts, and atmospheric canvas effects.
+            </p>
+            <ul class="scope-indicators">
+              <li>Generative Art</li>
+              <li>React</li>
+            </ul>
+          </a>
+        </article>
+
+        <!-- Item: Breathing Shapes -->
+        <article class="studio-item" data-type="experiment">
+          <a href="/studio/breathing-shapes/" class="studio-item-link">
+            <div class="studio-item-header">
+              <span class="studio-item-type">Experiment</span>
+              <time datetime="2025-11">November 2025</time>
+            </div>
+            <h2>Breathing Shapes</h2>
+            <p class="studio-item-description">
+              Guided breathing app with triangle and square patterns, smooth SVG animations, and a calm visual rhythm.
+            </p>
+            <ul class="scope-indicators">
+              <li>React</li>
+              <li>SVG Animation</li>
+              <li>Wellness</li>
+            </ul>
+          </a>
+        </article>
+
+      </div>
+    </main>
+
+    <footer>
+      <h2 class="visually-hidden">Contact</h2>
+      <nav aria-label="Site and contact links">
+        <ul class="contact-links">
+          <li><a href="/">Home</a></li>
+          <li class="separator"><a href="mailto:guesshimself@gmail.com">Email</a></li>
+          <li><a href="/Eric-Guess-Resume-Design-Systems-Portfolio.pdf">Resume</a></li>
+          <li><a href="https://linkedin.com/in/guess">LinkedIn</a></li>
+          <li><a href="https://github.com/GUESShimself">GitHub</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">&copy; 2026 Eric Guess</p>
+    </footer>
+
+    <!-- Modulor toggle -->
+    <button
+      id="modulor-toggle"
+      class="modulor-toggle"
+      aria-label="Toggle Modulor skin"
+      aria-pressed="false"
+    >
+      φ
+    </button>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/modulor-toggle.js"></script>
+    <script src="../js/studio-filters.js"></script>
+  </body>
+</html>

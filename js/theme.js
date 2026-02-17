@@ -57,7 +57,12 @@
       updateLabel(getStored());
     }
 
-    var control = document.querySelector('.theme-control');
+    var control = document.querySelector('.utility-bar .theme-control') || document.querySelector('.theme-control');
+    var navLink =
+      document.querySelector('.utility-bar .studio-nav-link') ||
+      document.querySelector('.utility-bar .home-nav-link') ||
+      document.querySelector('.studio-nav-link') ||
+      document.querySelector('.home-nav-link');
     if (!control) {
       return;
     }
@@ -67,13 +72,22 @@
     function syncDimState() {
       if (control.classList.contains('is-interacting')) {
         control.classList.remove('is-dimmed');
+        if (navLink) {
+          navLink.classList.remove('is-dimmed');
+        }
         return;
       }
 
       if (window.scrollY > threshold) {
         control.classList.add('is-dimmed');
+        if (navLink) {
+          navLink.classList.add('is-dimmed');
+        }
       } else {
         control.classList.remove('is-dimmed');
+        if (navLink) {
+          navLink.classList.remove('is-dimmed');
+        }
       }
     }
 
