@@ -322,7 +322,6 @@
 
 /* Project Cards */
 .project-card {
-  padding: var(--space-lg);
   border: 1px solid var(--color-border);
   border-radius: 4px;
   background-color: var(--color-surface);
@@ -430,8 +429,13 @@
 }
 
 /* Card Summary & Toggle Overlay */
+.project-card {
+  position: relative;
+}
+
 .card-summary {
   position: relative;
+  padding: var(--space-lg);
 }
 
 .project-toggle {
@@ -442,6 +446,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.project-card.expanded .project-toggle {
+  display: none;
 }
 
 .project-toggle:focus-visible {
@@ -469,12 +477,13 @@
 /* Expanded State */
 .project-card.expanded {
   border-color: var(--color-border-emphasis);
-  padding-bottom: var(--space-xl);
+  background-color: var(--color-surface-active);
 }
 
 .project-card.expanded .expanded-content {
   margin-top: var(--space-sm);
-  padding-top: var(--space-lg);
+  padding: var(--space-lg);
+  padding-bottom: var(--space-xl);
   border-top: 1px solid var(--color-border);
 }
 
@@ -526,6 +535,18 @@
   height: auto;
   display: block;
   margin: 0 auto var(--space-sm) auto;
+}
+
+html[data-theme="dark"] .artifact img,
+html[data-skin="modulor"][data-theme="dark"] .artifact img {
+  filter: invert(1) sepia(0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .artifact img,
+  html[data-skin="modulor"]:not([data-theme]) .artifact img {
+    filter: invert(1) sepia(0.2);
+  }
 }
 
 .collapse-toggle {

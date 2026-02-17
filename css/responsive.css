@@ -88,7 +88,11 @@
 
 /* Work grid container - larger card padding at wider container widths */
 @container work-grid (min-width: 48rem) {
-  .project-card {
+  .card-summary {
+    padding: var(--space-xl);
+  }
+
+  .project-card.expanded .expanded-content {
     padding: var(--space-xl);
   }
 }
