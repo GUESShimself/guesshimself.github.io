@@ -97,6 +97,11 @@ main {
   display: none;
 }
 
+.studio-empty {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
 .studio-item-link {
   display: block;
   padding: var(--space-lg);
