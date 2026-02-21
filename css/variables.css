@@ -15,6 +15,9 @@
   --color-text-body-strong: color-mix(in srgb, var(--color-text-primary) 70%, var(--color-text-secondary));
   --color-accent: #4a6fa5;
   --color-accent-hover: #2c4a78;
+  /* DevTools may flag low contrast on elements using this wash.
+     At 2.5% alpha over --color-bg, the rendered color is nearly
+     identical to the page background — real contrast is fine. */
   --color-accent-wash: rgb(74 111 165 / 2.5%);
   --color-border: #e0e0e0;
   --color-border-hover: #767676;
@@ -54,6 +57,7 @@
 
   /* Layout */
   --max-width-content: 42rem;    /* ~672px, optimal reading width */
+  --max-width-breakout: 56rem;   /* ~896px, for breakout elements */
   --max-width-wide: 64rem;       /* ~1024px, for grids */
   --section-spacing: var(--space-3xl);
 

@@ -328,9 +328,7 @@
   transition: border-color 150ms ease-out, background-color 150ms ease-out;
 }
 
-.project-card:hover,
 .project-card:focus-within {
-  background-color: var(--color-surface-hover);
   border-color: var(--color-border-hover);
 }
 
@@ -341,7 +339,6 @@
   transition: color 150ms ease-out;
 }
 
-.project-card:hover h3,
 .project-card:focus-within h3 {
   color: var(--color-text-primary-hover);
 }
@@ -388,7 +385,6 @@
   transition: color 150ms ease-out;
 }
 
-.project-card:hover .scope-indicators,
 .project-card:focus-within .scope-indicators {
   color: var(--color-text-secondary);
 }
@@ -405,57 +401,46 @@
   color: var(--color-border);
 }
 
-/* Expand Prompt */
-.expand-prompt {
-  display: block;
-  margin-top: var(--space-sm);
-  font-size: var(--font-size-sm);
-  color: var(--color-accent);
-  transition: color 150ms ease-out;
-}
-
-.expand-prompt .chevron {
-  display: inline-block;
-  transition: transform 250ms ease-out;
-}
-
-.project-card:hover .expand-prompt,
-.project-card:focus-within .expand-prompt {
-  color: var(--color-accent-hover);
-}
-
-.project-card.expanded .expand-prompt {
-  display: none;
-}
-
-/* Card Summary & Toggle Overlay */
+/* Card Summary & Toggle */
 .project-card {
   position: relative;
 }
 
 .card-summary {
-  position: relative;
   padding: var(--space-lg);
 }
 
 .project-toggle {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: transparent;
+  display: block;
+  margin-top: var(--space-sm);
+  background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  transition: color 150ms ease-out;
 }
 
-.project-card.expanded .project-toggle {
-  display: none;
+.project-toggle:hover,
+.project-toggle:focus {
+  color: var(--color-accent-hover);
 }
 
 .project-toggle:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 2px;
+}
+
+.project-toggle .chevron {
+  display: inline-block;
+  transition: transform 250ms ease-out;
+}
+
+.project-card.expanded .project-toggle {
+  display: none;
 }
 
 /* Expansion Animation (CSS Grid) */
@@ -549,6 +534,32 @@ html[data-skin="modulor"][data-theme="dark"] .artifact img {
   }
 }
 
+/* Expanded Footer — case study link left, collapse right */
+.expanded-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-md);
+}
+
+.case-study-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 150ms ease-out;
+}
+
+.case-study-link:hover,
+.case-study-link:focus {
+  color: var(--color-accent-hover);
+}
+
+.case-study-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .collapse-toggle {
   background: none;
   border: none;
@@ -558,8 +569,13 @@ html[data-skin="modulor"][data-theme="dark"] .artifact img {
   font-family: var(--font-primary);
   text-align: left;
   margin-top: var(--space-md);
+  margin-left: auto;
   padding: 0;
   transition: color 150ms ease-out;
+}
+
+.expanded-footer .collapse-toggle {
+  margin-top: 0;
 }
 
 .collapse-toggle:hover,
@@ -688,8 +704,8 @@ html[data-skin="modulor"][data-theme="dark"] .artifact img {
   .principles-list li,
   .principle-anchor,
   .collapse-toggle,
-  .expand-prompt,
-  .expand-prompt .chevron {
+  .project-toggle,
+  .project-toggle .chevron {
     transition: none !important;
   }
 }

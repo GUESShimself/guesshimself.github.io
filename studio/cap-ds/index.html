@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CAP Design System — Multi-brand, tokenized design system built from 0 → 1 at Conduent"
+    />
+    <title>CAP Design System - Eric Guess</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=block"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/layers.css" />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/layout.css" />
+    <link rel="stylesheet" href="../../css/components.css" />
+    <link rel="stylesheet" href="../../css/responsive.css" />
+    <link rel="stylesheet" href="../../css/case-study.css" />
+    <!-- Theme: loaded in head to set data-theme before first paint -->
+    <script src="../../js/theme.js"></script>
+
+    <!-- Modulor skin: apply before paint to prevent flash -->
+    <script>
+      if (localStorage.getItem("skin") === "modulor") {
+        document.documentElement.setAttribute("data-skin", "modulor");
+        document.write(
+          '<link rel="stylesheet" href="../../css/skins/modulor.css">',
+        );
+      }
+    </script>
+
+    <!-- Disable analytics on localhost -->
+    <script>
+      if (
+        location.hostname === "localhost" ||
+        location.hostname === "127.0.0.1"
+      ) {
+        localStorage.setItem("umami.disabled", 1);
+      }
+    </script>
+    <!-- Umami analytics -->
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"
+    ></script>
+  </head>
+  <body>
+    <nav class="utility-bar" aria-label="Site utility">
+      <div class="utility-bar__left">
+        <a href="/studio/" class="utility-bar__link">← Studio</a>
+      </div>
+
+      <div class="utility-bar__right">
+        <a href="/" class="utility-bar__link home-nav-link">Home</a>
+        <div class="theme-control">
+          <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="section-nav" aria-label="Page sections">
+      <ul>
+        <li><a href="#summary-heading">TL;DR</a></li>
+        <li><a href="#context-heading">Context</a></li>
+        <li><a href="#constraints-heading">Constraints</a></li>
+        <li><a href="#architecture-heading">Architecture</a></li>
+        <li><a href="#governance-heading">Governance</a></li>
+        <li><a href="#example-heading">Table Example</a></li>
+        <li><a href="#results-heading">Results</a></li>
+        <li><a href="#reflection-heading">Reflection</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Header Block -->
+      <header class="case-study-header">
+        <h1>CAP Design System</h1>
+        <p class="dek">
+          0 → 1 design system built alongside new enterprise products — establishing token architecture, stable APIs, and governance while shipping at speed.
+        </p>
+
+        <dl class="case-study-meta">
+          <div>
+            <dt>Company</dt>
+            <dd>Conduent</dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd>2020–2024</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>Design Systems Lead - Platform UX</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>Token architecture · Component APIs · Cross-team alignment</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>Cross-functional · 3+ product teams</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Web · Angular · Kendo UI</dd>
+          </div>
+        </dl>
+      </header>
+
+      <!-- Summary: Impact + At a Glance -->
+      <section aria-labelledby="summary-heading">
+        <h2 id="summary-heading" class="visually-hidden">Summary</h2>
+        <div class="tldr-box tldr-grid">
+          <div class="tldr-col">
+            <h3>What This Became</h3>
+            <p>
+              The CAP Design System began as a single-team initiative and
+              evolved into shared infrastructure across Conduent’s automation
+              platform.
+            </p>
+            <p>
+              What started as a component library became a structural layer that
+              defined how UI decisions were made, versioned, and migrated.
+            </p>
+            <p>It enabled:</p>
+            <ul>
+              <li>Multi-brand theming without fragmenting components</li>
+              <li>
+                Predictable component APIs across live enterprise products
+              </li>
+              <li>
+                Controlled evolution through explicit deprecation and migration
+                paths
+              </li>
+              <li>
+                Adoption driven by enablement and tooling rather than mandate
+              </li>
+            </ul>
+            <p>
+              Design intent became durable when it was encoded as tokens and
+              APIs — not screens.
+            </p>
+          </div>
+          <div class="tldr-col">
+            <h3>At a Glance</h3>
+            <ul>
+              <li>0 → 1 system introduced inside active production</li>
+              <li>
+                Semantic token architecture separating brand from implementation
+              </li>
+              <li>Stable component APIs with explicit versioning discipline</li>
+              <li>
+                Kendo Grid wrapped inside CAP abstraction layer to preserve
+                enterprise power
+              </li>
+              <li>
+                Governance model centered on cross-team review and migration
+                strategy
+              </li>
+              <li>
+                Adoption scaled from one team to three without enforcement
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Context -->
+      <section aria-labelledby="context-heading">
+        <h2 id="context-heading">Context</h2>
+        <p>
+          Conduent's Automation Platform and Customer Portal were newly
+          architected products supporting enterprise workflows across multiple
+          surfaces.
+        </p>
+        <p>
+          Although greenfield, they were being built by parallel teams — and
+          divergence appeared quickly.
+        </p>
+        <ul>
+          <li>Inconsistent component implementations across products</li>
+          <li>Incremental UI decisions creating drift</li>
+          <li>No shared governance model to guide expansion</li>
+        </ul>
+
+        <p>Teams were shipping fast.</p>
+
+        <p>Without structure, fragmentation would scale just as quickly.</p>
+
+        <p>
+          The challenge was not retrofitting legacy UI — it was preventing new
+          systems from fragmenting before they stabilized.
+        </p>
+      </section>
+
+      <!-- Core Constraints -->
+      <section aria-labelledby="constraints-heading">
+        <h2 id="constraints-heading">Core Constraints</h2>
+        <p>
+          CAP and the Customer Portal were newly architected products — but the
+          design system was built alongside them, not after.
+        </p>
+        <p>
+          We were creating structure in parallel with product delivery, inside a
+          large enterprise organization with legacy org gravity and limited cross-team collaboration.
+        </p>
+
+        <div class="constraint-highlight">
+          <h3>Key Constraints</h3>
+          <dl class="evolution-list">
+            <dt>Greenfield products, parallel system build</dt>
+            <dd>
+              Workflows were blank canvases, but the system had to mature inside
+              a 2-week sprint cadence.
+            </dd>
+
+            <dt>Pre-decided foundations</dt>
+            <dd>
+              Angular and Bootstrap were already in use; Kendo was introduced
+              mid-stream by another team and later incorporated strategically.
+            </dd>
+
+            <dt>Shared foundation, distinct surfaces</dt>
+            <dd>
+              Automation Platform and Customer Portal required different visual
+              expressions while relying on the same system core.
+            </dd>
+
+            <dt>Speed first</dt>
+            <dd>
+              Components were often "good enough" at launch, accruing design and
+              technical debt that required deliberate reconciliation.
+            </dd>
+
+            <dt>Small team, high alignment cost</dt>
+            <dd>
+              With 4-5 designers moving quickly, maintaining consistency
+              required continuous updates across Figma and code.
+            </dd>
+          </dl>
+        </div>
+
+        <p>This was not a centralized rollout with long planning cycles.</p>
+        <p>
+          It was a fast-moving effort to create durable agreements while
+          products were still taking shape.
+        </p>
+      </section>
+
+      <!-- Architecture Decisions -->
+      <section aria-labelledby="architecture-heading">
+        <h2 id="architecture-heading">Architecture Decisions</h2>
+        <p>
+          We structured CAP as layered infrastructure — design decisions flowing
+          through semantic tokens into components, patterns, and product
+          applications. This hierarchy separated intent from implementation.
+        </p>
+
+        <figure class="artifact arch-diagram">
+          <div class="arch-layer arch-layer--emphasis">
+            <strong class="arch-layer-title">Design Decisions</strong>
+            <span class="arch-layer-detail"
+              >Principles · Constraints · Brand rules</span
+            >
+          </div>
+          <span class="arch-arrow" aria-hidden="true">↓</span>
+          <div class="arch-layer arch-layer--emphasis">
+            <strong class="arch-layer-title">Semantic Tokens</strong>
+            <span class="arch-layer-detail"
+              >Color · Type · Spacing · Elevation</span
+            >
+          </div>
+          <span class="arch-arrow" aria-hidden="true">↓</span>
+          <div class="arch-layer arch-layer--split">
+            <div>
+              <strong class="arch-layer-title">Components</strong>
+              <span class="arch-layer-detail"
+                >Atomic → Composite → Configurable</span
+              >
+            </div>
+            <span class="arch-callout"
+              >Component API · Stable props, predictable behavior</span
+            >
+          </div>
+          <span class="arch-arrow" aria-hidden="true">↓</span>
+          <div class="arch-layer">
+            <strong class="arch-layer-title">Patterns & Templates</strong>
+            <span class="arch-layer-detail"
+              >Navigation · Forms · Data layouts</span
+            >
+          </div>
+          <span class="arch-arrow" aria-hidden="true">↓</span>
+          <div class="arch-layer">
+            <strong class="arch-layer-title">Product Applications</strong>
+            <span class="arch-layer-detail"
+              >Automation · Admin · Client UI</span
+            >
+          </div>
+          <figcaption>
+            Layering isolated brand decisions from component logic. Token
+            changes propagated across products without touching component code —
+            enabling multi-brand theming as a configuration concern, not an
+            engineering effort.
+          </figcaption>
+        </figure>
+
+        <p>
+          <strong>Tokens</strong><br />A semantic token architecture encoded
+          brand-aware color roles, spacing, typography, and elevation values.
+          Brand variation occurred at the token layer — not inside components —
+          allowing visual differentiation while preserving structural
+          consistency.
+        </p>
+
+        <p>
+          <strong>APIs</strong><br />Feature velocity often erodes systems
+          through incremental, undocumented changes. CAP components were
+          designed with stable APIs, explicit deprecation paths, and
+          architectural review for expansion. We optimized for long-term
+          stability over short-term convenience.
+        </p>
+
+        <p>
+          <strong>Enterprise Leverage</strong><br />For complex components like
+          data grids, we wrapped Kendo UI's Angular Grid inside a CAP
+          abstraction layer. This preserved enterprise-grade functionality while
+          applying tokenized styling and standardized interaction patterns. We
+          didn't reinvent infrastructure — we controlled it.
+        </p>
+      </section>
+
+      <!-- Governance & Adoption -->
+      <section aria-labelledby="governance-heading">
+        <h2 id="governance-heading">Governance & Adoption</h2>
+        <aside class="pull-quote">
+          Trust proved more durable than enforcement.
+        </aside>
+        <p>Adoption was not mandated. It was enabled through direct support:</p>
+        <ul>
+          <li>Embedded help during early migrations</li>
+          <li>Tooling (linting, migration scripts) to reduce friction</li>
+          <li>Shared ownership across design and engineering</li>
+        </ul>
+        <p>
+          Within six months, adoption expanded from one team to three. The
+          system scaled because it reduced friction — not because it was
+          required.
+        </p>
+      </section>
+
+      <!-- Representative Decision: Table Component -->
+      <section aria-labelledby="example-heading">
+        <h2 id="example-heading">
+          Representative Decision: Table Component Evolution
+        </h2>
+        <p>The table component surfaced many of the system's trade-offs.</p>
+        <p>
+          It was one of the most complex UI elements in the platform — and the
+          clearest example of how small inconsistencies compound at scale.
+        </p>
+        <p>
+          Rather than rebuild everything from scratch, we reframed the problem:
+        </p>
+
+        <dl class="evolution-list">
+          <dt>Custom-built implementation with limited scalability</dt>
+          <dd>
+            Introduced a Kendo-backed grid wrapped inside a CAP abstraction
+            layer
+          </dd>
+
+          <dt>Inconsistent styling across products</dt>
+          <dd>
+            Applied tokenized styling to enforce shared spacing, color, and
+            state patterns
+          </dd>
+
+          <dt>
+            Divergent interaction behaviors (sorting, filtering, state handling)
+          </dt>
+          <dd>Standardized interaction patterns across all product surfaces</dd>
+
+          <dt>Unbounded configuration growth</dt>
+          <dd>
+            Designed a constrained but predictable component API with explicit
+            versioning discipline
+          </dd>
+        </dl>
+
+        <p>This approach balanced pragmatism and control.</p>
+        <p>
+          Enterprise functionality was preserved, but governed — turning the
+          table into infrastructure instead of a recurring redesign exercise.
+        </p>
+      </section>
+
+      <!-- Results -->
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading">Results</h2>
+        <aside class="pull-quote">
+          Teams began speaking in tokens and APIs — not pixels.
+        </aside>
+        <p>
+          Formal metrics weren't tracked at launch, but the impact was visible:
+        </p>
+        <ul>
+          <li>Reduced UI regressions through token enforcement</li>
+          <li>Faster onboarding for new product teams</li>
+          <li>Greater predictability and consistency in UI delivery</li>
+        </ul>
+        <p>
+          Design and engineering began discussing tokens and APIs — not pixels.
+          The system moved from a shared library to shared infrastructure.
+        </p>
+      </section>
+
+      <!-- Reflection -->
+      <section aria-labelledby="reflection-heading">
+        <h2 id="reflection-heading">What This Reinforced</h2>
+        <p>
+          Design systems are infrastructure — not component libraries, not Figma
+          files, not documentation sites. They are structured agreements about
+          how products scale.
+        </p>
+        <p>
+          The technical architecture mattered. But governance, trust, and
+          migration strategy determined whether the system survived contact with
+          real teams. Stability had to be chosen over velocity at the foundation
+          layer, so that velocity could be preserved everywhere else.
+        </p>
+        <p>
+          Opinionated foundations. Flexible implementation. That balance is the
+          work.
+        </p>
+      </section>
+
+      <!-- Back to Studio -->
+      <nav class="back-nav bottom" aria-label="Return to Studio">
+        <a href="/studio/" class="back-link">← Back to Studio</a>
+      </nav>
+    </main>
+
+    <footer>
+      <h2 class="visually-hidden">Contact</h2>
+      <nav aria-label="Site and contact links">
+        <ul class="contact-links">
+          <li><a href="/">Home</a></li>
+          <li class="separator">
+            <a href="mailto:guesshimself@gmail.com">Email</a>
+          </li>
+          <li>
+            <a href="/Eric-Guess-Resume-Design-Systems-Portfolio.pdf">Resume</a>
+          </li>
+          <li><a href="https://linkedin.com/in/guess">LinkedIn</a></li>
+          <li><a href="https://github.com/GUESShimself">GitHub</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">&copy; 2026 Eric Guess</p>
+    </footer>
+
+    <!-- Modulor toggle -->
+    <button
+      id="modulor-toggle"
+      class="modulor-toggle"
+      aria-label="Toggle Modulor skin"
+      aria-pressed="false"
+    >
+      φ
+    </button>
+
+    <!-- Scripts -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/section-nav.js"></script>
+    <script src="../../js/modulor-toggle.js"></script>
+  </body>
+</html>
