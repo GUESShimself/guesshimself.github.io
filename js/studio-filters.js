@@ -8,6 +8,7 @@
 
   var FILTER_BUTTONS = document.querySelectorAll('.filter-btn');
   var STUDIO_ITEMS = document.querySelectorAll('.studio-item');
+  var EMPTY_STATE = document.querySelector('.studio-empty');
   var HASH_PREFIX = '#';
 
   /**
@@ -19,6 +20,7 @@
     var item;
     var itemType;
     var shouldShow;
+    var visibleCount = 0;
 
     for (i = 0; i < STUDIO_ITEMS.length; i++) {
       item = STUDIO_ITEMS[i];
@@ -27,9 +29,14 @@
 
       if (shouldShow) {
         item.classList.remove('is-hidden');
+        visibleCount++;
       } else {
         item.classList.add('is-hidden');
       }
+    }
+
+    if (EMPTY_STATE) {
+      EMPTY_STATE.hidden = visibleCount > 0;
     }
   }
 
