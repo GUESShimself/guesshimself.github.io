@@ -54,6 +54,7 @@
 
   /* Layout */
   --max-width-content: 42rem;    /* ~672px, optimal reading width */
+  --max-width-breakout: 56rem;   /* ~896px, for breakout elements */
   --max-width-wide: 64rem;       /* ~1024px, for grids */
   --section-spacing: var(--space-3xl);
 

@@ -146,6 +146,19 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* ── Pull Quotes ────────────────────────────────────────── */
+
+.pull-quote {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-lg);
+  margin: var(--space-xl) 0;
+  max-width: var(--max-width-content);
+}
+
 /* ── Artifact / Image Blocks ─────────────────────────────── */
 
 .artifact {
@@ -166,10 +179,66 @@
 }
 
 .artifact figcaption {
+  font-family: var(--font-heading);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-secondary);
   font-style: italic;
+}
+
+/* ── Section Navigation ─────────────────────────────────── */
+
+.section-nav {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .section-nav {
+    display: block;
+    position: absolute;
+    right: var(--space-xl);
+    z-index: 10;
+  }
+
+  .section-nav.is-fixed {
+    position: fixed;
+    top: var(--space-4xl);
+  }
+
+  .section-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .section-nav li {
+    margin-bottom: 0.125rem;
+  }
+
+  .section-nav a {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    padding: 0.25rem 0.75rem;
+    border-left: 2px solid transparent;
+    transition: color 150ms ease-out, border-color 150ms ease-out;
+  }
+
+  .section-nav a:hover,
+  .section-nav a:focus {
+    color: var(--color-accent);
+  }
+
+  .section-nav a:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .section-nav a.is-active {
+    color: var(--color-text-primary);
+    border-left-color: var(--color-accent);
+  }
 }
 
 /* ── Content Sections ────────────────────────────────────── */
@@ -177,6 +246,11 @@
 /* Ensure sections have good reading width */
 section {
   max-width: var(--max-width-content);
+}
+
+/* Scroll offset for fixed nav */
+section > h2[id] {
+  scroll-margin-top: 2rem;
 }
 
 /* Section headings */
@@ -235,11 +309,40 @@ section > ul > li strong {
   .tldr-box {
     padding: var(--space-xl) var(--space-2xl);
   }
+
+  .pull-quote {
+    font-size: var(--font-size-2xl);
+  }
 }
 
 @media (min-width: 64rem) {
   .case-study-meta {
     grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* ── Editorial Layout: Shifted Spine + Breakout ────────── */
+
+  /* Shift reading column left to balance right-side section nav */
+  main {
+    padding-right: calc(var(--space-xl) + 10rem);
+  }
+
+  /* Widen header to breathe more than body */
+  .case-study-header {
+    max-width: var(--max-width-breakout);
+  }
+
+  /* Let sections expand for breakout elements */
+  section {
+    max-width: min(var(--max-width-breakout), calc(100vw - 14rem));
+  }
+
+  /* Constrain prose to reading width */
+  section > p,
+  section > ul,
+  section > h2,
+  section > h3 {
+    max-width: var(--max-width-content);
   }
 }
 
