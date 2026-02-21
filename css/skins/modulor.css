@@ -869,8 +869,7 @@ html[data-skin="modulor"] .project-card:nth-child(3) {
   opacity: 0.95;
 }
 
-html[data-skin="modulor"] .project-card:hover {
-  transform: translateX(var(--space-3));
+html[data-skin="modulor"] .project-card:focus-within {
   z-index: 15;
 }
 
@@ -1428,7 +1427,125 @@ html[data-skin="modulor"] .collapse-toggle {
 }
 
 /* ===============================
-   18. REDUCED MOTION
+   18. CASE STUDY — SECTION NAV
+   Blocked-in structural navigation
+   =============================== */
+
+@media (min-width: 64rem) {
+  html[data-skin="modulor"] .section-nav {
+    background: var(--color-accent-wash);
+    border: 1px solid var(--modulor-black);
+    padding: var(--space-5) var(--space-5);
+  }
+
+  html[data-skin="modulor"] .section-nav a {
+    font-family: var(--font-mono);
+    font-size: var(--type-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 1;
+    color: var(--color-text-secondary);
+    border-left-width: 3px;
+    padding: var(--space-2) var(--space-5);
+  }
+
+  html[data-skin="modulor"] .section-nav a:hover,
+  html[data-skin="modulor"] .section-nav a:focus {
+    color: var(--modulor-red);
+  }
+
+  html[data-skin="modulor"] .section-nav a.is-active {
+    color: var(--color-text-primary);
+    border-left-color: var(--modulor-blue);
+  }
+}
+
+/* ===============================
+   18b. CASE STUDY — ARCHITECTURE DIAGRAM
+   Datum bars weave through layers at staggered z-indexes
+   =============================== */
+
+html[data-skin="modulor"] .arch-diagram {
+  position: relative;
+}
+
+/* Red datum bar — passes over lower layers, under upper */
+html[data-skin="modulor"] .arch-diagram::before {
+  content: '';
+  position: absolute;
+  top: 38%;
+  left: calc(var(--space-13) * -1);
+  right: calc(var(--space-8) * -1);
+  height: var(--space-2);
+  background: var(--modulor-red);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Blue datum bar — lower, passes over bottom layer only */
+html[data-skin="modulor"] .arch-diagram::after {
+  content: '';
+  position: absolute;
+  top: 72%;
+  left: calc(var(--space-8) * -1);
+  right: calc(var(--space-13) * -1);
+  height: var(--space-2);
+  background: var(--modulor-blue);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Layer z-index staggering — bars weave between */
+html[data-skin="modulor"] .arch-layer {
+  position: relative;
+  border-color: var(--modulor-black);
+}
+
+html[data-skin="modulor"] .arch-layer:nth-child(1) { z-index: 5; }
+html[data-skin="modulor"] .arch-layer:nth-child(3) { z-index: 4; }
+html[data-skin="modulor"] .arch-layer:nth-child(5) { z-index: 2; }
+html[data-skin="modulor"] .arch-layer:nth-child(7) { z-index: 2; }
+html[data-skin="modulor"] .arch-layer:nth-child(9) { z-index: 0; }
+
+/* Arrows stay low so bars pass over them */
+html[data-skin="modulor"] .arch-arrow {
+  position: relative;
+  z-index: 0;
+}
+
+/* Emphasis layers get surface treatment */
+html[data-skin="modulor"] .arch-layer--emphasis {
+  background: var(--color-surface);
+  border-width: 2px;
+}
+
+/* Detail text in mono */
+html[data-skin="modulor"] .arch-layer-detail {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+/* Callout gets structural border */
+html[data-skin="modulor"] .arch-callout {
+  border-color: var(--modulor-black);
+  font-family: var(--font-mono);
+}
+
+/* Dark mode: soften datum bars */
+html[data-skin="modulor"][data-theme="dark"] .arch-diagram::before,
+html[data-skin="modulor"][data-theme="dark"] .arch-diagram::after {
+  opacity: 0.7;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="modulor"]:not([data-theme]) .arch-diagram::before,
+  html[data-skin="modulor"]:not([data-theme]) .arch-diagram::after {
+    opacity: 0.7;
+  }
+}
+
+/* ===============================
+   20. REDUCED MOTION
    =============================== */
 
 @media (prefers-reduced-motion: reduce) {
