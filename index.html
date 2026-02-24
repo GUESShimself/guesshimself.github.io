@@ -31,7 +31,11 @@
     <script>
       if (localStorage.getItem('skin') === 'modulor') {
         document.documentElement.setAttribute('data-skin', 'modulor');
-        document.write('<link rel="stylesheet" href="css/skins/modulor.css">');
+        const skinStylesheet = document.createElement('link');
+        skinStylesheet.rel = 'stylesheet';
+        skinStylesheet.href = 'css/skins/modulor.css';
+        skinStylesheet.setAttribute('data-skin-stylesheet', 'modulor');
+        document.head.appendChild(skinStylesheet);
       }
     </script>
 
@@ -53,7 +57,7 @@
       </div>
       -->
       <div class="utility-bar__right">
-        <a href="/studio/" class="utility-bar__link studio-nav-link">Studio</a>
+        <a href="/studio/" class="utility-bar__link top-nav-link studio-nav-link">Studio</a>
         <div class="theme-control">
           <button id="theme-toggle" class="theme-toggle">Theme: System</button>
         </div>

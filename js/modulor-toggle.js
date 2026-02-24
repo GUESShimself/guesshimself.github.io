@@ -8,7 +8,7 @@
   var btn = document.getElementById('modulor-toggle');
   if (!btn) return;
 
-  var skinLink = null;
+  var skinLink = document.querySelector('link[data-skin-stylesheet="modulor"]');
 
   function isActive() {
     return root.getAttribute('data-skin') === SKIN;
@@ -18,7 +18,8 @@
     if (skinLink) { callback(); return; }
     skinLink = document.createElement('link');
     skinLink.rel = 'stylesheet';
-    skinLink.href = 'css/skins/modulor.css';
+    skinLink.href = '/css/skins/modulor.css';
+    skinLink.setAttribute('data-skin-stylesheet', 'modulor');
     skinLink.onload = callback;
     document.head.appendChild(skinLink);
   }

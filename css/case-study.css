@@ -226,7 +226,7 @@
 @media (min-width: 64rem) {
   .arch-diagram {
     margin: 0 calc(var(--space-2xl) * -1) var(--space-md);
-  };
+  }
 }
 
 .arch-layer {
@@ -360,13 +360,13 @@
 /* ── Content Sections ────────────────────────────────────── */
 
 /* Ensure sections have good reading width */
-section {
+body.page-case-study section {
   max-width: var(--max-width-content);
 }
 
 /* Scroll offset for fixed nav */
 .case-study-header h1,
-main h2[id] {
+body.page-case-study main h2[id] {
   scroll-margin-top: 7rem;
 }
 
@@ -375,14 +375,14 @@ main h2[id] {
 } */
 
 /* Section headings */
-section > h2 {
+body.page-case-study section > h2 {
   margin-top: var(--space-3xl);
   margin-bottom: var(--space-lg);
   font-size: var(--font-size-3xl);
 }
 
 /* Subsection headings */
-section > h3 {
+body.page-case-study section > h3 {
   margin-top: var(--space-2xl);
   margin-bottom: var(--space-md);
   font-size: var(--font-size-xl);
@@ -391,28 +391,28 @@ section > h3 {
 }
 
 /* Paragraphs with comfortable reading */
-section > p {
+body.page-case-study section > p {
   margin-bottom: var(--space-lg);
   line-height: var(--line-height-relaxed);
 }
 
 /* Lists in sections */
-section > ul {
+body.page-case-study section > ul {
   margin-bottom: var(--space-xl);
   padding-left: var(--space-lg);
 }
 
-section > ul > li {
+body.page-case-study section > ul > li {
   margin-bottom: var(--space-md);
   line-height: var(--line-height-relaxed);
 }
 
-section > ul > li:last-child {
+body.page-case-study section > ul > li:last-child {
   margin-bottom: 0;
 }
 
 /* Strong emphasis in lists */
-section > ul > li strong {
+body.page-case-study section > ul > li strong {
   color: var(--color-text-primary);
 }
 
@@ -447,7 +447,7 @@ section > ul > li strong {
     padding: var(--space-sm) var(--space-lg);
   }
 
-  section > ul > li {
+  body.page-case-study section > ul > li {
     font-size: var(--font-size-lg);
   }
 
@@ -462,14 +462,14 @@ section > ul > li strong {
   }
 
   /* Slightly tighter prose for long paragraphs */
-  section > p {
+  body.page-case-study section > p {
     max-width: 38rem;
   }
 
   /* ── Editorial Layout: Shifted Spine ────────────────────── */
 
   /* Shift reading column left to balance right-side section nav */
-  main {
+  body.page-case-study main {
     padding-right: calc(var(--space-xl) + 10rem);
   }
 }

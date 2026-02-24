@@ -1,15 +1,17 @@
+@layer studio {
+
 /* ============================================================================
    Studio Page Styles
    ========================================================================= */
 
 /* Sticky Footer Pattern */
-body {
+body.page-studio {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-main {
+body.page-studio main {
   flex: 1;
 }
 
@@ -109,7 +111,7 @@ main {
   border-radius: 4px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .studio-item-link:hover {
@@ -218,3 +220,5 @@ main {
     transform: none;
   }
 }
+
+} /* end @layer studio */

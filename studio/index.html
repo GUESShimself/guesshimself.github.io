@@ -32,7 +32,11 @@
     <script>
       if (localStorage.getItem('skin') === 'modulor') {
         document.documentElement.setAttribute('data-skin', 'modulor');
-        document.write('<link rel="stylesheet" href="../css/skins/modulor.css">');
+        const skinStylesheet = document.createElement('link');
+        skinStylesheet.rel = 'stylesheet';
+        skinStylesheet.href = '../css/skins/modulor.css';
+        skinStylesheet.setAttribute('data-skin-stylesheet', 'modulor');
+        document.head.appendChild(skinStylesheet);
       }
     </script>
 
@@ -45,7 +49,7 @@
     <!-- Umami analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
   </head>
-  <body>
+  <body class="page-studio">
     <nav class="utility-bar" aria-label="Site utility">
       <!-- Optional left slot for studio child pages -->
       <!--
@@ -54,7 +58,7 @@
       </div>
       -->
       <div class="utility-bar__right">
-        <a href="/" class="utility-bar__link home-nav-link">Home</a>
+        <a href="/" class="utility-bar__link top-nav-link home-nav-link">Home</a>
         <div class="theme-control">
           <button id="theme-toggle" class="theme-toggle">Theme: System</button>
         </div>
