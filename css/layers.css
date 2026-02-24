@@ -2,4 +2,4 @@
    Controls specificity regardless of file load order.
    Later layers override earlier layers. */
 
-@layer reset, variables, base, layout, components, responsive, skins;
+@layer reset, variables, base, layout, components, responsive, case-study, studio, skins;

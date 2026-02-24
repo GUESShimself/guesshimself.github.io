@@ -107,7 +107,7 @@
 
     for (i = 0; i < FILTER_BUTTONS.length; i++) {
       FILTER_BUTTONS[i].addEventListener('click', function (e) {
-        var filterType = e.target.getAttribute('data-filter');
+        var filterType = e.currentTarget.getAttribute('data-filter');
         applyFilter(filterType);
       });
     }

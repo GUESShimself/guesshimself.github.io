@@ -13,7 +13,7 @@
   container-name: project-card;
 }
 
-.studio-nav-link {
+:is(.studio-nav-link, .home-nav-link) {
   position: fixed;
   top: var(--space-md);
   right: calc(var(--space-md) * 2 + 8rem);
@@ -29,47 +29,17 @@
   transition: color 150ms ease-out, opacity 150ms ease-out;
 }
 
-.studio-nav-link:hover,
-.studio-nav-link:focus {
+:is(.studio-nav-link, .home-nav-link):hover,
+:is(.studio-nav-link, .home-nav-link):focus {
   color: var(--color-accent);
 }
 
-.studio-nav-link:focus-visible {
+:is(.studio-nav-link, .home-nav-link):focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
-.studio-nav-link.is-dimmed {
-  opacity: 0.6;
-}
-
-.home-nav-link {
-  position: fixed;
-  top: var(--space-md);
-  right: calc(var(--space-md) * 2 + 8rem);
-  z-index: 10;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: var(--space-xs) var(--space-sm);
-  font-family: var(--font-primary);
-  text-decoration: none;
-  transition: color 150ms ease-out, opacity 150ms ease-out;
-}
-
-.home-nav-link:hover,
-.home-nav-link:focus {
-  color: var(--color-accent);
-}
-
-.home-nav-link:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-
-.home-nav-link.is-dimmed {
+.top-nav-link.is-dimmed {
   opacity: 0.6;
 }
 
@@ -274,7 +244,7 @@
   border-left: 2px solid var(--color-border-emphasis);
   color: var(--color-text-secondary);
   position: relative;
-  transition: all 400ms ease-out;
+  transition: color 400ms ease-out;
 }
 
 .principles-list li.in-view {
@@ -723,7 +693,7 @@ html[data-skin="modulor"][data-theme="dark"] .artifact img {
   font-family: var(--font-heading);
   font-size: var(--font-size-sm);
   line-height: 1;
-  color: var(--color-text-accent);
+  color: var(--color-text-tertiary);
   opacity: 0.33;
   cursor: pointer;
   transition: opacity 0.2s ease;
