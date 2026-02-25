@@ -307,6 +307,74 @@ html[data-skin="modulor"] main::after {
   pointer-events: none;
 }
 
+/* DIMINISHING ARCS along spine
+   Arcs billow right from the spine, diminishing down the page — Modulor panel motif
+   Outer arcs are deeper, inner arcs are flatter (larger radius = shallower curve)
+   Tight connectors at the spine between each lobe create the scalloped rhythm
+   SVG spine at x=0, arcs extend right; left-side connectors are clipped at viewBox edge */
+html[data-skin="modulor"]::before {
+  content: '';
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: var(--spine-offset);
+  width: 15vw;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 62 600'%3E%3Cpath d='M 0 0 A 125 125 0 0 1 0 210 A 16 16 0 0 0 0 240 A 78 78 0 0 1 0 370 A 11 11 0 0 0 0 390 A 48 48 0 0 1 0 470 A 7 7 0 0 0 0 482 A 30 30 0 0 1 0 532 A 5 5 0 0 0 0 540 A 18 18 0 0 1 0 570 A 4 4 0 0 0 0 576 A 11 11 0 0 1 0 594' fill='none' stroke='%23c53d2f' stroke-width='1.5'/%3E%3Cpath d='M 0 0 A 175 175 0 0 1 0 210 A 16 16 0 0 0 0 240 A 110 110 0 0 1 0 370 A 11 11 0 0 0 0 390 A 68 68 0 0 1 0 470 A 7 7 0 0 0 0 482 A 42 42 0 0 1 0 532 A 5 5 0 0 0 0 540 A 25 25 0 0 1 0 570 A 4 4 0 0 0 0 576 A 15 15 0 0 1 0 594' fill='none' stroke='%23c53d2f' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+html[data-skin="modulor"][data-theme="dark"]::before {
+  mix-blend-mode: screen;
+  opacity: 0.15;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="modulor"]:not([data-theme])::before {
+    mix-blend-mode: screen;
+    opacity: 0.15;
+  }
+}
+
+/* LEFT-BILLOWING ARCS — mirror of the right arcs, offset to start halfway
+   down the first right-side lobe. Sweep flags flipped (0↔1) so arcs
+   billow left; positioned to the left of the spine. */
+html[data-skin="modulor"]::after {
+  content: '';
+  display: none;
+  position: fixed;
+  top: 17.5%;                       /* Half of first right arc (105/600) */
+  bottom: 0;
+  right: calc(100% - var(--spine-offset));
+  width: 15vw;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-62 0 62 600'%3E%3Cpath d='M 0 0 A 125 125 0 0 0 0 210 A 16 16 0 0 1 0 240 A 78 78 0 0 0 0 370 A 11 11 0 0 1 0 390 A 48 48 0 0 0 0 470 A 7 7 0 0 1 0 482 A 30 30 0 0 0 0 532 A 5 5 0 0 1 0 540 A 18 18 0 0 0 0 570 A 4 4 0 0 1 0 576 A 11 11 0 0 0 0 594' fill='none' stroke='%23c53d2f' stroke-width='1.5'/%3E%3Cpath d='M 0 0 A 175 175 0 0 0 0 210 A 16 16 0 0 1 0 240 A 110 110 0 0 0 0 370 A 11 11 0 0 1 0 390 A 68 68 0 0 0 0 470 A 7 7 0 0 1 0 482 A 42 42 0 0 0 0 532 A 5 5 0 0 1 0 540 A 25 25 0 0 0 0 570 A 4 4 0 0 1 0 576 A 15 15 0 0 0 0 594' fill='none' stroke='%23c53d2f' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+html[data-skin="modulor"][data-theme="dark"]::after {
+  mix-blend-mode: screen;
+  opacity: 0.15;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-skin="modulor"]:not([data-theme])::after {
+    mix-blend-mode: screen;
+    opacity: 0.15;
+  }
+}
+
 /* ===============================
    7. SECTION BASE STYLES
    =============================== */
@@ -377,15 +445,17 @@ html[data-skin="modulor"] #hero {
   margin-left: calc(var(--spine-offset) * -1 - var(--spine-width));
   padding-left: calc(var(--spine-offset) + var(--space-8));
   min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
 }
 
 /* POSTER TYPOGRAPHY MOMENT
    Hero name at uncomfortable scale - architectural manifesto
    Mobile: φ³–φ⁴, scaling up to φ⁵–φ⁶ at desktop */
 html[data-skin="modulor"] #hero h1 {
+  grid-column: 1;
+  grid-row: 1;
   font-size: clamp(var(--type-xl), 12vw, var(--type-2xl));
   line-height: 0.8;
   font-weight: 400;
@@ -400,6 +470,7 @@ html[data-skin="modulor"] #hero h1 {
   border-bottom: var(--space-3) solid var(--modulor-black);
   display: inline-block;
   max-width: calc(100% + var(--space-8));
+  word-spacing: 100vw;  /* Force single-word layout for clean poster look */
 }
 
 html[data-skin="modulor"] #hero h1::before {
@@ -440,6 +511,8 @@ html[data-skin="modulor"] #hero h1::after {
 }
 
 html[data-skin="modulor"] #hero .role {
+  grid-column: 1;
+  grid-row: 2;
   font-family: var(--font-mono);
   font-size: var(--type-sm);
   text-transform: uppercase;
@@ -455,8 +528,6 @@ html[data-skin="modulor"] #hero .positioning {
   font-size: var(--type-base);
   line-height: var(--line-height-body);
   max-width: 38ch;
-  /* Offset from spine alignment — scales up at larger breakpoints */
-  margin-left: calc(var(--space-8) * -1);
   /* Slight crop at bottom - credibility slab will overlap */
   padding-bottom: var(--space-13);
 }
@@ -1202,9 +1273,20 @@ html[data-skin="modulor"] .collapse-toggle {
     --datum-thickness: var(--space-5);
   }
 
+  /* Arcs: reveal at tablet */
+  html[data-skin="modulor"]::before,
+  html[data-skin="modulor"]::after {
+    display: block;
+  }
+
   html[data-skin="modulor"] #hero {
     min-height: 70vh;
     padding-left: calc(var(--spine-offset) + var(--space-13));
+    /* Two-column grid at tablet+ */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-8);
+    align-items: start;
   }
 
   html[data-skin="modulor"] #hero h1 {
@@ -1214,7 +1296,10 @@ html[data-skin="modulor"] .collapse-toggle {
   }
 
   html[data-skin="modulor"] #hero .positioning {
-    margin-left: var(--space-13);
+    grid-column: 2;
+    grid-row: 1 / -1;
+    align-self: center;
+    margin-left: 0;
   }
 
   html[data-skin="modulor"] #credibility {
