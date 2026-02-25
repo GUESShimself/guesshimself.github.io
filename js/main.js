@@ -11,6 +11,9 @@
       if (this.classList.contains('principle-anchor')) {
         return;
       }
+      if (this.closest('.section-nav')) {
+        return;
+      }
 
       const targetId = this.getAttribute('href');
 

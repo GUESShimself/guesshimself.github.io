@@ -1,0 +1,224 @@
+@layer studio {
+
+/* ============================================================================
+   Studio Page Styles
+   ========================================================================= */
+
+/* Sticky Footer Pattern */
+body.page-studio {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body.page-studio main {
+  flex: 1;
+}
+
+/* Studio Header */
+.studio-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.studio-header h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+}
+
+.studio-description {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: var(--max-width-content);
+}
+
+/* Filter Controls */
+.studio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filter-btn {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  padding: 0 0 var(--space-xs) 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: color 0.15s ease;
+  position: relative;
+}
+
+.filter-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.filter-btn.is-active {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.filter-btn.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+.filter-btn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Studio Grid */
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+/* Studio Item Card */
+.studio-item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.studio-item.is-hidden {
+  display: none;
+}
+
+.studio-empty {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.studio-item-link {
+  display: block;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.studio-item-link:hover {
+  border-color: var(--color-text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.studio-item-link:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+}
+
+.studio-item h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  transition: color 150ms ease-out;
+}
+
+.studio-item-header {
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+}
+
+.studio-item-type {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  display: inline;
+  text-transform: uppercase;
+}
+
+.studio-item time {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  display: inline;
+}
+
+.studio-item time::before {
+  content: "·";
+  margin-right: 0.3125rem;
+}
+
+.studio-item-description {
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  margin: var(--space-sm) 0;
+  font-size: var(--font-size-lg);
+}
+
+.studio-item .scope-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  transition: color 150ms ease-out;
+}
+
+.studio-item-link:hover .scope-indicators {
+  color: var(--color-text-secondary);
+}
+
+.studio-item .scope-indicators li {
+  position: relative;
+  padding-right: var(--space-sm);
+}
+
+.studio-item .scope-indicators li:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: 0;
+  color: var(--color-border);
+}
+
+/* Responsive */
+@media (min-width: 48rem) {
+  .studio-header h1 {
+    font-size: var(--font-size-5xl);
+  }
+
+  .studio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .studio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .studio-item,
+  .studio-item-link,
+  .filter-btn {
+    transition: none;
+  }
+
+  .studio-item-link:hover {
+    transform: none;
+  }
+}
+
+} /* end @layer studio */

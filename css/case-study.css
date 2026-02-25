@@ -1,0 +1,477 @@
+@layer case-study {
+
+/* Case Study Specific Styles */
+
+/* ── Back Navigation ─────────────────────────────────────── */
+
+.back-nav {
+  margin-bottom: var(--space-xl);
+}
+
+.back-nav.bottom {
+  margin-top: var(--space-3xl);
+  margin-bottom: 0;
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.back-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  transition: color 150ms ease-out;
+}
+
+.back-link:hover,
+.back-link:focus {
+  color: var(--color-accent);
+}
+
+.back-link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Header Block ────────────────────────────────────────── */
+
+.case-study-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.case-study-header h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.dek {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 48rem;
+}
+
+/* ── Metadata Grid ───────────────────────────────────────── */
+
+.case-study-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--space-md) var(--space-lg);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.case-study-meta dt {
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.case-study-meta dd {
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── TL;DR / Impact Box ──────────────────────────────────── */
+
+.tldr-box {
+  background: var(--color-accent-wash);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-lg);
+  margin: var(--space-2xl) 0;
+  border-radius: 2px;
+}
+
+.tldr-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.tldr-col + .tldr-col {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-xl);
+}
+
+.tldr-box h3 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-md);
+}
+
+.tldr-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tldr-box li {
+  padding-left: var(--space-md);
+  position: relative;
+  margin-bottom: var(--space-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.tldr-box li:last-child {
+  margin-bottom: 0;
+}
+
+.tldr-box li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Constraint Highlight ────────────────────────────────── */
+
+.constraint-highlight {
+  background: var(--color-surface-hover);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+  border-radius: 2px;
+}
+
+.constraint-highlight h3 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-sm);
+}
+
+.constraint-highlight p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── Evolution List (Before → After) ────────────────────── */
+
+.evolution-list {
+  margin: var(--space-xl) 0;
+}
+
+.evolution-list dt {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.evolution-list dd {
+  margin: 0 0 var(--space-md) 0;
+  padding-left: var(--space-md);
+  position: relative;
+  line-height: var(--line-height-relaxed);
+  font-weight: 500;
+}
+
+.evolution-list dd:last-child {
+  margin-bottom: 0;
+}
+
+.evolution-list dd::before {
+  content: "↳";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Pull Quotes ────────────────────────────────────────── */
+
+.pull-quote {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-lg);
+  margin: var(--space-xl) 0;
+  max-width: var(--max-width-content);
+}
+
+/* ── Artifact / Image Blocks ─────────────────────────────── */
+
+.artifact {
+  margin: var(--space-2xl) 0;
+}
+
+.artifact img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--space-md);
+  border-radius: 2px;
+}
+
+/* ── Architecture Diagram ───────────────────────────────── */
+
+.arch-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: var(--space-md);
+}
+@media (min-width: 64rem) {
+  .arch-diagram {
+    margin: 0 calc(var(--space-2xl) * -1) var(--space-md);
+  }
+}
+
+.arch-layer {
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: var(--space-sm) var(--space-lg);
+}
+
+.arch-layer--emphasis {
+  background: var(--color-surface);
+}
+
+.arch-layer--split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.arch-layer-title {
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.arch-layer-detail {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.arch-callout {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.arch-arrow {
+  display: block;
+  text-align: center;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  padding: var(--space-xs) 0;
+}
+
+.artifact-placeholder {
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-md);
+  border-radius: 2px;
+}
+
+.artifact figcaption {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-top: var(--space-xs);
+}
+
+/* ── Section Navigation ─────────────────────────────────── */
+
+.section-nav {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .section-nav {
+    display: block;
+    position: absolute;
+    right: var(--space-xl);
+    z-index: 10;
+  }
+
+  .section-nav.is-fixed {
+    position: fixed;
+    top: var(--space-4xl);
+  }
+
+  .section-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .section-nav li {
+    margin-bottom: 0.125rem;
+  }
+
+  .section-nav a {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    opacity: 0.7;
+    text-decoration: none;
+    padding: 0.175rem 0.75rem;
+    border-left: 2px solid transparent;
+    transition: color 150ms ease-out, border-color 150ms ease-out, opacity 150ms ease-out;
+  }
+
+  .section-nav a:hover,
+  .section-nav a:focus {
+    color: var(--color-accent);
+  }
+
+  .section-nav a:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .section-nav a.is-active {
+    color: var(--color-text-primary);
+    opacity: 1;
+    border-left-color: var(--color-accent);
+  }
+}
+
+/* ── Content Sections ────────────────────────────────────── */
+
+/* Ensure sections have good reading width */
+body.page-case-study section {
+  max-width: var(--max-width-content);
+}
+
+/* Scroll offset for fixed nav */
+.case-study-header h1,
+body.page-case-study main h2[id] {
+  scroll-margin-top: 7rem;
+}
+
+/* section > h2[id] {
+  scroll-margin-top: 2rem;
+} */
+
+/* Section headings */
+body.page-case-study section > h2 {
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-3xl);
+}
+
+/* Subsection headings */
+body.page-case-study section > h3 {
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-xl);
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+/* Paragraphs with comfortable reading */
+body.page-case-study section > p {
+  margin-bottom: var(--space-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Lists in sections */
+body.page-case-study section > ul {
+  margin-bottom: var(--space-xl);
+  padding-left: var(--space-lg);
+}
+
+body.page-case-study section > ul > li {
+  margin-bottom: var(--space-md);
+  line-height: var(--line-height-relaxed);
+}
+
+body.page-case-study section > ul > li:last-child {
+  margin-bottom: 0;
+}
+
+/* Strong emphasis in lists */
+body.page-case-study section > ul > li strong {
+  color: var(--color-text-primary);
+}
+
+/* ── Responsive Adjustments ──────────────────────────────── */
+
+@media (min-width: 48rem) {
+  .dek {
+    font-size: var(--font-size-2xl);
+  }
+
+  .case-study-meta {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tldr-box {
+    padding: var(--space-xl) var(--space-2xl);
+  }
+
+  .tldr-grid {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 calc(var(--space-2xl) * -1);
+  }
+
+  .tldr-col + .tldr-col {
+    border-top: none;
+    padding-top: 0;
+    border-left: 1px solid var(--color-border);
+    padding-left: var(--space-xl);
+  }
+
+  .constraint-highlight {
+    padding: var(--space-sm) var(--space-lg);
+  }
+
+  body.page-case-study section > ul > li {
+    font-size: var(--font-size-lg);
+  }
+
+  .pull-quote {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (min-width: 64rem) {
+  .case-study-meta {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* Slightly tighter prose for long paragraphs */
+  body.page-case-study section > p {
+    max-width: 38rem;
+  }
+
+  /* ── Editorial Layout: Shifted Spine ────────────────────── */
+
+  /* Shift reading column left to balance right-side section nav */
+  body.page-case-study main {
+    padding-right: calc(var(--space-xl) + 10rem);
+  }
+}
+
+} /* end @layer case-study */

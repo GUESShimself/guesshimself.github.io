@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Case study template for design systems work"
+    />
+    <title>Case Study Title - Eric Guess</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=block" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/layers.css" />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/layout.css" />
+    <link rel="stylesheet" href="../../css/components.css" />
+    <link rel="stylesheet" href="../../css/responsive.css" />
+    <link rel="stylesheet" href="../../css/case-study.css" />
+    <!-- Theme: loaded in head to set data-theme before first paint -->
+    <script src="../../js/theme.js"></script>
+
+    <!-- Modulor skin: apply before paint to prevent flash -->
+    <script>
+      if (localStorage.getItem('skin') === 'modulor') {
+        document.documentElement.setAttribute('data-skin', 'modulor');
+        const skinStylesheet = document.createElement('link');
+        skinStylesheet.rel = 'stylesheet';
+        skinStylesheet.href = '../../css/skins/modulor.css';
+        skinStylesheet.setAttribute('data-skin-stylesheet', 'modulor');
+        document.head.appendChild(skinStylesheet);
+      }
+    </script>
+
+    <!-- Disable analytics on localhost -->
+    <script>
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        localStorage.setItem('umami.disabled', 1);
+      }
+    </script>
+    <!-- Umami analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
+  </head>
+  <body class="page-case-study">
+    <nav class="utility-bar" aria-label="Site utility">
+      <!-- Optional left slot for studio child pages -->
+      
+      <div class="utility-bar__left">
+        <a href="/studio/" class="utility-bar__link">← Studio</a>
+      </div>
+     
+      <div class="utility-bar__right">
+        <a href="/" class="utility-bar__link top-nav-link home-nav-link">Home</a>
+        <div class="theme-control">
+          <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Header Block -->
+      <header class="case-study-header">
+        <h1>Building a Multi-Platform Design System</h1>
+        <p class="dek">Leading the creation of a token-driven design system that unified experiences across web, iOS, and Android for a Fortune 500 financial services company.</p>
+
+        <dl class="case-study-meta">
+          <div>
+            <dt>Company</dt>
+            <dd>Capital One</dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd>2021–2023</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>Lead Designer</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>Design tokens, components, documentation</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>4 designers, 6 engineers, 1 PM</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Web, iOS, Android</dd>
+          </div>
+        </dl>
+      </header>
+
+      <!-- Impact / TL;DR -->
+      <section aria-labelledby="impact-heading">
+        <div class="tldr-box">
+          <h2 id="impact-heading" class="visually-hidden">Impact</h2>
+          <h3>Key Outcomes</h3>
+          <ul>
+            <li>Reduced design-to-dev handoff time by 60% through shared token vocabulary</li>
+            <li>Shipped 40+ production-ready components across three platforms</li>
+            <li>Achieved 85% adoption across 12 product teams within first year</li>
+            <li>Established governance model that balanced consistency with team autonomy</li>
+            <li>Created comprehensive documentation site with live code examples</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Context & Constraints -->
+      <section aria-labelledby="context-heading">
+        <h2 id="context-heading">Context & Constraints</h2>
+        <p>The company had grown rapidly through acquisitions, resulting in fragmented experiences across products. Each team used different patterns, spacing scales, and color systems. Users encountered different button styles, form behaviors, and navigation patterns depending on which product they used.</p>
+
+        <p>Engineering teams maintained duplicated component libraries with inconsistent APIs. Designers created one-off solutions for common problems. Accessibility was inconsistent. The organization needed a unified system without disrupting ongoing product development.</p>
+
+        <div class="constraint-highlight">
+          <h3>Core Constraint</h3>
+          <p>The system needed to serve three distinct platforms (web, iOS, Android) with different technical stacks, while maintaining visual and behavioral consistency. We couldn't force platform convergence—the system had to respect platform conventions while providing a cohesive brand experience.</p>
+        </div>
+      </section>
+
+      <!-- Problem -->
+      <section aria-labelledby="problem-heading">
+        <h2 id="problem-heading">Problem</h2>
+        <ul>
+          <li><strong>Fragmented user experience:</strong> Inconsistent patterns across products eroded trust and increased cognitive load</li>
+          <li><strong>Inefficient workflows:</strong> Teams rebuilt common components from scratch, duplicating effort</li>
+          <li><strong>Accessibility gaps:</strong> No shared standards meant inconsistent keyboard navigation, screen reader support, and color contrast</li>
+          <li><strong>Scaling challenges:</strong> Adding new features or updating brand guidelines required coordinating changes across dozens of teams</li>
+          <li><strong>Technical debt:</strong> Multiple competing component libraries with incompatible APIs and dependencies</li>
+        </ul>
+      </section>
+
+      <!-- Approach -->
+      <section aria-labelledby="approach-heading">
+        <h2 id="approach-heading">Approach</h2>
+
+        <h3>System Foundations</h3>
+        <p>We started with design tokens—the atomic values that define the system's visual language. Rather than hardcoding colors or spacing, we created a semantic token structure that mapped brand values to platform-specific implementations. A single source of truth in JSON generated platform-specific code for web (CSS custom properties), iOS (Swift), and Android (XML).</p>
+
+        <p>Component design followed a mobile-first approach with responsive behaviors defined at the token level. We documented not just what components looked like, but when to use them, common pitfalls, and accessibility requirements.</p>
+
+        <h3>Adoption & Enablement</h3>
+        <p>We embedded with product teams during the first implementations, learning what worked and what created friction. This revealed that teams needed migration paths, not just greenfield guidance. We created codemods and design file migrations to ease transitions.</p>
+
+        <p>Office hours, Slack channels, and regular showcases built community. We treated early adopters as partners, incorporating their feedback into the system roadmap.</p>
+
+        <h3>Governance</h3>
+        <p>A lightweight contribution model let teams propose new components or variants. We established a review process that balanced consistency with flexibility—approving contributions that solved real needs while maintaining system coherence. Monthly design system office hours and quarterly roadmap reviews kept stakeholders aligned.</p>
+      </section>
+
+      <!-- Solution -->
+      <section aria-labelledby="solution-heading">
+        <h2 id="solution-heading">Solution</h2>
+
+        <figure class="artifact">
+          <div class="artifact-placeholder">
+            <span>Token Architecture Diagram</span>
+          </div>
+          <figcaption>Three-tier token structure: primitive values → semantic tokens → component tokens. This hierarchy let us update brand colors once and propagate changes across all platforms.</figcaption>
+        </figure>
+
+        <figure class="artifact">
+          <div class="artifact-placeholder">
+            <span>Component Documentation</span>
+          </div>
+          <figcaption>Each component included usage guidelines, accessibility requirements, live code examples, and Figma specs. Interactive demos showed responsive behaviors and state variations.</figcaption>
+        </figure>
+
+        <figure class="artifact">
+          <div class="artifact-placeholder">
+            <span>Design-to-Code Workflow</span>
+          </div>
+          <figcaption>Figma components used the same naming conventions as code components. Shared token libraries ensured designers and developers always referenced the same values.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Results -->
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading">Results</h2>
+        <ul>
+          <li><strong>Faster delivery:</strong> Teams using the system shipped features 40% faster than teams building custom components</li>
+          <li><strong>Consistent quality:</strong> Accessibility audits showed 95% WCAG AA compliance across system components</li>
+          <li><strong>Sustained adoption:</strong> After initial rollout, usage grew organically as teams experienced the benefits</li>
+          <li><strong>Cultural shift:</strong> Design system thinking became part of the product development process, not an afterthought</li>
+        </ul>
+
+        <p>The system evolved from an internal tool into a strategic asset. Product teams could focus on differentiated experiences rather than rebuilding foundations. The shared vocabulary improved cross-functional collaboration. When the company updated its brand, we rolled out changes across all products in weeks instead of months.</p>
+      </section>
+
+      <!-- Reflection -->
+      <section aria-labelledby="reflection-heading">
+        <h2 id="reflection-heading">Reflection</h2>
+
+        <h3>What I'd Refine Further</h3>
+        <p>The token structure worked well for visual properties but struggled with motion and interaction patterns. If I were starting over, I'd invest earlier in animation tokens and shared interaction behaviors. We also underestimated the effort required to keep documentation in sync with code—better automation here would have reduced maintenance burden.</p>
+
+        <h3>What This Changed About My Thinking</h3>
+        <p>This project reinforced that successful design systems are as much about people and process as they are about components and tokens. The technical architecture mattered, but what drove adoption was building trust through partnership, creating clear contribution paths, and demonstrating value through team enablement rather than top-down mandates.</p>
+
+        <p>I also learned that premature abstraction is expensive. Starting with concrete use cases and extracting patterns as they emerged was more effective than trying to anticipate every future need upfront. Design systems should be opinionated about foundations but flexible about applications.</p>
+      </section>
+
+      <!-- Back to Studio -->
+      <nav class="back-nav bottom" aria-label="Return to Studio">
+        <a href="/studio/" class="back-link">← Back to Studio</a>
+      </nav>
+    </main>
+
+    <footer>
+      <h2 class="visually-hidden">Contact</h2>
+      <nav aria-label="Site and contact links">
+        <ul class="contact-links">
+          <li><a href="/">Home</a></li>
+          <li class="separator"><a href="mailto:guesshimself@gmail.com">Email</a></li>
+          <li><a href="/Eric-Guess-Resume-Design-Systems-Portfolio.pdf">Resume</a></li>
+          <li><a href="https://linkedin.com/in/guess">LinkedIn</a></li>
+          <li><a href="https://github.com/GUESShimself">GitHub</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">&copy; 2026 Eric Guess</p>
+    </footer>
+
+    <!-- Modulor toggle -->
+    <button
+      id="modulor-toggle"
+      class="modulor-toggle"
+      aria-label="Toggle Modulor skin"
+      aria-pressed="false"
+    >
+      φ
+    </button>
+
+    <!-- Scripts -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/modulor-toggle.js"></script>
+  </body>
+</html>

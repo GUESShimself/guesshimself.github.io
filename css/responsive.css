@@ -1,3 +1,5 @@
+@layer responsive {
+
 /* Responsive Enhancements - Mobile-First Approach */
 
 /* ===================================
@@ -5,6 +7,14 @@
    =================================== */
 
 @media (min-width: 48rem) {
+  /* Responsive Typography Scale (1.333 ratio) */
+  :root {
+    --font-size-2xl: 1.777rem;     /* ~28px */
+    --font-size-3xl: 2.369rem;     /* ~38px */
+    --font-size-4xl: 3.157rem;     /* ~51px */
+    --font-size-5xl: 4.209rem;     /* ~67px */
+    --section-spacing: var(--space-4xl);
+  }
   /* Layout adjustments */
   main {
     padding: var(--space-2xl) var(--space-lg);
@@ -37,6 +47,13 @@
   .work-grid {
     gap: var(--space-2xl);
   }
+
+  /* Footer - side-by-side layout on tablet+ */
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 /* ===================================
@@ -64,3 +81,48 @@
   /* Optional: Increase max-width for very large screens */
   /* Or add more subtle spacing adjustments */
 }
+
+/* ===================================
+   Container Queries
+   =================================== */
+
+/* Work grid container - larger card padding at wider container widths */
+@container work-grid (min-width: 48rem) {
+  .card-summary {
+    padding: var(--space-xl);
+  }
+
+  .project-card.expanded .expanded-content {
+    padding: var(--space-xl);
+  }
+}
+
+/* Project card container - adjust description size based on card width */
+@container project-card (min-width: 30rem) {
+  .description {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@container project-card (min-width: 40rem) {
+  .description {
+    font-size: var(--font-size-2xl);
+  }
+  .expanded-content ul {
+    column-count: 2;
+    column-gap: var(--space-2xl);
+    column-width: 34ch;
+  }
+  /* Keep list items from splitting across columns */
+  .expanded-content li {
+    break-inside: avoid;
+    color: var(--color-text-body-strong);
+  }
+  /* Keep headings full width */
+  .expanded-content h4,
+  .expanded-content button.collapse-toggle {
+    column-span: all;
+  }
+}
+
+} /* end @layer responsive */

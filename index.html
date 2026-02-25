@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=block" />
 
     <!-- CSS -->
+    <link rel="stylesheet" href="css/layers.css" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
@@ -30,7 +31,11 @@
     <script>
       if (localStorage.getItem('skin') === 'modulor') {
         document.documentElement.setAttribute('data-skin', 'modulor');
-        document.write('<link rel="stylesheet" href="css/skins/modulor.css">');
+        const skinStylesheet = document.createElement('link');
+        skinStylesheet.rel = 'stylesheet';
+        skinStylesheet.href = 'css/skins/modulor.css';
+        skinStylesheet.setAttribute('data-skin-stylesheet', 'modulor');
+        document.head.appendChild(skinStylesheet);
       }
     </script>
 
@@ -44,9 +49,20 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
   </head>
   <body>
-    <div class="theme-control">
-      <button id="theme-toggle" class="theme-toggle">Theme: System</button>
-    </div>
+    <nav class="utility-bar" aria-label="Site utility">
+      <!-- Optional left slot for studio child pages -->
+      <!--
+      <div class="utility-bar__left">
+        <a href="/studio/" class="utility-bar__link">← Studio</a>
+      </div>
+      -->
+      <div class="utility-bar__right">
+        <a href="/studio/" class="utility-bar__link top-nav-link studio-nav-link">Studio</a>
+        <div class="theme-control">
+          <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+        </div>
+      </div>
+    </nav>
     <main>
       <!-- Section 1: Hero -->
       <section id="hero" aria-labelledby="hero-heading">
@@ -155,18 +171,11 @@
           <!-- Project Card 1 -->
           <article class="project-card" data-project-id="cap-design-system">
             <div class="card-summary">
-              <button
-                class="project-toggle"
-                aria-expanded="false"
-                aria-controls="expanded-cap-design-system"
-                aria-label="Toggle CAP Design System details"
-              ></button>
               <h3>CAP Design System</h3>
               <p class="company">Conduent</p>
               <time datetime="2020/2024">2020-2024</time>
               <p class="description">
-                Multi-brand, tokenized design system built from 0-to-1 to
-                support Conduent's automation platform and product suite.
+                0 → 1 design system built alongside new enterprise products — establishing token architecture, stable APIs, and governance while shipping at speed.
               </p>
               <ul class="scope-indicators">
                 <li>3+ product teams</li>
@@ -175,6 +184,7 @@
                   Token architecture, component library, adoption strategy
                 </li>
               </ul>
+              <button class="project-toggle" aria-expanded="false" aria-controls="expanded-cap-design-system">Project overview <span class="chevron">↓</span></button>
             </div>
             <div class="expanded-wrapper">
               <div
@@ -186,43 +196,34 @@
                 <ul>
                   <li>
                     Designed a semantic token layer to enable multi-brand
-                    theming without duplicating components or fragmenting the
-                    system.
+                    theming without duplicating components.
                   </li>
                   <li>
-                    Optimized for API stability over feature velocity—breaking
-                    changes required explicit deprecation and migration paths.
+                    Prioritized API stability over feature velocity — breaking
+                    changes required explicit migration paths.
                   </li>
                   <li>
                     Invested in adoption tooling (linting, migration scripts)
                     before documentation to reduce friction for product teams.
                   </li>
-                  <li>
-                    Kept the system opinionated at the token level while
-                    allowing flexibility at the component layer.
-                  </li>
                 </ul>
 
                 <h4>Governance & Adoption</h4>
                 <p>
-                  Established a lightweight governance model centered on regular
-                  cross-team reviews and clear ownership. Adoption scaled from a
-                  single team to 3+ product teams within six months, driven
-                  primarily by tooling, support, and trust rather than mandate.
+                  Established lightweight governance through cross-team reviews
+                  and shared ownership. Adoption scaled from one team to three
+                  within six months — driven by tooling and trust rather than
+                  mandate.
+                </p>
+                <p>
+                  The table component evolution demonstrates how these
+                  architectural decisions played out in practice.
                 </p>
 
-                <div class="artifact">
-                  <img
-                    src="images/cap-ds-diagram.png"
-                    alt="CAP Design System architecture diagram"
-                  />
-                  <p>
-                    Design intent becomes durable when it's encoded as tokens
-                    and APIs — not screens.
-                  </p>
+                <div class="expanded-footer">
+                  <a href="/studio/cap-ds/" class="case-study-link">Read full case study →</a>
+                  <button class="collapse-toggle">Collapse ↑</button>
                 </div>
-
-                <button class="collapse-toggle">Collapse ↑</button>
               </div>
             </div>
           </article>
@@ -233,12 +234,6 @@
             data-project-id="conduent-automation-platform"
           >
             <div class="card-summary">
-              <button
-                class="project-toggle"
-                aria-expanded="false"
-                aria-controls="expanded-conduent-automation-platform"
-                aria-label="Toggle Conduent Automation Platform details"
-              ></button>
               <h3>Conduent Automation Platform</h3>
               <p class="company">Conduent</p>
               <time datetime="2020/2024">2020-2024</time>
@@ -251,6 +246,7 @@
                 <li>Web platform</li>
                 <li>Workflow builder, dashboards, user management</li>
               </ul>
+              <button class="project-toggle" aria-expanded="false" aria-controls="expanded-conduent-automation-platform">Project overview <span class="chevron">↓</span></button>
             </div>
 
             <div class="expanded-wrapper">
@@ -326,12 +322,6 @@
             data-project-id="mobile-facilities-management"
           >
             <div class="card-summary">
-              <button
-                class="project-toggle"
-                aria-expanded="false"
-                aria-controls="expanded-mobile-facilities-management"
-                aria-label="Toggle Mobile Facilities Management details"
-              ></button>
               <h3>Mobile Facilities Management</h3>
               <p class="company">FM:Systems</p>
               <time datetime="2019/2020">2019-2020</time>
@@ -345,6 +335,7 @@
                 <li>iOS/Android</li>
                 <li>Field research, offline-first UX</li>
               </ul>
+              <button class="project-toggle" aria-expanded="false" aria-controls="expanded-mobile-facilities-management">Project overview <span class="chevron">↓</span></button>
             </div>
 
             <div class="expanded-wrapper">
@@ -1142,14 +1133,16 @@
     <!-- Section 7: Footer -->
     <footer>
       <h2 class="visually-hidden">Contact</h2>
-      <nav aria-label="Contact links">
+      <nav aria-label="Site and contact links">
         <ul class="contact-links">
-          <li><a href="mailto:guesshimself@gmail.com">Email</a></li>
-          <li><a href="eric-guess-ux-product-design-systems.pdf">Resume</a></li>
+          <li><a href="/studio/">Studio</a></li>
+          <li class="separator"><a href="mailto:guesshimself@gmail.com">Email</a></li>
+          <li><a href="Eric-Guess-Resume-Design-Systems-Portfolio.pdf">Resume</a></li>
           <li><a href="https://linkedin.com/in/guess">LinkedIn</a></li>
           <li><a href="https://github.com/GUESShimself">GitHub</a></li>
         </ul>
       </nav>
+      <p class="copyright">&copy; 2026 Eric Guess</p>
     </footer>
 
     <button id="modulor-toggle" class="modulor-toggle" aria-label="Toggle Modulor skin">φ</button>

@@ -7,51 +7,6 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // =============================================
-  // A — Expansion Accordion (Project Cards)
-  // =============================================
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var cards = document.querySelectorAll('.project-card');
-
-    // Remove hidden attribute — grid animation handles visibility.
-    // hidden is present as a no-JS fallback only.
-    cards.forEach(function(card) {
-      var content = card.querySelector('.expanded-content');
-      if (content) {
-        content.removeAttribute('hidden');
-      }
-    });
-
-    // Toggle handlers
-    cards.forEach(function(card) {
-      var toggle = card.querySelector('.project-toggle');
-      var collapseBtn = card.querySelector('.collapse-toggle');
-
-      if (toggle) {
-        toggle.addEventListener('click', function() {
-          if (card.classList.contains('expanded')) {
-            collapseCard(card);
-          } else {
-            // Accordion: collapse all others first
-            cards.forEach(function(other) {
-              if (other !== card && other.classList.contains('expanded')) {
-                collapseCard(other);
-              }
-            });
-            expandCard(card);
-          }
-        });
-      }
-
-      if (collapseBtn) {
-        collapseBtn.addEventListener('click', function() {
-          collapseCard(card);
-        });
-      }
-    });
-  });
-
   function expandCard(card) {
     var toggle = card.querySelector('.project-toggle');
     var projectId = card.dataset.projectId;
@@ -72,11 +27,45 @@
     }
   }
 
-  // =============================================
-  // B — Principle Anchors
-  // =============================================
+  function initProjectCardAccordion() {
+    var cards = document.querySelectorAll('.project-card');
 
-  document.addEventListener('DOMContentLoaded', function() {
+    cards.forEach(function(card) {
+      var content = card.querySelector('.expanded-content');
+      if (content) {
+        content.removeAttribute('hidden');
+      }
+    });
+
+    cards.forEach(function(card) {
+      var toggle = card.querySelector('.project-toggle');
+      var collapseBtn = card.querySelector('.collapse-toggle');
+
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          if (card.classList.contains('expanded')) {
+            collapseCard(card);
+            return;
+          }
+
+          cards.forEach(function(other) {
+            if (other !== card && other.classList.contains('expanded')) {
+              collapseCard(other);
+            }
+          });
+          expandCard(card);
+        });
+      }
+
+      if (collapseBtn) {
+        collapseBtn.addEventListener('click', function() {
+          collapseCard(card);
+        });
+      }
+    });
+  }
+
+  function initPrincipleAnchors() {
     document.querySelectorAll('.principle-anchor').forEach(function(anchor) {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -87,10 +76,8 @@
 
         history.replaceState(null, '', '#' + targetId);
 
-        // Only scroll if target is not already fully visible
         var rect = target.getBoundingClientRect();
         var inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-
         if (!inView) {
           target.scrollIntoView({
             behavior: reducedMotion ? 'auto' : 'smooth',
@@ -99,17 +86,12 @@
         }
       });
     });
-  });
+  }
 
-  // =============================================
-  // C — Scroll Emphasis (Principles)
-  // =============================================
-
-  document.addEventListener('DOMContentLoaded', function() {
+  function initPrinciplesScrollReveal() {
     var items = document.querySelectorAll('.principles-list li');
 
     if (reducedMotion) {
-      // Skip animation — reveal immediately
       items.forEach(function(item) {
         item.classList.add('in-view');
       });
@@ -120,7 +102,7 @@
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
-          observer.unobserve(entry.target); // one-time reveal
+          observer.unobserve(entry.target);
         }
       });
     }, { rootMargin: '-33% 0px -33% 0px', threshold: 0 });
@@ -128,6 +110,17 @@
     items.forEach(function(item) {
       observer.observe(item);
     });
-  });
+  }
 
+  function init() {
+    initProjectCardAccordion();
+    initPrincipleAnchors();
+    initPrinciplesScrollReveal();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
