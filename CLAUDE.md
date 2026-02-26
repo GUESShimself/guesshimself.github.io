@@ -28,7 +28,10 @@ Personal portfolio site for Eric Guess, a design systems and product design prof
 ├── favicon.svg                     # Adaptive SVG favicon (prefers-color-scheme)
 ├── CNAME                           # Custom domain config
 ├── eric-guess-ux-product-design-systems.pdf
+├── Eric-Guess-Resume-Design-Systems-Portfolio.pdf
+├── frontend-css-js-audit.md        # CSS/JS audit findings
 ├── css/
+│   ├── layers.css                  # @layer cascade order declaration (loaded first)
 │   ├── reset.css                   # Modern CSS reset
 │   ├── variables.css               # Design tokens (colors, type, spacing)
 │   ├── base.css                    # Typography & element defaults
@@ -44,10 +47,14 @@ Personal portfolio site for Eric Guess, a design systems and product design prof
 │   ├── main.js                     # Smooth scroll enhancements
 │   ├── interactions.js             # Accordion cards, scroll-reveal, hash routing
 │   ├── modulor-toggle.js           # φ button toggle for Modulor skin
+│   ├── section-nav.js              # Scroll-spy section navigation (case study pages)
 │   └── studio-filters.js           # Studio page filtering (experiments/case studies/writing)
 ├── studio/
 │   ├── index.html                  # Studio landing page with filterable items
 │   ├── case-study-template/        # Case study template (copy and customize)
+│   ├── cap-ds/                     # CAP Design System case study
+│   ├── css-color-playground/       # CSS Color L4/L5 interactive tool (Vite build)
+│   ├── breathing-shapes/           # Breathing Shapes generative experiment
 │   └── genera/                     # Generative typography experiment
 └── images/
     ├── cap-ds-diagram.png
@@ -56,9 +63,11 @@ Personal portfolio site for Eric Guess, a design systems and product design prof
 
 ### CSS load order matters
 
-**Core (all pages):** `reset → variables → base → layout → components → responsive`
+**Core (all pages):** `layers → reset → variables → base → layout → components → responsive`
 
 **Page-specific:** Add `studio.css` on studio pages, `case-study.css` on case study pages
+
+`layers.css` declares `@layer` cascade order upfront. Page-specific files wrap their rules in matching `@layer` blocks (e.g., `@layer case-study { ... }`).
 
 Modulor skin CSS is conditionally loaded at runtime — never included in the default stylesheet chain.
 
@@ -86,7 +95,7 @@ Filterable landing page for experiments, case studies, and writing. Editorial st
 
 ### Structure
 - **Header**: Title ("Studio") + description
-- **Filters**: Horizontal text-style buttons with underline active state (All, Experiments, Case Studies, Writing)
+- **Filters**: Horizontal text-style buttons with underline active state (All, Experiments, Case Studies, Tools, Writing)
 - **Grid**: Responsive card grid (1 col → 2 cols → 3 cols at breakpoints)
 - **Footer**: Standard site footer with contact links
 
@@ -128,8 +137,19 @@ Long-form editorial pages with scan-first structure. Template at `/studio/case-s
 - **Metadata grid** (`.case-study-meta`): Responsive grid (2 cols → 3 cols → 6 cols)
 - **Dek** (`.dek`): Large subtitle (xl → 2xl at tablet), secondary color, relaxed line-height
 - **TL;DR box** (`.tldr-box`): Accent wash background, 3px left border, arrow bullets
+- **TL;DR grid** (`.tldr-grid`, `.tldr-col`): Two-column layout inside TL;DR box at 48rem+
 - **Constraint highlight** (`.constraint-highlight`): Surface hover background, small uppercase label
-- **Artifact placeholders** (`.artifact`): 16:9 aspect ratio, border, caption (sm font, italic, secondary color)
+- **Artifact** (`.artifact`): Figure block with full-width image; `.artifact-placeholder` for 16:9 ratio placeholders
+- **Pull quote** (`.pull-quote`): Fraunces heading font, xl/2xl, 2px accent left border, max-width content
+- **Evolution list** (`.evolution-list`): Before/After definition list with `↳` arrow markers
+- **Architecture diagram** (`.arch-diagram`, `.arch-layer`, `.arch-callout`, `.arch-arrow`): Layered token/component architecture visualization with emphasis and split variants
+- **Section nav** (`.section-nav`): Fixed right-side scroll-spy nav, hidden below 64rem, `position: fixed; top: var(--space-4xl)`
+- **Back navigation** (`.back-nav`, `.back-link`): Top and bottom back-to-studio links; `.back-nav.bottom` has top border
+
+### Page Scoping
+- `body.page-case-study` class scopes reading typography and layout rules
+- At 64rem, `main` gets `padding-right` to make room for the fixed section nav
+- Headings get `scroll-margin-top: 7rem` for proper scroll-to positioning
 
 ### Typography
 - Reading width: max 42rem
@@ -234,8 +254,15 @@ Maintains scroll dimming behavior (adds `.is-dimmed` at >80px scroll).
 - Dynamically creates `<link>` to load `css/skins/modulor.css` on first activation
 - Scrolls to top on toggle
 
+### `section-nav.js` (loaded on case study pages)
+- Scroll-spy that tracks active section using `getBoundingClientRect()` + 25% viewport threshold
+- Position is CSS-only (`position: fixed; top: var(--space-4xl)`) — no JS position toggling
+- Smooth scroll on click, respects `prefers-reduced-motion`
+- Updates `history.replaceState` with section hash on click
+- RAF-throttled scroll listener for active state updates
+
 ### `studio-filters.js` (loaded on studio pages)
-- **Filtering:** Shows/hides studio items based on `data-type` attribute (experiment, case-study, writing)
+- **Filtering:** Shows/hides studio items based on `data-type` attribute (experiment, case-study, tool, writing)
 - **URL hash support:** Reads and updates `location.hash` for deep linking (e.g., `#case-study`)
 - **Button states:** Updates `.is-active` class and manages `aria-pressed` for accessibility
 - **IIFE pattern:** Self-contained, no global pollution
@@ -257,6 +284,8 @@ Maintains scroll dimming behavior (adds `.is-dimmed` at >80px scroll).
 - Minimal — single class selectors preferred
 - No `!important` except in reduced-motion overrides
 - Modulor skin scopes everything under `html[data-skin="modulor"]`
+- `@layer` cascade layers declared in `layers.css`; page-specific files use matching `@layer` blocks
+- Container queries (`container-type: inline-size`) used on `.work-grid` and `.project-card`
 
 ### Responsive
 - Mobile-first: base styles are mobile, `@media (min-width)` adds complexity
@@ -298,11 +327,24 @@ Experimental Le Corbusier-inspired skin, activated by `data-skin="modulor"` on `
 0    Minor grid
 1    Major grid overlay
 2    Vertical spine
-3    Horizontal datum
+4    Horizontal datum
 5    Default content
 10   Collision elements
 100  Theme controls
 ```
+
+### Case study & studio enhancements (Modulor)
+- **Vellum backdrop:** Translucent `::before` overlay (`background: var(--color-bg); opacity: 0.67`) on case study sections to mute the construction grid behind reading content
+- **Translucent nav panel:** Section nav uses `::before` pseudo-element backdrop instead of solid background
+- **Translucent studio cards:** `color-mix(in srgb, var(--color-bg) 67%, transparent)` background on `.studio-item`
+- **Arch diagram datum staggering:** Red/blue `::before`/`::after` bars weave through `.arch-layer` items at staggered z-indexes
+
+### Homepage enhancements (Modulor)
+- **Two-column hero grid:** φ-ratio `grid-template-columns: 1fr 1fr` at 48rem breakpoint, positioning `.positioning` text in the right column
+- **Diminishing arcs:** SVG-based `background-image` arcs on `main` pseudo-elements, billowing right from the vertical spine
+
+### Additional tokens (Modulor)
+- **`--font-mono`:** `ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace` — used for labels, annotations, nav text, metadata throughout the skin
 
 ### Dark mode in Modulor
 Uses `data-theme` selectors (same as base site):
@@ -324,7 +366,11 @@ Uses `data-theme` selectors (same as base site):
 ### Homepage Components
 | Component | Class | Behavior |
 |-----------|-------|----------|
-| Project cards | `.project-card` | Accordion expand/collapse, one at a time, URL hash sync |
+| Project cards | `.project-card` | Accordion expand/collapse, one at a time, URL hash sync. Uses `container-type: inline-size` |
+| Expanded footer | `.expanded-footer` | Flex row inside project card: case study link left, collapse toggle right |
+| Case study link | `.case-study-link` | Accent-colored link to full studio case study page |
+| Collapse toggle | `.collapse-toggle` | Button to collapse expanded project card, `margin-left: auto` |
+| Work grid | `.work-grid` | Container query parent (`container-type: inline-size`) for project cards |
 | Principles | `.principles-list` | Scroll-reveal animation, anchor links on hover |
 | Credibility strip | `.credibility-list` | Simple grid, responsive 1→2 columns |
 | Portrait | `.about-portrait` | Inline SVG, CSS-controlled stroke/opacity |
@@ -341,8 +387,14 @@ Uses `data-theme` selectors (same as base site):
 |-----------|-------|----------|
 | Metadata grid | `.case-study-meta` | Definition list grid (2→3→6 cols), uppercase labels |
 | TL;DR box | `.tldr-box` | Accent wash background, left border, arrow bullets |
+| TL;DR grid | `.tldr-grid`, `.tldr-col` | Two-column layout inside TL;DR box at 48rem+ |
 | Constraint highlight | `.constraint-highlight` | Surface hover background, uppercase label |
-| Artifact placeholder | `.artifact` | 16:9 ratio placeholder with caption, border |
+| Artifact | `.artifact` | Figure block with full-width image and caption |
+| Pull quote | `.pull-quote` | Fraunces heading font, xl/2xl, accent left border |
+| Evolution list | `.evolution-list` | Before/After definition list with `↳` arrow markers |
+| Arch diagram | `.arch-diagram`, `.arch-layer` | Layered architecture visualization with emphasis/split variants |
+| Section nav | `.section-nav` | Fixed right-side scroll-spy nav (desktop only, 64rem+) |
+| Back navigation | `.back-nav`, `.back-link` | Top/bottom back-to-studio links |
 
 ---
 
@@ -360,8 +412,11 @@ Uses `data-theme` selectors (same as base site):
 ### Studio Content Expansion
 - **✓ Studio landing page** — Implemented with filtering system
 - **✓ Case study template** — Editorial long-form template ready for content
+- **✓ CAP Design System case study** — Full case study live at `/studio/cap-ds/`
+- **✓ Breathing Shapes experiment** — Generative experiment live at `/studio/breathing-shapes/`
+- **✓ Genera experiment** — Generative typography experiment at `/studio/genera/`
+- **✓ CSS Color Playground** — Interactive CSS Color L4/L5 tool at `/studio/css-color-playground/`
 - **In Progress: Writing pages** — Template for article/blog post format
-- **Future: Individual experiments** — Dedicated pages for generative experiments (Genera example exists)
 
 ### Content Migration
 - Expand project cards from homepage `#work` section into full case study pages using the template
@@ -370,10 +425,10 @@ Uses `data-theme` selectors (same as base site):
 
 ### Navigation Enhancements
 - **✓ Utility bar** — Implemented across all pages with left/right slot pattern
-- **Future: Fixed sidebar navigation** — Section-jumping sidebar for long case studies
-  - Scroll-spy behavior using IntersectionObserver
-  - Responsive: sidebar on desktop, collapsed/drawer on mobile
-  - Can reuse existing `.in-view` pattern from `interactions.js`
+- **✓ Section navigation** — Fixed right-side scroll-spy for case study pages (`section-nav.js`)
+  - Uses `getBoundingClientRect()` + 25% viewport threshold (not IntersectionObserver)
+  - Desktop only (hidden below 64rem), `position: fixed; top: var(--space-4xl)`
+  - Future consideration: collapsed/drawer on mobile
 
 ### Component System Evolution
 - Current approach: copy/paste HTML with shared CSS

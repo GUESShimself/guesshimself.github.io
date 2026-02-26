@@ -82,7 +82,7 @@
    */
   function getFilterFromHash() {
     var hash = window.location.hash.slice(1);
-    var validFilters = ['experiment', 'case-study', 'writing'];
+    var validFilters = ['experiment', 'case-study', 'tool', 'writing'];
     var i;
 
     for (i = 0; i < validFilters.length; i++) {
