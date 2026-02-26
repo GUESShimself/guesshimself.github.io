@@ -11,32 +11,6 @@
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var activeLink = null;
 
-  // Position nav below the case study header, then stick at --space-4xl on scroll
-  var header = document.querySelector('.case-study-header');
-  var navOriginY = 0;
-  var stickyOffset = 0;
-
-  if (header) {
-    var remPx = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    var headerBottom = header.getBoundingClientRect().bottom + (window.scrollY || window.pageYOffset);
-    navOriginY = headerBottom + (4 * remPx);
-    stickyOffset = 8 * remPx; // --space-4xl = 8rem
-    nav.style.top = navOriginY + 'px';
-  }
-
-  function updateNavPosition() {
-    var scrollY = window.scrollY || window.pageYOffset;
-    if (scrollY + stickyOffset >= navOriginY) {
-      nav.style.top = '';
-      nav.classList.add('is-fixed');
-    } else {
-      nav.classList.remove('is-fixed');
-      nav.style.top = navOriginY + 'px';
-    }
-  }
-
-  updateNavPosition();
-
   // Build ordered list of heading targets
   var headings = [];
   links.forEach(function(link) {
@@ -81,7 +55,6 @@
   window.addEventListener('scroll', function() {
     if (!ticking) {
       window.requestAnimationFrame(function() {
-        updateNavPosition();
         updateActiveFromScroll();
         ticking = false;
       });

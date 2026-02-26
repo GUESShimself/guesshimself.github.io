@@ -269,7 +269,7 @@ html[data-skin="modulor"] main::before {
   right: 0;
   height: var(--datum-thickness);
   background: var(--modulor-red);
-  z-index: 3;
+  z-index: 4;
   pointer-events: none;
   /* Structural overlay with blend mode */
   box-shadow:
@@ -1518,9 +1518,21 @@ html[data-skin="modulor"] .collapse-toggle {
 
 @media (min-width: 64rem) {
   html[data-skin="modulor"] .section-nav {
-    background: var(--color-accent-wash);
+    /* background: var(--color-accent-wash); */
     border: 1px solid var(--modulor-black);
     padding: var(--space-5) var(--space-5);
+  }
+  html[data-skin="modulor"] .section-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    opacity: 0.67;
+    z-index: -1;
+    pointer-events: none;
   }
 
   html[data-skin="modulor"] .section-nav a {
@@ -1546,12 +1558,41 @@ html[data-skin="modulor"] .collapse-toggle {
 }
 
 /* ===============================
-   18b. CASE STUDY — ARCHITECTURE DIAGRAM
+   18b. CASE STUDY — CONTENT BACKDROP
+   Vellum overlay behind reading column to mute the construction grid
+   =============================== */
+
+html[data-skin="modulor"] .page-case-study section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  opacity: 0.67;
+  z-index: -1;
+  pointer-events: none;
+}
+
+html[data-skin="modulor"] .studio-item {
+  position: relative;
+  z-index: 4;
+  background-color: color-mix(in srgb, var(--color-bg) 67%, transparent);
+}
+
+/* ===============================
+   18c. CASE STUDY — ARCHITECTURE DIAGRAM
    Datum bars weave through layers at staggered z-indexes
    =============================== */
 
 html[data-skin="modulor"] .arch-diagram {
   position: relative;
+}
+@media (min-width: 64rem) {
+  .arch-diagram {
+    margin-right: 0;
+  }
 }
 
 /* Red datum bar — passes over lower layers, under upper */
