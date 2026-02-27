@@ -10,6 +10,14 @@
   <link rel="icon" type="image/png" href="./assets/favicon-lOWzr1aB.svg" />
   <script type="module" crossorigin src="./assets/index-CBRwfMce.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-VJu6VMFW.css">
+  <!-- Disable analytics on localhost -->
+  <script>
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      localStorage.setItem('umami.disabled', 1);
+    }
+  </script>
+  <!-- Umami analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"></script>
 </head>
 <body>
   <div class="app-layout">
