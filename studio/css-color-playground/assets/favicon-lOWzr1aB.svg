@@ -6,11 +6,14 @@
       <stop offset="65%" stop-color="#f0c040"/>
       <stop offset="100%" stop-color="#33bbee"/>
     </linearGradient>
-    <mask id="ring-mask">
+    <mask id="inner-shape">
+      <rect width="64" height="64" fill="black"/>
       <rect x="6" y="6" width="52" height="52" rx="12" fill="white"/>
-      <rect x="16" y="16" width="32" height="32" rx="7" fill="black"/>
     </mask>
   </defs>
-  <!-- Spectral gradient ring with transparent center -->
-  <rect x="6" y="6" width="52" height="52" rx="12" fill="url(#spectral)" mask="url(#ring-mask)"/>
+  <rect width="64" height="64" rx="14" fill="#0c0c0f"/>
+  <!-- Inner rounded square with spectral gradient -->
+  <rect x="6" y="6" width="52" height="52" rx="12" fill="url(#spectral)"/>
+  <!-- Cut out center to make it a frame/ring -->
+  <rect x="16" y="16" width="32" height="32" rx="7" fill="#0c0c0f"/>
 </svg>
