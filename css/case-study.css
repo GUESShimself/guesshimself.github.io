@@ -102,7 +102,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-md);
 }
 
@@ -581,8 +581,9 @@ body.page-case-study section > ul > li strong {
    above and becomes available to every study. This keeps the pages
    distinct without letting them drift into four bespoke layouts. */
 
-/* Atheneum — accent drawn from the caution ramp (hue 85), the hue the
-   engagement had to introduce without colliding with the brand gold. */
+/* Atheneum — warm amber accent (hue 75) that nods to the new caution
+   hue, the one the engagement had to introduce without colliding with
+   the brand gold. */
 body.page-case-study[data-study="atheneum"] {
   --color-accent: oklch(0.5 0.09 75);
   --color-accent-hover: oklch(0.41 0.075 75);
