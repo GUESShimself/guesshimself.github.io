@@ -492,14 +492,16 @@
   margin: 0 auto var(--space-sm) auto;
 }
 
-html[data-theme="dark"] .artifact img,
-html[data-skin="modulor"][data-theme="dark"] .artifact img {
+/* Line-art diagrams invert in dark mode. Screenshots opt out with
+   .artifact-screenshot so they keep their true colors. */
+html[data-theme="dark"] .artifact img:not(.artifact-screenshot),
+html[data-skin="modulor"][data-theme="dark"] .artifact img:not(.artifact-screenshot) {
   filter: invert(1) sepia(0.2);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .artifact img,
-  html[data-skin="modulor"]:not([data-theme]) .artifact img {
+  :root:not([data-theme]) .artifact img:not(.artifact-screenshot),
+  html[data-skin="modulor"]:not([data-theme]) .artifact img:not(.artifact-screenshot) {
     filter: invert(1) sepia(0.2);
   }
 }
