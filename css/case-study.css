@@ -215,6 +215,22 @@
   border-radius: 2px;
 }
 
+.artifact-pair {
+  display: grid;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.artifact-pair img {
+  margin-bottom: 0;
+}
+
+@media (min-width: 48rem) {
+  .artifact-pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 /* ── Architecture Diagram ───────────────────────────────── */
 
 .arch-diagram {
@@ -299,6 +315,92 @@
   font-style: italic;
   margin-top: var(--space-xs);
 }
+
+/* ── Sentiment Ramp Strip ───────────────────────────────── */
+
+/* Illustrative only: swatches are generated from a shared lightness/chroma
+   curve so every ramp steps identically and only the hue changes. The curve
+   is tuned to the lightness of the production Atheneum ramps, but chroma and
+   hue are simplified, so these are not the shipped values. Steps 20/60/80 are
+   the documented surface/border/text pairing. */
+
+.sentiment-ramps {
+  --ramp-chroma: 0.15;
+  margin: var(--space-xl) 0 var(--space-md);
+}
+
+.sentiment-ramp,
+.sentiment-scale {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.sentiment-ramp {
+  margin-bottom: 0.125rem;
+}
+
+.sentiment-ramp-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-text-tertiary);
+}
+
+.sentiment-steps {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hairline keeps the ramp ends legible — step 10 against a light page,
+   step 100 against a dark one. */
+.sentiment-ramp .sentiment-steps {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+}
+
+.sentiment-ramp .sentiment-steps > li {
+  height: 2.25rem;
+  background: oklch(
+    var(--step-l) calc(var(--ramp-chroma) * var(--step-c)) var(--ramp-hue)
+  );
+}
+
+.sentiment-steps--numbers > li {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  padding-bottom: var(--space-xs);
+}
+
+.sentiment-steps--numbers > li[data-role] {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Shared step curve — identical across every ramp */
+.sentiment-steps > li:nth-child(1)  { --step-l: 0.98; --step-c: 0.08; }
+.sentiment-steps > li:nth-child(2)  { --step-l: 0.957; --step-c: 0.16; }
+.sentiment-steps > li:nth-child(3)  { --step-l: 0.89; --step-c: 0.38; }
+.sentiment-steps > li:nth-child(4)  { --step-l: 0.79; --step-c: 0.75; }
+.sentiment-steps > li:nth-child(5)  { --step-l: 0.666; --step-c: 0.95; }
+.sentiment-steps > li:nth-child(6)  { --step-l: 0.534; --step-c: 0.85; }
+.sentiment-steps > li:nth-child(7)  { --step-l: 0.41; --step-c: 0.78; }
+.sentiment-steps > li:nth-child(8)  { --step-l: 0.31; --step-c: 0.66; }
+.sentiment-steps > li:nth-child(9)  { --step-l: 0.244; --step-c: 0.52; }
+.sentiment-steps > li:nth-child(10) { --step-l: 0.22; --step-c: 0.2; }
+
+/* Hue is the only per-ramp variable */
+.sentiment-ramp[data-sentiment="info"]    { --ramp-hue: 255; }
+.sentiment-ramp[data-sentiment="success"] { --ramp-hue: 145; }
+.sentiment-ramp[data-sentiment="caution"] { --ramp-hue: 60; }
+.sentiment-ramp[data-sentiment="error"]   { --ramp-hue: 28; }
 
 /* ── Section Navigation ─────────────────────────────────── */
 
@@ -467,6 +569,40 @@ body.page-case-study section > ul > li strong {
   /* Shift reading column left to balance right-side section nav */
   body.page-case-study main {
     padding-right: calc(var(--space-xl) + 10rem);
+  }
+}
+
+/* ── Study Skins ────────────────────────────────────────────
+   Each case study may carry its own accent, so the page quietly
+   references the work it documents.
+
+   A study skin may ONLY rebind existing custom properties. If a study
+   needs new structure, that structure belongs in the shared sections
+   above and becomes available to every study. This keeps the pages
+   distinct without letting them drift into four bespoke layouts. */
+
+/* Atheneum — accent drawn from the caution ramp (hue 85), the hue the
+   engagement had to introduce without colliding with the brand gold. */
+body.page-case-study[data-study="atheneum"] {
+  --color-accent: oklch(0.5 0.09 75);
+  --color-accent-hover: oklch(0.41 0.075 75);
+  --color-accent-wash: oklch(0.5 0.09 75 / 5%);
+  --color-focus-ring: oklch(0.5 0.09 75);
+}
+
+html[data-theme="dark"] body.page-case-study[data-study="atheneum"] {
+  --color-accent: oklch(0.76 0.09 75);
+  --color-accent-hover: oklch(0.84 0.09 75);
+  --color-accent-wash: oklch(0.76 0.09 75 / 10%);
+  --color-focus-ring: oklch(0.76 0.09 75);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) body.page-case-study[data-study="atheneum"] {
+    --color-accent: oklch(0.76 0.09 75);
+    --color-accent-hover: oklch(0.84 0.09 75);
+    --color-accent-wash: oklch(0.76 0.09 75 / 10%);
+    --color-focus-ring: oklch(0.76 0.09 75);
   }
 }
 

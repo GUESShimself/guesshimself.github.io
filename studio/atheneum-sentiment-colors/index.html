@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Atheneum Sentiment Colors: OKLCH-based sentiment color ramps for NetJets' Atheneum design system, accessible and built to steer clear of brand accents across 5 brand themes"
+    />
+    <title>Atheneum Sentiment Colors - Eric Guess</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&family=JetBrains+Mono:wght@400;500;700&display=block"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/layers.css" />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/layout.css" />
+    <link rel="stylesheet" href="../../css/components.css" />
+    <link rel="stylesheet" href="../../css/responsive.css" />
+    <link rel="stylesheet" href="../../css/case-study.css" />
+    <!-- Theme: loaded in head to set data-theme before first paint -->
+    <script src="../../js/theme.js"></script>
+
+    <!-- Modulor skin: apply before paint to prevent flash -->
+    <script>
+      if (localStorage.getItem("skin") === "modulor") {
+        document.documentElement.setAttribute("data-skin", "modulor");
+        const skinStylesheet = document.createElement("link");
+        skinStylesheet.rel = "stylesheet";
+        skinStylesheet.href = "../../css/skins/modulor.css";
+        skinStylesheet.setAttribute("data-skin-stylesheet", "modulor");
+        document.head.appendChild(skinStylesheet);
+      }
+    </script>
+
+    <!-- Disable analytics on localhost -->
+    <script>
+      if (
+        location.hostname === "localhost" ||
+        location.hostname === "127.0.0.1"
+      ) {
+        localStorage.setItem("umami.disabled", 1);
+      }
+    </script>
+    <!-- Umami analytics -->
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="2c069036-18db-447e-b40c-9ad8f69357c7"
+    ></script>
+  </head>
+  <body class="page-case-study" data-study="atheneum">
+    <nav class="utility-bar" aria-label="Site utility">
+      <div class="utility-bar__left">
+        <a href="/studio/" class="utility-bar__link">← Studio</a>
+      </div>
+
+      <div class="utility-bar__right">
+        <a href="/" class="utility-bar__link top-nav-link home-nav-link">Home</a>
+        <div class="theme-control">
+          <button id="theme-toggle" class="theme-toggle">Theme: System</button>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="section-nav" aria-label="Page sections">
+      <ul>
+        <li><a href="#impact-heading">TL;DR</a></li>
+        <li><a href="#context-heading">Context</a></li>
+        <li><a href="#problem-heading">Problem</a></li>
+        <li><a href="#approach-heading">Approach</a></li>
+        <li><a href="#solution-heading">Solution</a></li>
+        <li><a href="#results-heading">Results</a></li>
+        <li><a href="#reflection-heading">Reflection</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Header Block -->
+      <header class="case-study-header">
+        <h1>Atheneum Sentiment Colors</h1>
+        <p class="dek">
+          New OKLCH-based sentiment ramps for Atheneum, giving components more flexible color usage while holding accessible contrast while steering clear of brand accent hues across 5 brand themes.
+        </p>
+
+        <dl class="case-study-meta">
+          <div>
+            <dt>Company</dt>
+            <dd>NetJets</dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd>2026</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>Design System Consultant</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>Sentiment color ramps · OKLCH color system · Multi-brand theming</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>Atheneum</dd>
+          </div>
+          <div>
+            <dt>Platform</dt>
+            <dd>Web</dd>
+          </div>
+        </dl>
+      </header>
+
+      <!-- Impact / TL;DR -->
+      <section aria-labelledby="impact-heading">
+        <div class="tldr-box">
+          <h2 id="impact-heading" class="visually-hidden">Impact</h2>
+          <h3>Key Outcomes</h3>
+          <ul>
+            <li>Built sentiment color ramps on OKLCH for perceptually consistent steps across the full range</li>
+            <li>Met accessible contrast targets by construction, not after-the-fact correction</li>
+            <li>Gave components a wider range of sentiment colors, with interaction states and higher and lower contrast options</li>
+            <li>Designed the sentiment hues to steer clear of brand accents across all 5 Atheneum themes</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Context & Constraints -->
+      <section aria-labelledby="context-heading">
+        <h2 id="context-heading">Context & Constraints</h2>
+        <p>Before this work, Atheneum's sentiment color system relied on a rigid 6-token setup: a single base color paired with a single "highlight" variant for warning (red), info (blue), and positive (green). Without full color ramps, components recycled these few tokens across different states; warning tokens doubled for both caution and critical alert patterns, relying merely on inverted border and background roles to signal severity. The original hex-picked values lacked a systematic foundation, and a caution hue (yellow/orange) was intentionally omitted to prevent visual overlap with the primary brand's gold accent.</p>
+        <p>As part of a broader system initiative to expand all color palettes into 10-step ramps and accommodate an expansion to 5 distinct brand themes, an audit revealed hue collisions between existing sentiment tokens and emerging brand accents. My focus was to construct dedicated, 10-step sentiment ramps and safely introduce a distinct caution hue without compromising brand identity or theme integrity.</p>
+
+        <div class="constraint-highlight">
+          <h3>Core Constraint</h3>
+          <p>Strictly meeting WCAG 2.1 accessibility standards, while proactively designing for APCA contrast, across all 5 brand themes, all without creating hue collisions or negative brand associations between caution/warning states and brand accent colors.</p>
+        </div>
+      </section>
+
+      <!-- Problem -->
+      <section aria-labelledby="problem-heading">
+        <h2 id="problem-heading">Problem</h2>
+        <ul>
+          <li><strong>Rigid Token Structure:</strong> Relying on only 3 primary sentiment colors paired with 3 single "highlight" variants failed to support complex UI states across 5 distinct brand themes, dark mode, and multi-layered surface component patterns.</li>
+          <li><strong>Hue Collisions & Brand Risk:</strong> Without dedicated hue bands, existing sentiment tokens clashed with emerging multi-brand accent colors, risking negative brand association if warning or caution states looked indistinguishable from primary brand accents.</li>
+          <li><strong>Designer Workarounds & Fragmented Systems:</strong> Constrained by the missing 10-step ramps and lack of a true caution hue, designers began pulling external palettes from libraries like MUI and Tailwind, creating fragmented implementation and inconsistent component governance across product teams.</li>
+        </ul>
+      </section>
+
+      <!-- Approach -->
+      <section aria-labelledby="approach-heading">
+        <h2 id="approach-heading">Approach</h2>
+
+        <h3>OKLCH & Sentiment Scale Architecture</h3>
+        <p>To eliminate perceptual lightness jumps, I moved palette generation to OKLCH. I expanded the existing blue, green, and red sentiment colors into 10-step ramps (<code>info</code>, <code>success</code>, and <code>error</code>), added a dedicated <code>caution</code> hue (orange), and aligned lightness steps and chroma curve shapes across all four. That builds contrast rules into the step pairings: a <code>20</code> step surface with <code>60</code> step borders and icons and <code>80</code> step text guarantees accessible contrast on any sentiment ramp.</p>
+
+        <h3>Accessibility & Perceptual Considerations</h3>
+        <p>I validated contrast with the Stark plugin in Figma, checking WCAG 2.1 and APCA for text and icons across Atheneum's surface set: the primary and neutral base surfaces and the overview, primary, and secondary task backgrounds, in light and dark. After some early step adjustments, everything passed.</p>
+        <p>OKLCH also fixed a perceptual problem in the old hex-picked values. Side by side in components, the previous positive color drifted toward olive and sat close to the gold of the "Special" badge, and the sentiment surface tints looked uneven in weight. With shared lightness steps, alerts at the same step now carry the same visual weight, so severity comes from hue and treatment rather than one color being louder than another.</p>
+        <!-- <p>[Caution vs. brand gold: how collisions were verified. To come.]</p> -->
+
+        <h3>Expanded Component Range</h3>
+        <p>Full ramps let me go beyond recoloring. I created dark-mode variants of the components that use sentiment colors, an optional inverse variant for brands with darker surfaces, variables for interaction states, and higher and lower contrast options for icons and text, all within accessible pairings.</p>
+
+        <h3>Building the Ramps</h3>
+        <p>Figma doesn't support OKLCH natively, so I built AI-assisted tools around <a href="https://culorijs.org/">culori</a> for color conversion, and made sure any Figma Agents I used pulled it in too. An agent first identified the hues of the old sentiment colors as the base for the new ramps. I then used Figma Make to build a ramp editor for adjusting OKLCH values and lightness and chroma curves, comparing each ramp against the themes' primary, neutral, and accent ramps to avoid hue collisions, previewing components, fixing out-of-gamut steps, and exporting back to Figma.</p>
+
+        <h3>Implementation & Rollout</h3>
+        <p>The ramps started as Figma variables during testing, then moved into Tokens Studio, which pushes them to the repo and the tokens pipeline. I re-architected the structure: a new ATH-Primitives collection holds the ramp values, and a new <code>color/sentiment</code> group in the Brand collection references them, replacing the direct hex values in <code>color/alert</code>.</p>
+        <p>Mapping the new variables to components is a breaking change, so I copied the component library into a new major version. The old and new groups coexist, so teams can migrate on their own schedule.</p>
+      </section>
+
+      <!-- Solution -->
+      <section aria-labelledby="solution-heading">
+        <h2 id="solution-heading">Solution</h2>
+
+        <figure class="artifact">
+          <div class="sentiment-ramps">
+            <div class="sentiment-scale">
+              <span class="sentiment-ramp-label"></span>
+              <ol class="sentiment-steps sentiment-steps--numbers">
+                <li>10</li>
+                <li data-role="surface">20</li>
+                <li>30</li>
+                <li>40</li>
+                <li>50</li>
+                <li data-role="border">60</li>
+                <li>70</li>
+                <li data-role="text">80</li>
+                <li>90</li>
+                <li>100</li>
+              </ol>
+            </div>
+
+            <div class="sentiment-ramp" data-sentiment="info">
+              <span class="sentiment-ramp-label">info</span>
+              <ol class="sentiment-steps" aria-hidden="true">
+                <li></li><li></li><li></li><li></li><li></li>
+                <li></li><li></li><li></li><li></li><li></li>
+              </ol>
+            </div>
+
+            <div class="sentiment-ramp" data-sentiment="success">
+              <span class="sentiment-ramp-label">success</span>
+              <ol class="sentiment-steps" aria-hidden="true">
+                <li></li><li></li><li></li><li></li><li></li>
+                <li></li><li></li><li></li><li></li><li></li>
+              </ol>
+            </div>
+
+            <div class="sentiment-ramp" data-sentiment="caution">
+              <span class="sentiment-ramp-label">caution</span>
+              <ol class="sentiment-steps" aria-hidden="true">
+                <li></li><li></li><li></li><li></li><li></li>
+                <li></li><li></li><li></li><li></li><li></li>
+              </ol>
+            </div>
+
+            <div class="sentiment-ramp" data-sentiment="error">
+              <span class="sentiment-ramp-label">error</span>
+              <ol class="sentiment-steps" aria-hidden="true">
+                <li></li><li></li><li></li><li></li><li></li>
+                <li></li><li></li><li></li><li></li><li></li>
+              </ol>
+            </div>
+          </div>
+          <figcaption>
+            Illustration of the ramp architecture, not the shipped palette. Four sentiment ramps are drawn from one lightness and chroma curve with hue as the only variable. The curve follows the lightness of the production ramps, where step 60 on step 20 clears 3:1 for borders and icons and step 80 on step 20 clears 4.5:1 for text. Production chroma and hue vary slightly by ramp.
+          </figcaption>
+        </figure>
+
+        <figure class="artifact">
+          <img src="/images/atheneum-ramp-editor.png" alt="The Atheneum Color Ramps editor showing theme-specific neutral, primary, accent, and sentiment ramps with hue, chroma, and lightness controls" width="3382" height="2198" loading="lazy">
+          <figcaption>Tool created for editing color ramps</figcaption>
+        </figure>
+
+        <figure class="artifact">
+          <div class="artifact-pair">
+            <img src="/images/atheneum-tokens-alert.png" alt="Token tree for the previous color/alert group, 24 variables across fill, border, outline, icon, heading, and description" width="472" height="572" loading="lazy">
+            <img src="/images/atheneum-tokens-sentiment.png" alt="Token tree for the new color/sentiment group, 92 variables across background, border, outline, icon, heading, text, and description" width="474" height="622" loading="lazy">
+          </div>
+          <figcaption>Token trees for the old and new color systems</figcaption>
+        </figure>
+      </section>
+
+      <!-- Results -->
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading">Results</h2>
+        <ul>
+          <li><strong>Full ramps in place of a 6-token setup:</strong> Four 10-step ramps (<code>info</code>, <code>success</code>, <code>caution</code>, and <code>error</code>) replace three base colors with three highlights, with <code>caution</code> as a new hue. <code>color/sentiment</code> holds 92 variables against 24 in <code>color/alert</code>.</li>
+          <li><strong>Accessible combinations built in:</strong> Within each ramp, about 20 of 45 possible step pairings reach 4.5:1 and 13 reach 7:1 under WCAG, and every documented pairing passed WCAG 2.1 and APCA across the base and task surfaces in light and dark.</li>
+          <li><strong>More component range:</strong> Six component sets were remapped, around 66 variants in total including the new dark-mode variants, with optional inverse variants, interaction-state variables, and higher and lower contrast options for icons and text.</li>
+        </ul>
+
+        <p>The new library hasn't been released yet, so adoption is the next measure, and no deprecation date has been set for <code>color/alert</code>. I documented how to create new ramps with the tools I built, so the system can grow without me. Likely next are ramps for data visualization and AI branding, and theme-specific alternatives where a sentiment hue sits too close to a brand accent, such as a yellow caution in place of the orange.</p>
+      </section>
+
+      <!-- Reflection -->
+      <section aria-labelledby="reflection-heading">
+        <h2 id="reflection-heading">Reflection</h2>
+
+        <h3>What I'd Refine Further</h3>
+        <p>I'd pair more closely with the designer who built the primary, neutral, and accent ramps. Those were finished and approved before my work, and they weren't made with a systematic process. When I pulled their lightness, chroma, and hue curves and applied them to the new sentiment hues, the results didn't give me the range of accessible combinations I wanted, so I had to build the curves myself. Working together earlier would have meant one shared approach across every ramp in the system.</p>
+        <p>In my own ramps, I'd refine the dark end. The 100 steps are very dark, and they likely won't get much use.</p>
+      </section>
+
+      <!-- Back to Studio -->
+      <nav class="back-nav bottom" aria-label="Return to Studio">
+        <a href="/studio/" class="back-link">← Back to Studio</a>
+      </nav>
+    </main>
+
+    <footer>
+      <h2 class="visually-hidden">Contact</h2>
+      <nav aria-label="Site and contact links">
+        <ul class="contact-links">
+          <li><a href="/">Home</a></li>
+          <li class="separator">
+            <a href="mailto:guesshimself@gmail.com">Email</a>
+          </li>
+          <li>
+            <a href="/Eric-Guess-Resume-Design-Systems-Portfolio.pdf">Resume</a>
+          </li>
+          <li><a href="https://linkedin.com/in/guess">LinkedIn</a></li>
+          <li><a href="https://github.com/GUESShimself">GitHub</a></li>
+        </ul>
+      </nav>
+      <p class="copyright">&copy; 2026 Eric Guess</p>
+    </footer>
+
+    <!-- Modulor toggle -->
+    <button
+      id="modulor-toggle"
+      class="modulor-toggle"
+      aria-label="Toggle Modulor skin"
+      aria-pressed="false"
+    >
+      φ
+    </button>
+
+    <!-- Scripts -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/section-nav.js"></script>
+    <script src="../../js/modulor-toggle.js"></script>
+  </body>
+</html>
